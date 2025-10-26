@@ -19,7 +19,7 @@ class AuthController extends Controller
      */
     public function showLogin(): View
     {
-        return view('auth.login');
+        return view('borna.auth.login');
     }
 
     /**
@@ -64,7 +64,7 @@ class AuthController extends Controller
                 ->with('error', 'لطفا ابتدا شماره موبایل خود را وارد کنید');
         }
 
-        return view('auth.verify');
+        return view('borna.auth.verify');
     }
 
     /**

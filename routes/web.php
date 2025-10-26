@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,11 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+// Contact Us Routes
+Route::get('/contact-us', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
+
 // Placeholder for terms route
 Route::get('/terms', function () {
-    return view('terms');
+    return view('borna.terms');
 })->name('terms');

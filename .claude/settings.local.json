@@ -37,7 +37,8 @@
       "Bash(xcopy:*)",
       "Bash(robocopy:*)",
       "Bash(php artisan route:list:*)",
-      "Bash(php artisan serve:*)"
+      "Bash(php artisan serve:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": [],

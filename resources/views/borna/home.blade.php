@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('borna.layouts.app')
 
 @section('title', 'روانشناسی برنا | صفحه اصلی')
 @section('description', 'مرکز روانشناسی برنا - خودت رو بشناس! بزن بریم')
