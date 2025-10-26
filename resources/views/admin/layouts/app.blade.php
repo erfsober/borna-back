@@ -120,6 +120,29 @@
               </ul>
             </li>
 
+            <!-- Contact Us -->
+            <li class="menu-item {{ request()->routeIs('admin.contact-us-setting.*', 'admin.contacts.*') ? 'active open' : '' }}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-phone"></i>
+                <div data-i18n="ContactUs">ارتباط با ما</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.contact-us-setting.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.contact-us-setting.index') }}" class="menu-link">
+                    <div data-i18n="Settings">تنظیمات</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.contacts.index') }}" class="menu-link">
+                    <div data-i18n="Requests">درخواست ها</div>
+                    @if($uncheckedContactsCount > 0)
+                    <div class="badge bg-danger rounded-pill ms-auto">{{ $uncheckedContactsCount }}</div>
+                    @endif
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             @yield('menu-items')
           </ul>
         </aside>

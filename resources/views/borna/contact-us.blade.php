@@ -36,6 +36,7 @@
         <!-- Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Address Card -->
+            @if($contactSetting?->address)
             <div class="flex items-center gap-2 bg-neutral-100 rounded-2xl p-4">
                 <div class="bg-white rounded-lg p-3">
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -50,10 +51,12 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <h3 class="">آدرس</h3>
-                    <p class="paragraph text-sm">تهران،‌ ولیعصر نرسیده به میدان ونک</p>
+                    <p class="paragraph text-sm">{{ $contactSetting->address }}</p>
                 </div>
             </div>
+            @endif
             <!-- Phone Card -->
+            @if($contactSetting?->phone)
             <div class="flex items-center gap-2 bg-neutral-100 rounded-2xl p-4">
                 <div class="bg-white rounded-lg p-3">
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -71,10 +74,12 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <h3 class="">تلفن</h3>
-                    <p class="paragraph text-sm">۰۲۱-۱۲۳۴۵۶۷</p>
+                    <p class="paragraph text-sm" dir="ltr">{{ $contactSetting->phone }}</p>
                 </div>
             </div>
+            @endif
             <!-- Email Card -->
+            @if($contactSetting?->email)
             <div class="flex items-center gap-2 bg-neutral-100 rounded-2xl p-4">
                 <div class="bg-white rounded-lg p-3">
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -89,10 +94,12 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <h3 class="">ایمیل</h3>
-                    <p class="paragraph text-sm">Info@gmail.com</p>
+                    <p class="paragraph text-sm" dir="ltr">{{ $contactSetting->email }}</p>
                 </div>
             </div>
+            @endif
             <!-- Working Hours Card -->
+            @if($contactSetting?->work_hours)
             <div class="flex items-center gap-2 bg-neutral-100 rounded-2xl p-4">
                 <div class="bg-white rounded-lg p-3">
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -107,17 +114,20 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <h3 class="">ساعت کاری</h3>
-                    <p class="paragraph text-sm">شنبه تا چهارشنبه 9 صبح الی 18</p>
+                    <p class="paragraph text-sm">{{ $contactSetting->work_hours }}</p>
                 </div>
             </div>
+            @endif
         </div>
 
         <!-- Social Media -->
+        @if($contactSetting && ($contactSetting->telegram || $contactSetting->whatsapp || $contactSetting->instagram))
         <div class="flex flex-col gap-4 mt-5 lg:mt-auto">
             <h2 class="text-2xl">شبکه های اجتماعی</h2>
             <div class="flex items-center gap-4">
                 <!-- Telegram -->
-                <a href="#"
+                @if($contactSetting->telegram)
+                <a href="https://t.me/{{ ltrim($contactSetting->telegram, '@') }}" target="_blank" rel="noopener noreferrer"
                     class="rounded-lg p-3 border-2 border-primary-light hover:border-primary-dark transition-colors group">
                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -126,8 +136,10 @@
                             fill="#8AFFAD" class="group-hover:fill-primary-dark transition-colors" />
                     </svg>
                 </a>
+                @endif
                 <!-- Whatsapp -->
-                <a href="#"
+                @if($contactSetting->whatsapp)
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $contactSetting->whatsapp) }}" target="_blank" rel="noopener noreferrer"
                     class="rounded-lg p-3 border-2 border-primary-light hover:border-primary-dark transition-colors group">
                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -139,8 +151,10 @@
                             fill="#8AFFAD" class="group-hover:fill-primary-dark transition-colors" />
                     </svg>
                 </a>
+                @endif
                 <!-- Instagram -->
-                <a href="#"
+                @if($contactSetting->instagram)
+                <a href="https://instagram.com/{{ ltrim($contactSetting->instagram, '@') }}" target="_blank" rel="noopener noreferrer"
                     class="rounded-lg p-3 border-2 border-primary-light hover:border-primary-dark transition-colors group">
                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -155,8 +169,10 @@
                             fill="#8AFFAD" class="group-hover:fill-primary-dark transition-colors" />
                     </svg>
                 </a>
+                @endif
             </div>
         </div>
+        @endif
     </div>
 
     <!-- Contact Form -->
@@ -243,9 +259,13 @@
 
 <!-- Map Section -->
 <section class="container py-10 lg:py-20">
-    <a href="#">
-        <img src="{{ asset('assets/images/map.png') }}" alt="map" class="w-full h-auto">
+    @if($contactSetting && $contactSetting->lat && $contactSetting->lng && $contactSetting->hasMedia('map_image'))
+    <a href="https://www.google.com/maps/search/?api=1&query={{ $contactSetting->lat }},{{ $contactSetting->lng }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ $contactSetting->getFirstMediaUrl('map_image') }}" alt="map" class="w-full h-auto">
     </a>
+    @else
+    <img src="{{ asset('assets/images/map.png') }}" alt="map" class="w-full h-auto">
+    @endif
 </section>
 @endsection
 

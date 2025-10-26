@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use App\Models\ContactUsSetting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
@@ -15,7 +16,9 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        return view('borna.contact-us');
+        $contactSetting = ContactUsSetting::query()->first();
+
+        return view('borna.contact-us', compact('contactSetting'));
     }
 
     /**

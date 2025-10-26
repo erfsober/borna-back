@@ -9,6 +9,7 @@ class Contact extends Model
     protected function casts(): array
     {
         return [
+            'checked' => 'boolean',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];
