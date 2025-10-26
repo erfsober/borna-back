@@ -100,6 +100,26 @@
               </a>
             </li>
 
+            <!-- About Us Settings -->
+            <li class="menu-item {{ request()->routeIs('admin.about-us-setting.*', 'admin.about-us-items.*') ? 'active open' : '' }}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                <div data-i18n="AboutUs">تنظیمات درباره ما</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.about-us-setting.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.about-us-setting.index') }}" class="menu-link">
+                    <div data-i18n="Settings">تنظیمات</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.about-us-items.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.about-us-items.index') }}" class="menu-link">
+                    <div data-i18n="Items">آیتم‌ها</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             @yield('menu-items')
           </ul>
         </aside>
