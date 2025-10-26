@@ -99,10 +99,10 @@
                             </a>
                         </div>
                     </div>
-                    <a href="#" class="text-secondary hover:text-primary transition-colors py-2">
+                    <a href="{{ route('bootcamp.index') }}" class="text-secondary hover:text-primary transition-colors py-2 {{ request()->routeIs('bootcamp.*') ? 'text-primary font-medium border-b-2 border-primary' : '' }}">
                         بوت کمپ
                     </a>
-                    <a href="#" class="text-secondary hover:text-primary transition-colors py-2">
+                    <a href="{{ route('about.index') }}" class="text-secondary hover:text-primary transition-colors py-2 {{ request()->routeIs('about.*') ? 'text-primary font-medium border-b-2 border-primary' : '' }}">
                         درباره ما
                     </a>
                     <a href="{{ route('contact.index') }}" class="text-secondary hover:text-primary transition-colors py-2 {{ request()->routeIs('contact.*') ? 'text-primary font-medium border-b-2 border-primary' : '' }}">
@@ -116,7 +116,7 @@
                         <span class="icon-login text-2xl hover:text-primary transition-colors"></span>
                     </a>
 
-                    <a href="#">
+                    <a href="{{ route('search.index') }}">
                         <span class="icon-search text-2xl hover:text-primary transition-colors"></span>
                     </a>
                     <button>
@@ -129,7 +129,7 @@
                     <a href="{{ auth()->check() ? route('auth.logout') : route('auth.login') }}" class="pt-1.5">
                         <span class="icon-login text-xl text-neutral-700"></span>
                     </a>
-                    <a href="#">
+                    <a href="{{ route('search.index') }}">
                         <img src="{{ asset('assets/images/mobile-search.svg') }}" alt="">
                     </a>
                     <button>
@@ -181,11 +181,11 @@
                     </div>
                 </div>
                 <div class="border my-2"></div>
-                <a href="#" class="block py-2 text-secondary hover:text-primary text-center">
+                <a href="{{ route('bootcamp.index') }}" class="block py-2 text-center {{ request()->routeIs('bootcamp.*') ? 'text-primary font-medium' : 'text-secondary hover:text-primary' }}">
                     بوت کمپ
                 </a>
                 <div class="border my-2"></div>
-                <a href="#" class="block py-2 text-secondary hover:text-primary text-center">
+                <a href="{{ route('about.index') }}" class="block py-2 text-center {{ request()->routeIs('about.*') ? 'text-primary font-medium' : 'text-secondary hover:text-primary' }}">
                     درباره ما
                 </a>
                 <div class="border my-2"></div>
@@ -268,7 +268,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="text-secondary text-sm hover:text-primary transition-colors">
+                            <a href="{{ route('about.index') }}" class="text-secondary text-sm hover:text-primary transition-colors">
                                 درباره‌ی ما
                             </a>
                         </li>

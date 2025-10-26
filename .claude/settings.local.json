@@ -38,7 +38,8 @@
       "Bash(robocopy:*)",
       "Bash(php artisan route:list:*)",
       "Bash(php artisan serve:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": [],
