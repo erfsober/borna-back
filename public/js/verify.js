@@ -50,17 +50,24 @@ document.getElementById("close-button").addEventListener("click", function () {
   // Initial check
   checkOtpFilled();
 
-  submitBtn.addEventListener("click", function (e) {
-    if (!submitBtn.disabled) {
+  // Collect OTP values before form submission
+  const verifyForm = document.getElementById("verify-form");
+  const otpValueInput = document.getElementById("otp-value");
+
+  if (verifyForm && otpValueInput) {
+    verifyForm.addEventListener("submit", function (e) {
+      // Collect all OTP digits into the hidden input
+      const otpValue = Array.from(otpInputs)
+        .map(input => input.value)
+        .join("");
+      otpValueInput.value = otpValue;
+
+      // Update button state
       submitBtn.disabled = true;
       submitBtn.textContent = "در حال ورود...";
       submitBtn.classList.add("opacity-70", "cursor-not-allowed");
-      // Simulate a short delay before redirect (optional, for UX)
-      setTimeout(function () {
-        window.location.href = "index.html";
-      }, 1000);
-    }
-  });
+    });
+  }
 })();
 
 // Timer and resend code logic

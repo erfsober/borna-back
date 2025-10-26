@@ -1,1 +1,2 @@
 1 - Login with google
+2 - Change OTP default 111111

@@ -1,11 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication Routes
 Route::prefix('auth')->name('auth.')->group(function () {
@@ -16,7 +15,7 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('resend-otp');
     Route::get('/google', [AuthController::class, 'redirectToGoogle'])->name('google');
     Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Placeholder for terms route

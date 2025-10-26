@@ -107,7 +107,7 @@ class AuthController extends Controller
             // Clear session
             session()->forget('auth_phone');
 
-            return redirect()->intended('/')
+            return redirect()->route('home')
                 ->with('success', 'با موفقیت وارد شدید');
         } catch (\Exception $e) {
             Log::error("Failed to authenticate user with phone {$phone}: ".$e->getMessage());
@@ -133,14 +133,9 @@ class AuthController extends Controller
             // Generate new OTP
             $otp = Otp::generate($phone);
 
-            // TODO: Send OTP via SMS service
-            // For development, log the OTP code
-            Log::info("Resent OTP code for {$phone}: {$otp->code}");
-
             return back()
                 ->with('success', 'کد تایید مجددا ارسال شد');
         } catch (\Exception $e) {
-            Log::error("Failed to resend OTP for {$phone}: ".$e->getMessage());
 
             return back()
                 ->with('error', 'خطا در ارسال مجدد کد تایید. لطفا دوباره تلاش کنید');

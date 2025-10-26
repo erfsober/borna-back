@@ -14,12 +14,6 @@
         </div>
     @endif
 
-    @if(session('error'))
-        <div class="p-4 bg-red-100 text-red-700 rounded-lg text-sm">
-            {{ session('error') }}
-        </div>
-    @endif
-
     <div class="flex flex-wrap items-center justify-between gap-2">
         <p class="text-[#3C3D45]">
             کد ارسال شده به
@@ -60,11 +54,13 @@
         <input type="hidden" name="otp" id="otp-value">
 
         <!-- OTP Error Message Container -->
-        <div id="otp-error" class="error-container text-xs -mt-4 mb-4">
-            @error('otp')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
-        </div>
+        @if(session('error'))
+            <div id="otp-error" class="error-container text-xs -mt-4 mb-4">
+                <div class="text-red-500 text-sm">
+                    {{ session('error') }}
+                </div>
+            </div>
+        @endif
 
         <!-- Timer & Resend -->
         <div class="flex items-center justify-start gap-1">
