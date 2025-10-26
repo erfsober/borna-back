@@ -143,6 +143,14 @@
               </ul>
             </li>
 
+            <!-- Blog Posts -->
+            <li class="menu-item {{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}">
+              <a href="{{ route('admin.blog-posts.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div data-i18n="BlogPosts">پست‌های بلاگ</div>
+              </a>
+            </li>
+
             @yield('menu-items')
           </ul>
         </aside>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutUsItemController;
 use App\Http\Controllers\Admin\AboutUsSettingController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactUsSettingController;
 use App\Http\Controllers\Admin\UserController;
@@ -42,4 +43,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/contacts', [ContactController::class, 'index'])->name('admin.contacts.index');
     Route::get('/contacts/{contact}', [ContactController::class, 'show'])->name('admin.contacts.show');
     Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name('admin.contacts.update');
+
+    // Blog Posts
+    Route::get('/blog-posts', [BlogPostController::class, 'index'])->name('admin.blog-posts.index');
+    Route::get('/blog-posts/create', [BlogPostController::class, 'create'])->name('admin.blog-posts.create');
+    Route::post('/blog-posts', [BlogPostController::class, 'store'])->name('admin.blog-posts.store');
+    Route::get('/blog-posts/{blogPost}/edit', [BlogPostController::class, 'edit'])->name('admin.blog-posts.edit');
+    Route::put('/blog-posts/{blogPost}', [BlogPostController::class, 'update'])->name('admin.blog-posts.update');
+    Route::delete('/blog-posts/{blogPost}', [BlogPostController::class, 'destroy'])->name('admin.blog-posts.destroy');
 });
