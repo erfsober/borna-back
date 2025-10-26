@@ -62,7 +62,7 @@
             <td>{{ $blogPost->writer_name }}</td>
             <td>{{ $blogPost->read_duration }} دقیقه</td>
             <td>
-              <span dir="ltr">{{ $blogPost->created_at }}</span>
+              <span dir="ltr">{{ $blogPost->jalali_created_at }}</span>
             </td>
             <td>
               <div class="dropdown">

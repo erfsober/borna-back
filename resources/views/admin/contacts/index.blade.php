@@ -111,7 +111,7 @@
               </form>
             </td>
             <td>
-              <span dir="ltr">{{ $contact->created_at }}</span>
+              <span dir="ltr">{{ $contact->jalali_created_at }}</span>
             </td>
             <td>
               <div class="dropdown">

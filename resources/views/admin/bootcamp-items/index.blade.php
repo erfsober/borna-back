@@ -54,7 +54,7 @@
               @endif
             </td>
             <td>
-              <span dir="ltr">{{ $item->created_at }}</span>
+              <span dir="ltr">{{ $item->jalali_created_at }}</span>
             </td>
             <td>
               <div class="dropdown">

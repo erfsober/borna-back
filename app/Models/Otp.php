@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 
-class Otp extends Model
+class Otp extends BaseModel
 {
     /**
      * Get the attributes that should be cast.

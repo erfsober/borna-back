@@ -44,7 +44,7 @@
             <td>{{ $category->title }}</td>
             <td><span class="badge bg-label-primary">{{ $category->blog_posts_count }} پست</span></td>
             <td>
-              <span dir="ltr">{{ $category->created_at }}</span>
+              <span dir="ltr">{{ $category->jalali_created_at }}</span>
             </td>
             <td>
               <div class="dropdown">

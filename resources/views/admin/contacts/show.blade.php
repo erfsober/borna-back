@@ -74,7 +74,7 @@
               <h6 class="mb-0">تاریخ ارسال:</h6>
             </div>
             <div class="col-sm-9" dir="ltr">
-              {{ $contact->created_at }}
+              {{ $contact->jalali_created_at }}
             </div>
           </div>
         </div>

@@ -54,7 +54,7 @@
               <span class="badge bg-label-primary">{{ $bootcamp->items_count }} آیتم</span>
             </td>
             <td>
-              <span dir="ltr">{{ $bootcamp->created_at }}</span>
+              <span dir="ltr">{{ $bootcamp->jalali_created_at }}</span>
             </td>
             <td>
               <div class="dropdown">

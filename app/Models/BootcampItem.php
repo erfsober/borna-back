@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class BootcampItem extends Model implements HasMedia
+class BootcampItem extends BaseModel implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\BootcampItemFactory> */
     use HasFactory, InteractsWithMedia;
