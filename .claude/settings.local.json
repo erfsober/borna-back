@@ -39,7 +39,8 @@
       "Bash(php artisan route:list:*)",
       "Bash(php artisan serve:*)",
       "Bash(dir:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Read(//c/Development/Frest_Package_v4.1.0.1/1. Theme/frest/html/vertical-menu-template/**)"
     ],
     "deny": [],
     "ask": [],
