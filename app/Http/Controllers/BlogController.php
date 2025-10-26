@@ -2,20 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\BlogPost;
 use Illuminate\View\View;
 
 class BlogController extends Controller
 {
     public function index(): View
     {
-        return view('borna.blog.index');
+        $blogPosts = BlogPost::query()
+            ->with('category')
+            ->orderByDesc('created_at')
+            ->paginate(12);
+
+        return view('borna.blog.index', compact('blogPosts'));
     }
 
     public function show(string $slug): View
     {
-        // In the future, you would fetch the blog post from the database using the slug
-        // For now, we'll just return the view
-        return view('borna.blog.show');
+        $blogPost = BlogPost::query()
+            ->with('category')
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        $relatedPosts = BlogPost::query()
+            ->with('category')
+            ->where('id', '!=', $blogPost->id)
+            ->when($blogPost->category_id, function ($query) use ($blogPost) {
+                $query->where('category_id', $blogPost->category_id);
+            })
+            ->orderByDesc('created_at')
+            ->limit(3)
+            ->get();
+
+        $featuredPosts = BlogPost::query()
+            ->with('category')
+            ->where('id', '!=', $blogPost->id)
+            ->orderByDesc('created_at')
+            ->limit(3)
+            ->get();
+
+        return view('borna.blog.show', compact('blogPost', 'relatedPosts', 'featuredPosts'));
     }
 }

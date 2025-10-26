@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBlogPostRequest;
 use App\Http\Requests\UpdateBlogPostRequest;
 use App\Models\BlogPost;
+use App\Models\BlogPostCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -14,6 +15,7 @@ class BlogPostController extends Controller
     public function index(): View
     {
         $blogPosts = BlogPost::query()
+            ->with('category')
             ->orderByDesc('id')
             ->paginate(15);
 
@@ -22,7 +24,9 @@ class BlogPostController extends Controller
 
     public function create(): View
     {
-        return view('admin.blog-posts.create');
+        $categories = BlogPostCategory::query()->orderBy('title')->get();
+
+        return view('admin.blog-posts.create', compact('categories'));
     }
 
     public function store(StoreBlogPostRequest $request): RedirectResponse
@@ -35,6 +39,7 @@ class BlogPostController extends Controller
             'description' => $validated['description'],
             'writer_name' => $validated['writer_name'],
             'read_duration' => $validated['read_duration'],
+            'category_id' => $validated['category_id'] ?? null,
         ]);
 
         if ($request->hasFile('image')) {
@@ -48,7 +53,9 @@ class BlogPostController extends Controller
 
     public function edit(BlogPost $blogPost): View
     {
-        return view('admin.blog-posts.edit', compact('blogPost'));
+        $categories = BlogPostCategory::query()->orderBy('title')->get();
+
+        return view('admin.blog-posts.edit', compact('blogPost', 'categories'));
     }
 
     public function update(UpdateBlogPostRequest $request, BlogPost $blogPost): RedirectResponse
@@ -61,6 +68,7 @@ class BlogPostController extends Controller
             'description' => $validated['description'],
             'writer_name' => $validated['writer_name'],
             'read_duration' => $validated['read_duration'],
+            'category_id' => $validated['category_id'] ?? null,
         ]);
 
         if ($request->hasFile('image')) {

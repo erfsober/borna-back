@@ -147,147 +147,46 @@
 
             <!-- Banner Articles Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-container">
-                <!-- Banner Article 1 -->
-                <a href="#"
-                    class="flex flex-col gap-2 rounded-2xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                    data-category="psychoanalysis family">
-                    <img src="{{ asset('assets/images/blog/article-1.png') }}" alt=""
-                        class="w-full h-[300px] object-cover rounded-t-2xl">
-                    <div class="flex flex-col gap-2 p-4">
-                        <h3 class="text-[#23242E] text-base md:text-lg font-medium">محدودیت‌های ظرفیت عشق ورزیدن</h3>
-                        <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                            از منظر روان‌کاوی، اگر بخواهیم در الگوهای ارتباطی که در اجتماع با افراد مختلف داریم، ریز
-                            بشویم،
-                            سایه فرد به خصوصی به چشم می‌‌آید که بسیار نقش ویژه‌ای در نوع نگاه ما به جهان هستی و
-                            هنجار‌های
-                            اجتماعی داشته است؛
-                        </p>
-                        <div class="flex items-center gap-2 mt-2">
-                            <span class="text-xs text-[#9D9EA2]">۱۴ شهریور</span>
-                            <span class="text-xs text-[#9D9EA2]">|</span>
-                            <span class="text-xs text-[#9D9EA2]">۱۰ دقیقه</span>
-                        </div>
-                        <div class="flex items-center gap-2 justify-end">
-                            <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">زوج درمانی</span>
-                            <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">روانکاوی</span>
-                        </div>
-                    </div>
-                </a>
-                <!-- Banner Article 2 -->
-                <a href="#"
-                    class="flex flex-col gap-2 rounded-2xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                    data-category="psychoanalysis family">
-                    <img src="{{ asset('assets/images/blog/article-2.png') }}" alt=""
-                        class="w-full h-[300px] object-cover rounded-t-2xl">
-                    <div class="flex flex-col gap-2 p-4">
-                        <h3 class="text-[#23242E] text-base md:text-lg font-medium">سلامت روان در مهاجرت</h3>
-                        <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                            از منظر روان‌کاوی، اگر بخواهیم در الگوهای ارتباطی که در اجتماع با افراد مختلف داریم، ریز
-                            بشویم،
-                            سایه فرد به خصوصی به چشم می‌‌آید که بسیار نقش ویژه‌ای در نوع نگاه ما به جهان هستی و
-                            هنجار‌های
-                            اجتماعی داشته است؛
-                        </p>
-                        <div class="flex items-center gap-2 mt-2">
-                            <span class="text-xs text-[#9D9EA2]">۱۴ شهریور</span>
-                            <span class="text-xs text-[#9D9EA2]">|</span>
-                            <span class="text-xs text-[#9D9EA2]">۱۰ دقیقه</span>
-                        </div>
-                        <div class="flex items-center gap-2 justify-end">
-                            <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">زوج درمانی</span>
-                            <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">روانکاوی</span>
-                        </div>
-                    </div>
-                </a>
-                <!-- Banner Article 3 -->
-                <a href="#"
-                    class="flex flex-col gap-2 rounded-2xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                    data-category="psychoanalysis family">
-                    <img src="{{ asset('assets/images/blog/article-3.png') }}" alt=""
-                        class="w-full h-[300px] object-cover rounded-t-2xl">
-                    <div class="flex flex-col gap-2 p-4">
-                        <h3 class="text-[#23242E] text-base md:text-lg font-medium">کاربرد یوگا در زندگی امروزی</h3>
-                        <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                            از منظر روان‌کاوی، اگر بخواهیم در الگوهای ارتباطی که در اجتماع با افراد مختلف داریم، ریز
-                            بشویم،
-                            سایه فرد به خصوصی به چشم می‌‌آید که بسیار نقش ویژه‌ای در نوع نگاه ما به جهان هستی و
-                            هنجار‌های
-                            اجتماعی داشته است؛
-                        </p>
-                        <div class="flex items-center gap-2 mt-2">
-                            <span class="text-xs text-[#9D9EA2]">۱۴ شهریور</span>
-                            <span class="text-xs text-[#9D9EA2]">|</span>
-                            <span class="text-xs text-[#9D9EA2]">۱۰ دقیقه</span>
-                        </div>
-                        <div class="flex items-center gap-2 justify-end">
-                            <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">زوج درمانی</span>
-                            <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">روانکاوی</span>
-                        </div>
-                    </div>
-                </a>
-                <!-- Repeat for more articles... -->
-                @for ($i = 0; $i < 9; $i++)
-                    <a href="#"
+                @forelse($blogPosts as $post)
+                    <a href="{{ route('blog.show', $post->slug) }}"
                         class="flex flex-col gap-2 rounded-2xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                        data-category="psychoanalysis family">
-                        <img src="{{ asset('assets/images/blog/article-' . (($i % 3) + 1) . '.png') }}" alt=""
-                            class="w-full h-[300px] object-cover rounded-t-2xl">
+                        data-category="all">
+                        @if($post->getFirstMediaUrl('image'))
+                            <img src="{{ $post->getFirstMediaUrl('image') }}" alt="{{ $post->title }}"
+                                class="w-full h-[300px] object-cover rounded-t-2xl">
+                        @else
+                            <div class="w-full h-[300px] bg-gray-200 rounded-t-2xl flex items-center justify-center">
+                                <i class="bx bx-image text-gray-400 text-5xl"></i>
+                            </div>
+                        @endif
                         <div class="flex flex-col gap-2 p-4">
-                            <h3 class="text-[#23242E] text-base md:text-lg font-medium">
-                                {{ $i % 3 === 0 ? 'محدودیت‌های ظرفیت عشق ورزیدن' : ($i % 3 === 1 ? 'سلامت روان در مهاجرت' : 'کاربرد یوگا در زندگی امروزی') }}
-                            </h3>
+                            <h3 class="text-[#23242E] text-base md:text-lg font-medium">{{ $post->title }}</h3>
                             <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                                از منظر روان‌کاوی، اگر بخواهیم در الگوهای ارتباطی که در اجتماع با افراد مختلف داریم، ریز
-                                بشویم،
-                                سایه فرد به خصوصی به چشم می‌‌آید که بسیار نقش ویژه‌ای در نوع نگاه ما به جهان هستی و
-                                هنجار‌های
-                                اجتماعی داشته است؛
+                                {{ \Illuminate\Support\Str::limit(strip_tags($post->description), 150) }}
                             </p>
                             <div class="flex items-center gap-2 mt-2">
-                                <span class="text-xs text-[#9D9EA2]">۱۴ شهریور</span>
+                                <span class="text-xs text-[#9D9EA2]">{{ $post->created_at }}</span>
                                 <span class="text-xs text-[#9D9EA2]">|</span>
-                                <span class="text-xs text-[#9D9EA2]">۱۰ دقیقه</span>
+                                <span class="text-xs text-[#9D9EA2]">{{ $post->read_duration }} دقیقه</span>
                             </div>
                             <div class="flex items-center gap-2 justify-end">
-                                <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">زوج درمانی</span>
-                                <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">روانکاوی</span>
+                                <span class="text-xs text-primary bg-[#EDFFF2] rounded-full py-2 px-4">{{ $post->writer_name }}</span>
                             </div>
                         </div>
                     </a>
-                @endfor
+                @empty
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-[#54555D] text-lg">هیچ پستی یافت نشد</p>
+                    </div>
+                @endforelse
             </div>
 
             <!-- Pagination Section -->
-            <div class="flex justify-center items-center gap-3 mt-10 mb-6" id="pagination-container">
-                <a href="#" data-page="prev"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-[#F7F7F8] text-[#6D6D74] hover:opacity-80 opacity-60 pagination-btn">
-                    <img src="{{ asset('assets/images/blog/pagination-arrow-right.svg') }}" alt="" class="w-4 h-4">
-                </a>
-                <a href="#" data-page="1"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-[#3C3D45] hover:opacity-80 text-white font-medium pagination-btn active">
-                    ۱
-                </a>
-                <a href="#" data-page="2"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-[#F7F7F8] text-[#6D6D74] hover:opacity-80 pagination-btn">
-                    ۲
-                </a>
-                <a href="#" data-page="3"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-[#F7F7F8] text-[#6D6D74] hover:opacity-80 pagination-btn">
-                    ۳
-                </a>
-                <a href="#"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-white text-[#6D6D74] hover:opacity-80">
-                    ...
-                </a>
-                <a href="#" data-page="9"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-[#F7F7F8] text-[#6D6D74] hover:opacity-80 pagination-btn">
-                    ۹
-                </a>
-                <a href="#" data-page="next"
-                    class="w-10 h-10 flex items-center justify-center rounded bg-[#F7F7F8] text-[#6D6D74] hover:opacity-80 pagination-btn">
-                    <img src="{{ asset('assets/images/blog/pagination-arrow-left.svg') }}" alt="" class="w-4 h-4">
-                </a>
+            @if($blogPosts->hasPages())
+            <div class="flex justify-center items-center gap-3 mt-10 mb-6">
+                {{ $blogPosts->links() }}
             </div>
+            @endif
         </section>
     </div>
 @endsection

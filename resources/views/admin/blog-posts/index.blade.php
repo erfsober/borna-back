@@ -33,6 +33,7 @@
             <th>شناسه</th>
             <th>تصویر</th>
             <th>عنوان</th>
+            <th>دسته‌بندی</th>
             <th>اسلاگ</th>
             <th>نویسنده</th>
             <th>مدت مطالعه</th>
@@ -52,6 +53,13 @@
               @endif
             </td>
             <td>{{ \Illuminate\Support\Str::limit($blogPost->title, 40) }}</td>
+            <td>
+              @if($blogPost->category)
+                <span class="badge bg-label-info">{{ $blogPost->category->title }}</span>
+              @else
+                <span class="badge bg-label-secondary">بدون دسته‌بندی</span>
+              @endif
+            </td>
             <td><code>{{ $blogPost->slug }}</code></td>
             <td>{{ $blogPost->writer_name }}</td>
             <td>{{ $blogPost->read_duration }} دقیقه</td>
@@ -80,7 +88,7 @@
           </tr>
           @empty
           <tr>
-            <td colspan="8" class="text-center py-4">
+            <td colspan="9" class="text-center py-4">
               <i class="bx bx-info-circle bx-md text-muted mb-2"></i>
               <p class="text-muted mb-0">هیچ پستی یافت نشد</p>
             </td>

@@ -143,12 +143,24 @@
               </ul>
             </li>
 
-            <!-- Blog Posts -->
-            <li class="menu-item {{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}">
-              <a href="{{ route('admin.blog-posts.index') }}" class="menu-link">
+            <!-- Blog -->
+            <li class="menu-item {{ request()->routeIs('admin.blog-post-categories.*', 'admin.blog-posts.*') ? 'active open' : '' }}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-news"></i>
-                <div data-i18n="BlogPosts">پست‌های بلاگ</div>
+                <div data-i18n="Blog">بلاگ</div>
               </a>
+              <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.blog-post-categories.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.blog-post-categories.index') }}" class="menu-link">
+                    <div data-i18n="Categories">دسته‌بندی‌ها</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.blog-posts.index') }}" class="menu-link">
+                    <div data-i18n="Posts">پست‌ها</div>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             @yield('menu-items')

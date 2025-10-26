@@ -51,6 +51,21 @@
         </div>
 
         <div class="mb-3">
+          <label for="category_id" class="form-label">دسته‌بندی</label>
+          <select class="form-select @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+            <option value="">بدون دسته‌بندی</option>
+            @foreach($categories as $category)
+              <option value="{{ $category->id }}" {{ old('category_id', $blogPost->category_id) == $category->id ? 'selected' : '' }}>
+                {{ $category->title }}
+              </option>
+            @endforeach
+          </select>
+          @error('category_id')
+          <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+        </div>
+
+        <div class="mb-3">
           <label for="image" class="form-label">تصویر</label>
           <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
           @error('image')

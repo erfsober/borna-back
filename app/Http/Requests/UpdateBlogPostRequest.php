@@ -21,7 +21,7 @@ class UpdateBlogPostRequest extends FormRequest
      */
     public function rules(): array
     {
-        $blogPostId = $this->route('blog_post');
+        $blogPostId = $this->route('blogPost')->id;
 
         return [
             'title' => ['required', 'string', 'max:255'],
@@ -29,6 +29,7 @@ class UpdateBlogPostRequest extends FormRequest
             'description' => ['required', 'string'],
             'writer_name' => ['required', 'string', 'max:255'],
             'read_duration' => ['required', 'integer', 'min:1'],
+            'category_id' => ['nullable', 'exists:blog_post_categories,id'],
             'image' => ['nullable', 'image', 'max:2048'],
         ];
     }
@@ -56,6 +57,7 @@ class UpdateBlogPostRequest extends FormRequest
             'read_duration.required' => 'مدت زمان مطالعه الزامی است',
             'read_duration.integer' => 'مدت زمان مطالعه باید عدد صحیح باشد',
             'read_duration.min' => 'مدت زمان مطالعه باید حداقل 1 دقیقه باشد',
+            'category_id.exists' => 'دسته‌بندی انتخاب شده معتبر نیست',
             'image.image' => 'فایل باید یک تصویر باشد',
             'image.max' => 'حجم تصویر نباید بیشتر از 2 مگابایت باشد',
         ];

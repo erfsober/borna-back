@@ -1,59 +1,57 @@
-// Copy Link Button Logic
-const copyLinkButtons = document.querySelectorAll("button");
-let copyLinkButton = null;
-copyLinkButtons.forEach((btn) => {
-  if (btn.textContent && btn.textContent.trim().includes("کپی لینک پست")) {
-    copyLinkButton = btn;
-  }
-});
-if (copyLinkButton) {
-  copyLinkButton.addEventListener("click", function () {
-    // Copy current page URL
-    navigator.clipboard.writeText(window.location.href).then(
-      function () {
-        showCopyNotification("لینک پست کپی شد!");
-      },
-      function () {
-        showCopyNotification("خطا در کپی لینک!");
-      }
-    );
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const copyLinkButton = document.getElementById("copy-link-btn");
+  const shareButton = document.getElementById("share-btn");
 
-// Share Button Logic
-const shareButtons = document.querySelectorAll("button");
-let shareButton = null;
-shareButtons.forEach((btn) => {
-  if (btn.textContent && btn.textContent.trim().includes("اشتراک گذاری")) {
-    shareButton = btn;
+  const copyToClipboard = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (_) {
+      // fall through to legacy copy
+    }
+    // Legacy fallback
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.top = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return ok;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  if (copyLinkButton) {
+    copyLinkButton.addEventListener("click", async () => {
+      const ok = await copyToClipboard(window.location.href);
+      showCopyNotification(ok ? "لینک پست کپی شد!" : "خطا در کپی لینک!");
+    });
+  }
+
+  if (shareButton) {
+    shareButton.addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: document.title, url: window.location.href });
+        } catch (_) {
+          showCopyNotification("اشتراک‌گذاری لغو شد.");
+        }
+      } else {
+        const ok = await copyToClipboard(window.location.href);
+        showCopyNotification(ok ? "لینک برای اشتراک‌گذاری کپی شد!" : "خطا در کپی لینک!");
+      }
+    });
   }
 });
-if (shareButton) {
-  shareButton.addEventListener("click", function () {
-    if (navigator.share) {
-      navigator
-        .share({
-          title: document.title,
-          url: window.location.href,
-        })
-        .catch(() => {
-          showCopyNotification("اشتراک‌گذاری لغو شد.");
-        });
-    } else {
-      navigator.clipboard.writeText(window.location.href).then(
-        function () {
-          showCopyNotification("لینک برای اشتراک‌گذاری کپی شد!");
-        },
-        function () {
-          showCopyNotification("خطا در کپی لینک!");
-        }
-      );
-    }
-  });
-}
 
 function showCopyNotification(message) {
-  // Remove existing notification if present
   const existing = document.getElementById("copy-link-notification");
   if (existing) existing.remove();
 
