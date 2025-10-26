@@ -15,6 +15,9 @@ class Bootcamp extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
+        $this->addMediaCollection('icon_image')
+            ->singleFile();
+
         $this->addMediaCollection('top_image')
             ->singleFile();
 

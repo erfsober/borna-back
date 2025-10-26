@@ -24,6 +24,7 @@ class StoreBootcampRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
+            'icon_image' => ['nullable', 'image', 'max:2048'],
             'top_image' => ['nullable', 'image', 'max:2048'],
             'gallery_images.*' => ['nullable', 'image', 'max:2048'],
             'video' => ['nullable', 'mimes:mp4,mov,avi,wmv', 'max:51200'],
@@ -44,6 +45,8 @@ class StoreBootcampRequest extends FormRequest
             'title.max' => 'عنوان نباید بیشتر از 255 کاراکتر باشد',
             'description.required' => 'توضیحات الزامی است',
             'description.string' => 'توضیحات باید متن باشد',
+            'icon_image.image' => 'آیکون باید یک تصویر باشد',
+            'icon_image.max' => 'حجم آیکون نباید بیشتر از 2 مگابایت باشد',
             'top_image.image' => 'فایل باید یک تصویر باشد',
             'top_image.max' => 'حجم تصویر نباید بیشتر از 2 مگابایت باشد',
             'gallery_images.*.image' => 'تمام فایل‌های گالری باید تصویر باشند',

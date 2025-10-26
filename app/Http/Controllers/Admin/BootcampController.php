@@ -35,6 +35,11 @@ class BootcampController extends Controller
             'description' => $validated['description'],
         ]);
 
+        if ($request->hasFile('icon_image')) {
+            $bootcamp->addMediaFromRequest('icon_image')
+                ->toMediaCollection('icon_image');
+        }
+
         if ($request->hasFile('top_image')) {
             $bootcamp->addMediaFromRequest('top_image')
                 ->toMediaCollection('top_image');
@@ -74,6 +79,12 @@ class BootcampController extends Controller
             'title' => $validated['title'],
             'description' => $validated['description'],
         ]);
+
+        if ($request->hasFile('icon_image')) {
+            $bootcamp->clearMediaCollection('icon_image');
+            $bootcamp->addMediaFromRequest('icon_image')
+                ->toMediaCollection('icon_image');
+        }
 
         if ($request->hasFile('top_image')) {
             $bootcamp->clearMediaCollection('top_image');

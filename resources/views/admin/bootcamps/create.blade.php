@@ -33,6 +33,19 @@
         </div>
 
         <div class="mb-3">
+          <label for="icon_image" class="form-label">آیکون</label>
+          <input type="file" class="form-control @error('icon_image') is-invalid @enderror" id="icon_image" name="icon_image" accept="image/*">
+          @error('icon_image')
+          <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+          <div class="form-text">حداکثر حجم فایل: 2 مگابایت</div>
+
+          <div id="icon-image-preview-container" class="mt-3">
+            <img id="icon-image-preview" src="#" alt="Icon Preview" class="img-thumbnail" style="max-width: 300px; display: none;">
+          </div>
+        </div>
+
+        <div class="mb-3">
           <label for="top_image" class="form-label">تصویر اصلی</label>
           <input type="file" class="form-control @error('top_image') is-invalid @enderror" id="top_image" name="top_image" accept="image/*">
           @error('top_image')
@@ -97,6 +110,28 @@
 @push('scripts')
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Icon image preview
+    const iconImageInput = document.getElementById('icon_image');
+    const iconImagePreview = document.getElementById('icon-image-preview');
+
+    iconImageInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          iconImagePreview.src = e.target.result;
+          iconImagePreview.style.display = 'block';
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        iconImagePreview.style.display = 'none';
+        iconImagePreview.src = '#';
+      }
+    });
+
     // Top image preview
     const topImageInput = document.getElementById('top_image');
     const topImagePreview = document.getElementById('top-image-preview');

@@ -37,7 +37,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="container flex flex-col items-center justify-center relative">
-        <img src="{{ asset('assets/images/bootcamp/photoroom.png') }}" alt="" class="h-auto">
+        <img src="{{ $bootcamp->getFirstMediaUrl('top_image') }}" alt="" class="h-auto">
     </section>
 
     <!-- Gallery Section -->
@@ -57,30 +57,14 @@
                 <div class="swiper gallerySwiper">
                     <!-- Swiper Wrapper -->
                     <div class="swiper-wrapper">
-                        <!-- Slide 1 -->
-                        <div class="swiper-slide">
-                            <img src="{{ asset('assets/images/blog/article-1.png') }}"
-                                class="h-auto w-full max-w-[430px] rounded-2xl border-r-4 border-b-4 border-primary-light"
-                                alt="Gallery image 1">
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide">
-                            <img src="{{ asset('assets/images/blog/article-2.png') }}"
-                                class="h-auto w-full max-w-[430px] rounded-2xl border-r-4 border-b-4 border-primary-light"
-                                alt="Gallery image 2">
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide">
-                            <img src="{{ asset('assets/images/blog/article-3.png') }}"
-                                class="h-auto w-full max-w-[430px] rounded-2xl border-r-4 border-b-4 border-primary-light"
-                                alt="Gallery image 3">
-                        </div>
-                        <!-- Slide 4 -->
-                        <div class="swiper-slide">
-                            <img src="{{ asset('assets/images/blog/article-2.png') }}"
-                                class="h-auto w-full max-w-[430px] rounded-2xl border-r-4 border-b-4 border-primary-light"
-                                alt="Gallery image 4">
-                        </div>
+                        @foreach($bootcamp->getMedia('gallery_images') as $image)
+                            <div class="swiper-slide">
+                                <img src="{{ $image->getUrl() }}"
+                                     class="h-auto w-full max-w-[430px] rounded-2xl border-r-4 border-b-4 border-primary-light"
+                                     alt="Gallery image 1">
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
 
@@ -130,8 +114,8 @@
 
             <!-- Video File -->
             <div>
-                <video class="w-full md:w-10/12 mx-auto h-auto rounded-2xl cursor-pointer" controls>
-                    <source src="{{ asset('assets/videos/video.mp4') }}" type="video/mp4">
+                <video style="width: 300px" class="w-full md:w-10/12 mx-auto h-auto rounded-2xl cursor-pointer" controls>
+                    <source src="{{ $bootcamp->getFirstMediaUrl('video') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -139,104 +123,34 @@
             <!-- Video Description -->
             <div class="flex flex-col gap-4 mt-6 md:mt-8">
                 <!-- Description Heading -->
-                <h2 class="text-xl md:text-2xl font-medium text-black">کنترل احساسات</h2>
+                <h2 class="text-xl md:text-2xl font-medium text-black">{{ $bootcamp->title }}</h2>
                 <!-- Description Content -->
-                <div class="flex flex-col gap-2 md:gap-4">
-                    <p
-                        class="text-text-dark text-opacity-90 text-sm sm:text-base md:text-lg leading-10 text-justify">
-                        روان­شناسی صنعتی و سازمانی به طور رسمی از حدود اواخر قرن ۱۹ و اوایل قرن ۲۰ شروع شد. نقطه
-                        آغاز
-                        فعالیت اولیه گروهی از روان­شناسان تجربی که به دنبال کاربرد اصول روان­‌شناسی بودند.
-                        اصطلاحاً به
-                        آن­ها روان‌­شناسان کاربردی گفته می­‌شد. رویدادهای گوناگونی در طول این دوره مشخص در حوزه
-                        روانشناسی صنعتی و سازمانی رخ داد. چون هر کدام از آن‌ها بر شکل‌گیری این رشته اثرگذار بوده
-                        اند،
-                        نمی­ توان سال مشخصی را به‌عنوان زمان شروع روان­شناسی صنعتی و سازمانی در نظر گرفت.
-                    </p>
-                    <p
-                        class="text-text-dark text-opacity-90 text-sm sm:text-base md:text-lg leading-10 text-justify">
-                        خواستگاه این شاخه از روان­شناسی را می­ توان کشور آمریکا دانست. اولین انجمن علمی
-                        روان­شناسی صنعتی
-                        و سازمانی (SIOP) در سال ۱۹۴۴ شروع به فعالیت نمود. این انجمن به‌عنوان زیرمجموعه‌ای
-                        از انجمن
-                        روان‌شناسی آمریکا (APA) فعالیت می‌کرد. همین‌طور اولین کتاب مرجع و اولین درجه دکتری این
-                        رشته نیز
-                        در آمریکا منتشر و اعطا شده است.
-                    </p>
-                </div>
+                <div class="flex flex-col gap-2 md:gap-4">{{ $bootcamp->description }}</div>
             </div>
 
             <!-- Video Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-5 md:mt-10">
                 <!-- Card 1 -->
-                <a href="#"
-                    class="flex flex-col gap-2 rounded-xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                    data-category="psychoanalysis family">
-                    <div class="relative">
-                        <img src="{{ asset('assets/images/bootcamp/video-card.png') }}" alt=""
-                            class="w-full h-[300px] object-cover rounded-t-xl">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <img src="{{ asset('assets/images/bootcamp/play-circle.svg') }}" alt=""
-                                class="w-8 h-8 md:w-10 md:h-10">
+                @foreach($bootcamp->items as $item)
+                    <a href="{{ $item->getFirstMediaUrl('video') }}"
+                       class="flex flex-col gap-2 rounded-xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
+                       data-category="psychoanalysis family">
+                        <div class="relative">
+                            <img src="{{ $item->getFirstMediaUrl('video_thumbnail') }}" alt=""
+                                 class="w-full h-[300px] object-cover rounded-t-xl">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <img src="{{ asset('assets/images/bootcamp/play-circle.svg') }}" alt=""
+                                     class="w-8 h-8 md:w-10 md:h-10">
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col gap-2 p-4">
-                        <h3 class="text-[#23242E] text-base md:text-lg font-medium text-center">
-                            خودشناسی
-                        </h3>
-                        <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                            خانواده اولین و در عین حال مهم‌ ترین نهاد اجتماعی است که فرد در آن متولد می‌ شود. اهمیت
-                            نقش خانواده در شکل‌ گیری شخصیت غیر قابل انکار است. خانواده کانون اصلی رشد و تعالی افراد
-                            محسوب می‌ شود و...
-                        </p>
-                    </div>
-                </a>
-                <!-- Card 2 -->
-                <a href="#"
-                    class="flex flex-col gap-2 rounded-xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                    data-category="psychoanalysis family">
-                    <div class="relative">
-                        <img src="{{ asset('assets/images/bootcamp/video-card.png') }}" alt=""
-                            class="w-full h-[300px] object-cover rounded-t-xl">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <img src="{{ asset('assets/images/bootcamp/play-circle.svg') }}" alt=""
-                                class="w-8 h-8 md:w-10 md:h-10">
+                        <div class="flex flex-col gap-2 p-4">
+                            <h3 class="text-[#23242E] text-base md:text-lg font-medium text-center">
+                                {{ $item->title }}
+                            </h3>
+                            <p class="text-[#54555D] text-sm leading-7 line-clamp-3">{{ $item->description }}</p>
                         </div>
-                    </div>
-                    <div class="flex flex-col gap-2 p-4">
-                        <h3 class="text-[#23242E] text-base md:text-lg font-medium text-center">
-                            خودشناسی
-                        </h3>
-                        <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                            خانواده اولین و در عین حال مهم‌ ترین نهاد اجتماعی است که فرد در آن متولد می‌ شود. اهمیت
-                            نقش خانواده در شکل‌ گیری شخصیت غیر قابل انکار است. خانواده کانون اصلی رشد و تعالی افراد
-                            محسوب می‌ شود و...
-                        </p>
-                    </div>
-                </a>
-                <!-- Card 3 -->
-                <a href="#"
-                    class="flex flex-col gap-2 rounded-xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                    data-category="psychoanalysis family">
-                    <div class="relative">
-                        <img src="{{ asset('assets/images/bootcamp/video-card.png') }}" alt=""
-                            class="w-full h-[300px] object-cover rounded-t-xl">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <img src="{{ asset('assets/images/bootcamp/play-circle.svg') }}" alt=""
-                                class="w-8 h-8 md:w-10 md:h-10">
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 p-4">
-                        <h3 class="text-[#23242E] text-base md:text-lg font-medium text-center">
-                            خودشناسی
-                        </h3>
-                        <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                            خانواده اولین و در عین حال مهم‌ ترین نهاد اجتماعی است که فرد در آن متولد می‌ شود. اهمیت
-                            نقش خانواده در شکل‌ گیری شخصیت غیر قابل انکار است. خانواده کانون اصلی رشد و تعالی افراد
-                            محسوب می‌ شود و...
-                        </p>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
