@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "C:\\Users\\behna\\.config\\herd\\bin\\php84\\php.exe",
+            "args": [
+                "C:\\Development\\fanora\\borna\\borna-back\\artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

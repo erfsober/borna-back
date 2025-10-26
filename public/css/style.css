@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("../assets/icons/icomoon.eot?1ua5cw");
+  src: url("../assets/icons/icomoon.eot?1ua5cw#iefix")
+      format("embedded-opentype"),
+    url("../assets/icons/icomoon.ttf?1ua5cw") format("truetype"),
+    url("../assets/icons/icomoon.woff?1ua5cw") format("woff"),
+    url("../assets/icons/icomoon.svg?1ua5cw#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-login:before {
+  content: "\e900";
+}
+.icon-search:before {
+  content: "\e901";
+}
+.icon-profile:before {
+  content: "\e902";
+}
+
+/* Add styles for mobile dropdown */
+.mobile-dropdown-button svg {
+  transition: transform 0.2s ease;
+}
+.mobile-dropdown-button svg.rotate-180 {
+  transform: rotate(180deg);
+}
+.mobile-dropdown-content {
+  transition: all 0.3s ease;
+}
+
+/* Dropdown animations */
+.group:hover .group-hover\:block {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Swiper pagination customization */
+.swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  opacity: 1;
+}
+.swiper .swiper-pagination-bullet-active {
+  background-color: #2aff00; /* Primary color */
+}
+
+/* Search page gradients */
+.category-card-pink {
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 175, 238, 0.4));
+}
+.category-card-blue {
+  background: linear-gradient(to bottom, #ffffff, #bef8ff);
+}
+.category-card-beige {
+  background: linear-gradient(to bottom, #ffffff, #f6e2c8);
+}
+.category-card-yellow {
+  background: linear-gradient(to bottom, #ffffff, #f6ffa3);
+}
+
+/* Search sidebar gradient */
+.search-sidebar-gradient {
+  background: linear-gradient(to bottom, #e6ffde, #ffffff);
+}
+
+/* Search category button active state */
+.category-button {
+  transition: all 0.3s ease;
+}
+.category-button:hover h3 {
+  color: #4caf50;
+}
+.active-category h3 {
+  color: #4caf50;
+  font-weight: 500;
+}
+.active-category::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #4caf50;
+  border-radius: 4px;
+}
