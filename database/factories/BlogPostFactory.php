@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\BlogPostCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,6 +24,7 @@ class BlogPostFactory extends Factory
             'slug' => fake()->unique()->slug(),
             'description' => fake()->paragraphs(3, true),
             'writer_name' => fake()->name(),
+            'category_id' => BlogPostCategory::inRandomOrder()->first() ?? BlogPostCategory::factory()->create(),
             'read_duration' => fake()->numberBetween(1, 15),
         ];
     }

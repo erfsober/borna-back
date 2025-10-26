@@ -108,40 +108,25 @@
         </section>
 
         <!-- Blog Categories Section -->
-        <section class="container flex flex-col gap-8 md:gap-10">
+        <section class="container flex flex-col gap-8 md:gap-10" id="categories">
             <!-- Blog Categories -->
             <div class="flex flex-col gap-4 md:gap-8">
                 <h2 class="text-xl md:text-2xl font-semibold">دسته‌بندی مطالب بلاگ</h2>
                 <div class="bg-[#FAFAFA] rounded-lg flex justify-start items-center gap-4 px-4 overflow-auto"
                     id="category-tabs" style="scrollbar-width: none;">
-                    <a href="#" data-category="all"
-                        class="min-w-fit px-4 py-4 text-primary border-b border-primary text-sm md:text-base font-medium hover:text-primary category-tab active">
+                    <a href="{{ route('blog.index') }}#categories"
+                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab {{ !request('category') ? 'text-primary border-b border-primary font-medium' : '' }}">
                         همه
                     </a>
-                    <a href="#" data-category="psychology"
-                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab">
-                        روانشناسی
-                    </a>
-                    <a href="#" data-category="family"
-                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab">
-                        خانواده
-                    </a>
-                    <a href="#" data-category="success"
-                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab">
-                        موفقیت
-                    </a>
-                    <a href="#" data-category="children"
-                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab">
-                        کودک و نوجوان
-                    </a>
-                    <a href="#" data-category="individual"
-                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab">
-                        روانشناسی فردی
-                    </a>
-                    <a href="#" data-category="couples"
-                        class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab">
-                        زوج درمانی
-                    </a>
+                    @foreach($categories as $category)
+                        <a href="{{ route('blog.index', ['category' => $category->id]) }}#categories"
+                            class="min-w-fit px-4 py-4 text-sm md:text-base hover:text-primary category-tab {{ request('category') == $category->id ? 'text-primary border-b border-primary font-medium' : '' }}">
+                            {{ $category->title }}
+                            @if($category->blog_posts_count > 0)
+                                <span class="text-xs text-gray-400">({{ $category->blog_posts_count }})</span>
+                            @endif
+                        </a>
+                    @endforeach
                 </div>
             </div>
 
@@ -149,8 +134,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-container">
                 @forelse($blogPosts as $post)
                     <a href="{{ route('blog.show', $post->slug) }}"
-                        class="flex flex-col gap-2 rounded-2xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item"
-                        data-category="all">
+                        class="flex flex-col gap-2 rounded-2xl border-b-2 border-r-2 border-primary-light hover:border-primary-dark transition-colors blog-item">
                         @if($post->getFirstMediaUrl('image'))
                             <img src="{{ $post->getFirstMediaUrl('image') }}" alt="{{ $post->title }}"
                                 class="w-full h-[300px] object-cover rounded-t-2xl">
@@ -160,6 +144,12 @@
                             </div>
                         @endif
                         <div class="flex flex-col gap-2 p-4">
+                            @if($post->category)
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('assets/images/blog/folder-icon.svg') }}" alt="" class="w-3 h-3">
+                                    <span class="text-xs text-[#54555D]">{{ $post->category->title }}</span>
+                                </div>
+                            @endif
                             <h3 class="text-[#23242E] text-base md:text-lg font-medium">{{ $post->title }}</h3>
                             <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
                                 {{ \Illuminate\Support\Str::limit(strip_tags($post->description), 150) }}
@@ -206,6 +196,21 @@
                 el: '.swiper-pagination',
                 clickable: true,
             },
+        });
+
+        // Smooth scroll to categories section on page load if hash exists
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hash === '#categories') {
+                setTimeout(function() {
+                    const categoriesSection = document.getElementById('categories');
+                    if (categoriesSection) {
+                        categoriesSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+            }
         });
     </script>
 @endpush

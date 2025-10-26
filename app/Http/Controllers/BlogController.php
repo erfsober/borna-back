@@ -11,10 +11,20 @@ class BlogController extends Controller
     {
         $blogPosts = BlogPost::query()
             ->with('category')
+            ->when(request('category'), function ($query) {
+                $query->whereHas('category', function ($q) {
+                    $q->where('id', request('category'));
+                });
+            })
             ->orderByDesc('created_at')
             ->paginate(12);
 
-        return view('borna.blog.index', compact('blogPosts'));
+        $categories = \App\Models\BlogPostCategory::query()
+            ->withCount('blogPosts')
+            ->orderBy('title')
+            ->get();
+
+        return view('borna.blog.index', compact('blogPosts', 'categories'));
     }
 
     public function show(string $slug): View
