@@ -376,7 +376,7 @@
                 <img src="{{ asset('assets/images/home/copy-icon.svg') }}" alt="" class="w-6 h-6 md:w-8 md:h-8">
                 <h2 class="text-xl md:text-3xl font-medium text-black">مقالات</h2>
             </div>
-            <a href="#" class="flex items-center gap-2 text-[#3C3D45] group">
+            <a href="{{ route('blog.index') }}" class="flex items-center gap-2 text-[#3C3D45] group">
                 <span class="text-base md:text-lg group-hover:text-primary transition">مشاهده همه</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="hidden md:block">
@@ -392,44 +392,29 @@
 
         <!-- Desktop Articles Grid -->
         <div class="hidden md:grid grid-cols-3 gap-8">
-            @php
-                $articles = [
-                    ['image' => 'article-1.png', 'title' => 'کنترل احساسات'],
-                    ['image' => 'article-2.png', 'title' => 'حل اختلافات خانوادگی'],
-                    ['image' => 'article-3.png', 'title' => 'خودشناسی'],
-                ];
-            @endphp
-
-            @foreach ($articles as $article)
-            <!-- Article -->
-            <a href="#"
-                class="flex flex-col bg-white rounded-xl border-r-2 border-b-2 border-primary-light hover:border-primary-dark transition-colors">
-                <div class="relative">
-                    <img src="{{ asset('assets/images/home/' . $article['image']) }}" alt="{{ $article['title'] }}"
-                        class="w-full h-auto rounded-t-xl">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-medium mb-3">{{ $article['title'] }}</h3>
-                    <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">
-                        خانواده اولین و در عین حال مهم‌ ترین نهاد اجتماعی است که فرد در آن متولد می‌ شود.
-                        اهمیت نقش خانواده در شکل‌ گیری شخصیت غیر قابل انکار است. خانواده کانون اصلی رشد و
-                        تعالی افراد محسوب می‌ شود و...
-                    </p>
-                    <div class="flex flex-col gap-4">
-                        <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
-                            <span>۱۴ شهریور</span>
-                            <div class="w-px h-4 bg-[#9D9EA2]"></div>
-                            <span>۱۰ دقیقه</span>
-                        </div>
-                        <div class="flex gap-2">
+            @foreach($blogPosts as $blogPost)
+                <a href="{{ route('blog.show', $blogPost->slug) }}"
+                   class="flex flex-col bg-white rounded-xl border-r-2 border-b-2 border-primary-light hover:border-primary-dark transition-colors">
+                    <div class="relative">
+                        <img src="{{ $blogPost->getFirstMediaUrl('image') }}" alt="{{ $blogPost->title }}"
+                             class="w-full h-auto rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-3">{{ $blogPost->title }}</h3>
+                        <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">{{ $blogPost->summary }}</p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
+                                <span>۱۴ شهریور</span>
+                                <div class="w-px h-4 bg-[#9D9EA2]"></div>
+                                <span>{{ $blogPost->read_duration }} دقیقه</span>
+                            </div>
+                            <div class="flex gap-2">
                             <span
-                                class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">روانکاوی</span>
-                            <span
-                                class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">روانشناسی</span>
+                                class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">{{ $blogPost?->category?->title }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
             @endforeach
         </div>
 
@@ -439,41 +424,32 @@
             <div class="swiper articleSwiper">
                 <!-- Swiper Wrapper -->
                 <div class="swiper-wrapper">
-                    @foreach ($articles as $article)
-                    <!-- Slide -->
-                    <div class="swiper-slide">
-                        <!-- Article -->
-                        <a href="#"
-                            class="flex flex-col bg-white rounded-xl border-r-2 border-b-2 border-primary-light hover:border-primary-dark transition-colors">
-                            <div class="relative">
-                                <img src="{{ asset('assets/images/home/' . $article['image']) }}" alt="{{ $article['title'] }}"
-                                    class="w-full h-auto rounded-t-xl">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-medium mb-3">{{ $article['title'] }}</h3>
-                                <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">
-                                    خانواده اولین و در عین حال مهم‌ ترین نهاد اجتماعی است که فرد در آن متولد می‌
-                                    شود.
-                                    اهمیت نقش خانواده در شکل‌ گیری شخصیت غیر قابل انکار است. خانواده کانون اصلی
-                                    رشد و
-                                    تعالی افراد محسوب می‌ شود و...
-                                </p>
-                                <div class="flex flex-col gap-4">
-                                    <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
-                                        <span>۱۴ شهریور</span>
-                                        <div class="w-px h-4 bg-[#9D9EA2]"></div>
-                                        <span>۱۰ دقیقه</span>
-                                    </div>
-                                    <div class="flex gap-2">
+                    @foreach($blogPosts as $blogPost)
+                        <div class="swiper-slide">
+                            <!-- Article -->
+                            <a href="#"
+                               class="flex flex-col bg-white rounded-xl border-r-2 border-b-2 border-primary-light hover:border-primary-dark transition-colors">
+                                <div class="relative">
+                                    <img src="{{ $blogPost->getFirstMediaUrl('image') }}" alt="{{ $blogPost->title }}"
+                                         class="w-full h-auto rounded-t-xl">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-medium mb-3">{{ $blogPost->title }}</h3>
+                                    <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">{{ $blogPost->summary }}</p>
+                                    <div class="flex flex-col gap-4">
+                                        <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
+                                            <span>۱۴ شهریور</span>
+                                            <div class="w-px h-4 bg-[#9D9EA2]"></div>
+                                            <span>{{ $blogPost->read_duration }} دقیقه</span>
+                                        </div>
+                                        <div class="flex gap-2">
                                         <span
-                                            class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">روانکاوی</span>
-                                        <span
-                                            class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">روانشناسی</span>
+                                            class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">{{ $blogPost?->category?->title }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
