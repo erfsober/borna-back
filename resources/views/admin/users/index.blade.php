@@ -10,7 +10,41 @@
 
   <!-- Bootstrap Table with Header Dark -->
   <div class="card">
-    <h5 class="card-header heading-color">لیست کاربران</h5>
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0 heading-color">لیست کاربران</h5>
+      <div class="card-header-elements">
+        <form method="GET" action="{{ route('admin.users.index') }}" class="d-flex gap-2">
+          <div class="input-group input-group-merge">
+            <span class="input-group-text"><i class="bx bx-search"></i></span>
+            <input
+              type="text"
+              name="q"
+              class="form-control"
+              placeholder="جستجو بر اساس نام، ایمیل یا تلفن..."
+              value="{{ request('q') }}"
+              aria-label="Search"
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="bx bx-search"></i>
+            جستجو
+          </button>
+        </form>
+      </div>
+    </div>
+
+    @if(request('q'))
+    <div class="card-body pb-0">
+      <div class="alert alert-info d-flex align-items-center" role="alert">
+        <i class="bx bx-info-circle me-2"></i>
+        <div>
+          نتایج جستجو برای: <strong>"{{ request('q') }}"</strong>
+          <span class="text-muted">- {{ $users->total() }} کاربر یافت شد</span>
+        </div>
+      </div>
+    </div>
+    @endif
+
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-dark">
@@ -82,7 +116,7 @@
     @if($users->hasPages())
     <div class="card-footer">
       <div class="d-flex justify-content-center">
-        {{ $users->links() }}
+        {{ $users->appends(['q' => request('q')])->links('vendor.pagination.custom-admin') }}
       </div>
     </div>
     @endif

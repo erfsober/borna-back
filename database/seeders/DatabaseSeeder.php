@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +24,8 @@ class DatabaseSeeder extends Seeder
                 'email' => 'admin@mail.com',
                 'password' => bcrypt('as12AS!@'),
             ]);
+
+        // Seed users
+        $this->call(UserSeeder::class);
     }
 }
