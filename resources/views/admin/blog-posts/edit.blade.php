@@ -2,6 +2,12 @@
 
 @section('title', 'ویرایش پست')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('admin/vendor/libs/quill/typography.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendor/libs/quill/katex.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendor/libs/quill/editor-fa.css') }}">
+@endpush
+
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="py-3 breadcrumb-wrapper mb-4">
@@ -84,9 +90,12 @@
 
         <div class="mb-3">
           <label for="description" class="form-label">توضیحات <span class="text-danger">*</span></label>
-          <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="8" required>{{ old('description', $blogPost->description) }}</textarea>
+          <div id="quill-editor" style="height: 400px;">
+            {!! old('description', $blogPost->description) !!}
+          </div>
+          <input type="hidden" name="description" id="description" value="{{ old('description', $blogPost->description) }}">
           @error('description')
-          <div class="invalid-feedback">{{ $message }}</div>
+          <div class="invalid-feedback d-block">{{ $message }}</div>
           @enderror
         </div>
 
@@ -114,11 +123,39 @@
 @endsection
 
 @push('scripts')
+<script src="{{ asset('admin/vendor/libs/quill/katex.js') }}"></script>
+<script src="{{ asset('admin/vendor/libs/quill/quill.js') }}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const imageInput = document.getElementById('image');
     const imagePreview = document.getElementById('image-preview');
+    const descriptionInput = document.getElementById('description');
 
+    // Initialize Quill editor
+    const quill = new Quill('#quill-editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ 'font': [] }, { 'size': [] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'color': [] }, { 'background': [] }],
+          [{ 'script': 'sub' }, { 'script': 'super' }],
+          [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block'],
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+          ['direction', { 'align': [] }],
+          ['link', 'image', 'video', 'formula'],
+          ['clean']
+        ]
+      }
+    });
+
+    // Sync Quill content to hidden input on form submit
+    const form = descriptionInput.closest('form');
+    form.addEventListener('submit', function() {
+      descriptionInput.value = quill.root.innerHTML;
+    });
+
+    // Image preview
     imageInput.addEventListener('change', function(event) {
       const file = event.target.files[0];
 
