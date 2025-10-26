@@ -22,6 +22,7 @@ Route::get('/bootcamp', [BootcampController::class, 'index'])->name('bootcamp.in
 
 // Blog Routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // Authentication Routes
 Route::prefix('auth')->name('auth.')->group(function () {
