@@ -105,7 +105,7 @@
                     <a href="#" class="text-secondary hover:text-primary transition-colors py-2">
                         درباره ما
                     </a>
-                    <a href="#" class="text-secondary hover:text-primary transition-colors py-2">
+                    <a href="{{ route('contact.index') }}" class="text-secondary hover:text-primary transition-colors py-2 {{ request()->routeIs('contact.*') ? 'text-primary font-medium border-b-2 border-primary' : '' }}">
                         ارتباط با ما
                     </a>
                 </div>
@@ -189,7 +189,7 @@
                     درباره ما
                 </a>
                 <div class="border my-2"></div>
-                <a href="#" class="block py-2 text-secondary hover:text-primary text-center">
+                <a href="{{ route('contact.index') }}" class="block py-2 text-center {{ request()->routeIs('contact.*') ? 'text-primary font-medium' : 'text-secondary hover:text-primary' }}">
                     ارتباط با ما
                 </a>
             </div>
@@ -273,7 +273,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="text-secondary text-sm hover:text-primary transition-colors">
+                            <a href="{{ route('contact.index') }}" class="text-secondary text-sm hover:text-primary transition-colors">
                                 تماس با ما
                             </a>
                         </li>
