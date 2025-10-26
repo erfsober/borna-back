@@ -26,11 +26,12 @@
       </div>
     </div>
 
-    <div class="table-responsive text-nowrap">
+    <div class="table-responsive text-nowrap" style="min-height: 400px;">
       <table class="table">
         <thead class="table-dark">
           <tr>
             <th>شناسه</th>
+            <th>تصویر</th>
             <th>نام دکتر</th>
             <th>امتیاز</th>
             <th>توضیحات</th>
@@ -42,6 +43,13 @@
           @forelse($items as $item)
           <tr>
             <td><strong>{{ $item->id }}</strong></td>
+            <td>
+              @if($item->getFirstMediaUrl('doctor_image'))
+                <img src="{{ $item->getFirstMediaUrl('doctor_image') }}" alt="{{ $item->doctor_name }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
+              @else
+                <i class="bx bx-image text-muted bx-md"></i>
+              @endif
+            </td>
             <td>{{ $item->doctor_name }}</td>
             <td>
               @for($i = 1; $i <= 5; $i++)
@@ -78,7 +86,7 @@
           </tr>
           @empty
           <tr>
-            <td colspan="6" class="text-center py-4">
+            <td colspan="7" class="text-center py-4">
               <i class="bx bx-info-circle bx-md text-muted mb-2"></i>
               <p class="text-muted mb-0">هیچ آیتمی یافت نشد</p>
             </td>

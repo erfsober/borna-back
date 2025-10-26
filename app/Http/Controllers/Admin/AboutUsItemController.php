@@ -26,13 +26,23 @@ class AboutUsItemController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
+        $request->validate([
             'doctor_name' => ['required', 'string', 'max:255'],
             'star' => ['required', 'integer', 'min:1', 'max:5'],
             'description' => ['required', 'string'],
+            'doctor_image' => ['nullable', 'image', 'max:2048'],
         ]);
 
-        AboutUsItem::query()->create($validated);
+        $aboutUsItem = AboutUsItem::query()->create([
+            'doctor_name' => $request->doctor_name,
+            'star' => $request->star,
+            'description' => $request->description,
+        ]);
+
+        if ($request->hasFile('doctor_image')) {
+            $aboutUsItem->addMediaFromRequest('doctor_image')
+                ->toMediaCollection('doctor_image');
+        }
 
         return redirect()->route('admin.about-us-items.index')
             ->with('success', 'آیتم با موفقیت ایجاد شد');
@@ -45,13 +55,24 @@ class AboutUsItemController extends Controller
 
     public function update(Request $request, AboutUsItem $aboutUsItem): RedirectResponse
     {
-        $validated = $request->validate([
+        $request->validate([
             'doctor_name' => ['required', 'string', 'max:255'],
             'star' => ['required', 'integer', 'min:1', 'max:5'],
             'description' => ['required', 'string'],
+            'doctor_image' => ['nullable', 'image', 'max:2048'],
         ]);
 
-        $aboutUsItem->update($validated);
+        $aboutUsItem->update([
+            'doctor_name' => $request->doctor_name,
+            'star' => $request->star,
+            'description' => $request->description,
+        ]);
+
+        if ($request->hasFile('doctor_image')) {
+            $aboutUsItem->clearMediaCollection('doctor_image');
+            $aboutUsItem->addMediaFromRequest('doctor_image')
+                ->toMediaCollection('doctor_image');
+        }
 
         return redirect()->route('admin.about-us-items.index')
             ->with('success', 'آیتم با موفقیت به‌روزرسانی شد');

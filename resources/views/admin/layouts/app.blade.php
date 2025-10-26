@@ -114,7 +114,7 @@
                 </li>
                 <li class="menu-item {{ request()->routeIs('admin.about-us-items.*') ? 'active' : '' }}">
                   <a href="{{ route('admin.about-us-items.index') }}" class="menu-link">
-                    <div data-i18n="Items">آیتم‌ها</div>
+                    <div data-i18n="Items">اسامی دکتر ها</div>
                   </a>
                 </li>
               </ul>

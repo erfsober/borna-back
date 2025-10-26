@@ -13,7 +13,7 @@
       <h5 class="mb-0">افزودن آیتم جدید</h5>
     </div>
     <div class="card-body">
-      <form action="{{ route('admin.about-us-items.store') }}" method="POST">
+      <form action="{{ route('admin.about-us-items.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -22,6 +22,19 @@
           @error('doctor_name')
           <div class="invalid-feedback">{{ $message }}</div>
           @enderror
+        </div>
+
+        <div class="mb-3">
+          <label for="doctor_image" class="form-label">تصویر دکتر</label>
+          <input type="file" class="form-control @error('doctor_image') is-invalid @enderror" id="doctor_image" name="doctor_image" accept="image/*">
+          @error('doctor_image')
+          <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+          <div class="form-text">حداکثر حجم فایل: 2 مگابایت</div>
+
+          <div id="image-preview-container" class="mt-3">
+            <img id="image-preview" src="#" alt="Image Preview" class="img-thumbnail" style="max-width: 300px; display: none;">
+          </div>
         </div>
 
         <div class="mb-3">
@@ -62,3 +75,30 @@
   </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const imageInput = document.getElementById('doctor_image');
+    const imagePreview = document.getElementById('image-preview');
+
+    imageInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.style.display = 'none';
+        imagePreview.src = '#';
+      }
+    });
+  });
+</script>
+@endpush
