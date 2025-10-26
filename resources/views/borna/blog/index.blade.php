@@ -9,103 +9,50 @@
 @section('content')
     <div class="flex flex-col gap-12 md:gap-16 md:my-12">
         <!-- Featured Blog Post Section -->
-        <section class="bg-[rgba(244,244,245,0.77)] px-4 pt-8 pb-4 md:pt-12 md:pb-8">
-            <!-- Swiper Container -->
-            <div class="swiper blogSwiper container">
-                <!-- Swiper Wrapper -->
-                <div class="swiper-wrapper pb-6">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <!-- Blog Post 1 -->
-                        <div class="flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20">
-                            <div class="w-full md:w-1/2 flex flex-col items-start justify-center">
-                                <div class="flex flex-col gap-4">
-                                    <h1 class="text-xl md:text-3xl font-medium text-[#23242E]">
-                                        محبوب‌ترین بلاگ‌ها
-                                    </h1>
-                                    <div class="flex items-center gap-5 md:gap-10">
-                                        <div class="flex items-center gap-2">
-                                            <img src="{{ asset('assets/images/blog/folder-icon.svg') }}" alt=""
-                                                class="w-3 h-3 md:w-4 md:h-4">
-                                            <span class="text-xs md:text-sm text-[#54555D]">ترندهای طراحی</span>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <img src="{{ asset('assets/images/blog/clock-icon.svg') }}" alt=""
-                                                class="w-3 h-3 md:w-4 md:h-4">
-                                            <span class="text-xs md:text-sm text-[#54555D]">سه روز قبل</span>
-                                        </div>
-                                    </div>
-                                    <p
-                                        class="text-sm md:text-base text-[#54555D] md:leading-8 text-justify line-clamp-3">
-                                        این مقاله تأملی در باب ظرفیت و مشکلات برقراری و حفظ روابط عاشقانه و پرشور است و
-                                        بر اساس
-                                        نتایج سال‌ها کار تحلیلی با مراجعان مختلف نوشته شده است. نگارنده در این متن،
-                                        انواع
-                                        تداخل‌ها در ظرفیت عشق جنسی بالغانه را همچون بازتابی از شرایط مختلف آسیب‌شناسی
-                                        روانی
-                                        توصیف می‌کند.
-                                    </p>
-                                    <a href="#"
-                                        class="flex items-center gap-2 w-fit bg-[#585858] text-white py-2 px-4 md:px-8 rounded-lg hover:bg-[#383838] transition-colors mt-4">
-                                        <span class="text-sm md:text-base">ادامه مطلب</span>
-                                        <img src="{{ asset('assets/images/blog/arrow-left.svg') }}" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/2 hidden md:block">
-                                <img src="{{ asset('assets/images/blog/frame.png') }}" alt="" class="w-full h-auto object-cover">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <!-- Blog Post 2 -->
-                        <div class="flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20">
-                            <div class="w-full md:w-1/2 flex flex-col items-start justify-center">
-                                <div class="flex flex-col gap-4">
-                                    <h1 class="text-xl md:text-3xl font-medium text-[#23242E]">
-                                        محبوب‌ترین بلاگ‌ها
-                                    </h1>
-                                    <div class="flex items-center gap-5 md:gap-10">
-                                        <div class="flex items-center gap-2">
-                                            <img src="{{ asset('assets/images/blog/folder-icon.svg') }}" alt=""
-                                                class="w-3 h-3 md:w-4 md:h-4">
-                                            <span class="text-xs md:text-sm text-[#54555D]">ترندهای طراحی</span>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <img src="{{ asset('assets/images/blog/clock-icon.svg') }}" alt=""
-                                                class="w-3 h-3 md:w-4 md:h-4">
-                                            <span class="text-xs md:text-sm text-[#54555D]">سه روز قبل</span>
+        @if(isset($popularPosts) && $popularPosts->count())
+            <section class="bg-[rgba(244,244,245,0.77)] px-4 pt-8 pb-4 md:pt-12 md:pb-8">
+                <div class="swiper blogSwiper container">
+                    <div class="swiper-wrapper pb-6">
+                        @foreach($popularPosts as $post)
+                            <div class="swiper-slide">
+                                <div class="flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20">
+                                    <div class="w-full md:w-1/2 flex flex-col items-start justify-center">
+                                        <div class="flex flex-col gap-4">
+                                            <h1 class="text-xl md:text-3xl font-medium text-[#23242E]">{{ $post->title }}</h1>
+                                            <div class="flex items-center gap-5 md:gap-10">
+                                                @if($post->category)
+                                                    <div class="flex items-center gap-2">
+                                                        <img src="{{ asset('assets/images/blog/folder-icon.svg') }}" alt="" class="w-3 h-3 md:w-4 md:h-4">
+                                                        <span class="text-xs md:text-sm text-[#54555D]">{{ $post->category->title }}</span>
+                                                    </div>
+                                                @endif
+                                                <div class="flex items-center gap-2">
+                                                    <img src="{{ asset('assets/images/blog/clock-icon.svg') }}" alt="" class="w-3 h-3 md:w-4 md:h-4">
+                                                    <span class="text-xs md:text-sm text-[#54555D]">{{ $post->read_duration }} دقیقه</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm md:text-base text-[#54555D] md:leading-8 text-justify line-clamp-3">{{ \Illuminate\Support\Str::limit(strip_tags($post->summary), 200) }}</p>
+                                            <a href="{{ route('blog.show', $post->slug) }}" class="flex items-center gap-2 w-fit bg-[#585858] text-white py-2 px-4 md:px-8 rounded-lg hover:bg-[#383838] transition-colors mt-4">
+                                                <span class="text-sm md:text-base">مشاهده مطلب</span>
+                                                <img src="{{ asset('assets/images/blog/arrow-left.svg') }}" alt="">
+                                            </a>
                                         </div>
                                     </div>
-                                    <p
-                                        class="text-sm md:text-base text-[#54555D] md:leading-8 text-justify line-clamp-3">
-                                        این مقاله تأملی در باب ظرفیت و مشکلات برقراری و حفظ روابط عاشقانه و پرشور است و
-                                        بر اساس
-                                        نتایج سال‌ها کار تحلیلی با مراجعان مختلف نوشته شده است. نگارنده در این متن،
-                                        انواع
-                                        تداخل‌ها در ظرفیت عشق جنسی بالغانه را همچون بازتابی از شرایط مختلف آسیب‌شناسی
-                                        روانی
-                                        توصیف می‌کند.
-                                    </p>
-                                    <a href="#"
-                                        class="flex items-center gap-2 w-fit bg-[#585858] text-white py-2 px-4 md:px-8 rounded-lg hover:bg-[#383838] transition-colors mt-4">
-                                        <span class="text-sm md:text-base">ادامه مطلب</span>
-                                        <img src="{{ asset('assets/images/blog/arrow-left.svg') }}" alt="">
-                                    </a>
+                                    <div class="w-full md:w-1/2 hidden md:block">
+                                        @if($post->getFirstMediaUrl('image'))
+                                            <img src="{{ $post->getFirstMediaUrl('image') }}" alt="{{ $post->title }}" class="w-full h-auto object-cover">
+                                        @else
+                                            <img src="{{ asset('assets/images/blog/frame.png') }}" alt="" class="w-full h-auto object-cover">
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                            <div class="w-full md:w-1/2 hidden md:block">
-                                <img src="{{ asset('assets/images/blog/frame.png') }}" alt="" class="w-full h-auto object-cover">
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+                    <div class="swiper-pagination !relative !bottom-0"></div>
                 </div>
-
-                <!-- Pagination -->
-                <div class="swiper-pagination !relative !bottom-0"></div>
-            </div>
-        </section>
+            </section>
+        @endif
 
         <!-- Blog Categories Section -->
         <section class="container flex flex-col gap-8 md:gap-10" id="categories">
@@ -152,7 +99,7 @@
                             @endif
                             <h3 class="text-[#23242E] text-base md:text-lg font-medium">{{ $post->title }}</h3>
                             <p class="text-[#54555D] text-sm leading-7 line-clamp-3">
-                                {{ \Illuminate\Support\Str::limit(strip_tags($post->description), 150) }}
+                                {{ \Illuminate\Support\Str::limit(strip_tags($post->summary), 150) }}
                             </p>
                             <div class="flex items-center gap-2 mt-2">
                                 <span class="text-xs text-[#9D9EA2]">{{ $post->created_at }}</span>

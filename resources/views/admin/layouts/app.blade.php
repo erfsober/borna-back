@@ -163,6 +163,25 @@
               </ul>
             </li>
 
+            <!-- Bootcamp -->
+            <li class="menu-item {{ request()->routeIs('admin.bootcamps.*', 'admin.bootcamp-items.*') ? 'active open' : '' }}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-video"></i>
+                <div data-i18n="Bootcamp">بوت‌کمپ</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.bootcamps.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.bootcamps.index') }}" class="menu-link">
+                    <div data-i18n="Bootcamps">بوت‌کمپ‌ها</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.bootcamp-items.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.bootcamp-items.index') }}" class="menu-link">
+                    <div data-i18n="BootcampItems">آیتم‌های بوت‌کمپ</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
             @yield('menu-items')
           </ul>
         </aside>

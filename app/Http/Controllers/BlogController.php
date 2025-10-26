@@ -24,7 +24,14 @@ class BlogController extends Controller
             ->orderBy('title')
             ->get();
 
-        return view('borna.blog.index', compact('blogPosts', 'categories'));
+        $popularPosts = BlogPost::query()
+            ->with('category')
+            ->where('is_popular', true)
+            ->orderByDesc('created_at')
+            ->limit(6)
+            ->get();
+
+        return view('borna.blog.index', compact('blogPosts', 'categories', 'popularPosts'));
     }
 
     public function show(string $slug): View

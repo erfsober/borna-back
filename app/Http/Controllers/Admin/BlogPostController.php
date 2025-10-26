@@ -40,6 +40,7 @@ class BlogPostController extends Controller
             'writer_name' => $validated['writer_name'],
             'read_duration' => $validated['read_duration'],
             'category_id' => $validated['category_id'] ?? null,
+            'is_popular' => $request->boolean('is_popular'),
         ]);
 
         if ($request->hasFile('image')) {
@@ -69,6 +70,7 @@ class BlogPostController extends Controller
             'writer_name' => $validated['writer_name'],
             'read_duration' => $validated['read_duration'],
             'category_id' => $validated['category_id'] ?? null,
+            'is_popular' => $request->boolean('is_popular'),
         ]);
 
         if ($request->hasFile('image')) {

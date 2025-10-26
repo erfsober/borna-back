@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Bootcamp;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BlogPostCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BootcampItem>
  */
-class BlogPostCategoryFactory extends Factory
+class BootcampItemFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class BlogPostCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
+            'bootcamp_id' => Bootcamp::factory(),
+            'description' => fake()->paragraph(),
         ];
     }
 }

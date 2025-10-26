@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 
-@section('title', 'لیست پست‌های بلاگ')
+@section('title', 'لیست بوت‌کمپ‌ها')
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="py-3 breadcrumb-wrapper mb-4">
-    <span class="text-muted fw-light">مدیریت بلاگ /</span> پست‌ها
+    <span class="text-muted fw-light">مدیریت بوت‌کمپ /</span> لیست بوت‌کمپ‌ها
   </h4>
 
   @if(session('success'))
@@ -17,11 +17,11 @@
 
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0 heading-color">لیست پست‌ها</h5>
+      <h5 class="mb-0 heading-color">لیست بوت‌کمپ‌ها</h5>
       <div class="card-header-elements">
-        <a href="{{ route('admin.blog-posts.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.bootcamps.create') }}" class="btn btn-primary">
           <i class="bx bx-plus"></i>
-          افزودن پست جدید
+          افزودن بوت‌کمپ جدید
         </a>
       </div>
     </div>
@@ -33,36 +33,28 @@
             <th>شناسه</th>
             <th>تصویر</th>
             <th>عنوان</th>
-            <th>دسته‌بندی</th>
-            <th>نویسنده</th>
-            <th>مدت مطالعه</th>
+            <th>تعداد آیتم‌ها</th>
             <th>تاریخ ایجاد</th>
             <th>عملیات</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
-          @forelse($blogPosts as $blogPost)
+          @forelse($bootcamps as $bootcamp)
           <tr>
-            <td><strong>{{ $blogPost->id }}</strong></td>
+            <td><strong>{{ $bootcamp->id }}</strong></td>
             <td>
-              @if($blogPost->getFirstMediaUrl('image'))
-                <img src="{{ $blogPost->getFirstMediaUrl('image') }}" alt="{{ $blogPost->title }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
+              @if($bootcamp->getFirstMediaUrl('top_image'))
+                <img src="{{ $bootcamp->getFirstMediaUrl('top_image') }}" alt="{{ $bootcamp->title }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
               @else
                 <i class="bx bx-image text-muted bx-md"></i>
               @endif
             </td>
-            <td>{{ \Illuminate\Support\Str::limit($blogPost->title, 40) }}</td>
+            <td>{{ \Illuminate\Support\Str::limit($bootcamp->title, 40) }}</td>
             <td>
-              @if($blogPost->category)
-                <span class="badge bg-label-info">{{ $blogPost->category->title }}</span>
-              @else
-                <span class="badge bg-label-secondary">بدون دسته‌بندی</span>
-              @endif
+              <span class="badge bg-label-primary">{{ $bootcamp->items_count }} آیتم</span>
             </td>
-            <td>{{ $blogPost->writer_name }}</td>
-            <td>{{ $blogPost->read_duration }} دقیقه</td>
             <td>
-              <span dir="ltr">{{ $blogPost->created_at }}</span>
+              <span dir="ltr">{{ $bootcamp->created_at }}</span>
             </td>
             <td>
               <div class="dropdown">
@@ -70,13 +62,13 @@
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('admin.blog-posts.edit', $blogPost) }}">
+                  <a class="dropdown-item" href="{{ route('admin.bootcamps.edit', $bootcamp) }}">
                     <i class="bx bx-edit-alt me-1"></i> ویرایش
                   </a>
-                  <form action="{{ route('admin.blog-posts.destroy', $blogPost) }}" method="POST" class="d-inline">
+                  <form action="{{ route('admin.bootcamps.destroy', $bootcamp) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="dropdown-item" onclick="return confirm('آیا از حذف این پست مطمئن هستید؟')">
+                    <button type="submit" class="dropdown-item" onclick="return confirm('آیا از حذف این بوت‌کمپ مطمئن هستید؟')">
                       <i class="bx bx-trash me-1"></i> حذف
                     </button>
                   </form>
@@ -86,9 +78,9 @@
           </tr>
           @empty
           <tr>
-            <td colspan="9" class="text-center py-4">
+            <td colspan="6" class="text-center py-4">
               <i class="bx bx-info-circle bx-md text-muted mb-2"></i>
-              <p class="text-muted mb-0">هیچ پستی یافت نشد</p>
+              <p class="text-muted mb-0">هیچ بوت‌کمپی یافت نشد</p>
             </td>
           </tr>
           @endforelse
@@ -96,10 +88,10 @@
       </table>
     </div>
 
-    @if($blogPosts->hasPages())
+    @if($bootcamps->hasPages())
     <div class="card-footer">
       <div class="d-flex justify-content-center">
-        {{ $blogPosts->links('vendor.pagination.custom-admin') }}
+        {{ $bootcamps->links('vendor.pagination.custom-admin') }}
       </div>
     </div>
     @endif

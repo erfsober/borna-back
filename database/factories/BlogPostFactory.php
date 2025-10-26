@@ -23,9 +23,11 @@ class BlogPostFactory extends Factory
             'title' => $title,
             'slug' => fake()->unique()->slug(),
             'description' => fake()->paragraphs(3, true),
+            'summary' => fake()->paragraphs(2, true),
             'writer_name' => fake()->name(),
             'category_id' => BlogPostCategory::inRandomOrder()->first() ?? BlogPostCategory::factory()->create(),
             'read_duration' => fake()->numberBetween(1, 15),
+            'is_popular' => fake()->boolean(20),
         ];
     }
 }

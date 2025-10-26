@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AboutUsSettingController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BlogPostCategoryController;
 use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\BootcampController;
+use App\Http\Controllers\Admin\BootcampItemController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactUsSettingController;
 use App\Http\Controllers\Admin\UserController;
@@ -60,4 +62,20 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/blog-posts/{blogPost}/edit', [BlogPostController::class, 'edit'])->name('admin.blog-posts.edit');
     Route::put('/blog-posts/{blogPost}', [BlogPostController::class, 'update'])->name('admin.blog-posts.update');
     Route::delete('/blog-posts/{blogPost}', [BlogPostController::class, 'destroy'])->name('admin.blog-posts.destroy');
+
+    // Bootcamps
+    Route::get('/bootcamps', [BootcampController::class, 'index'])->name('admin.bootcamps.index');
+    Route::get('/bootcamps/create', [BootcampController::class, 'create'])->name('admin.bootcamps.create');
+    Route::post('/bootcamps', [BootcampController::class, 'store'])->name('admin.bootcamps.store');
+    Route::get('/bootcamps/{bootcamp}/edit', [BootcampController::class, 'edit'])->name('admin.bootcamps.edit');
+    Route::put('/bootcamps/{bootcamp}', [BootcampController::class, 'update'])->name('admin.bootcamps.update');
+    Route::delete('/bootcamps/{bootcamp}', [BootcampController::class, 'destroy'])->name('admin.bootcamps.destroy');
+
+    // Bootcamp Items
+    Route::get('/bootcamp-items', [BootcampItemController::class, 'index'])->name('admin.bootcamp-items.index');
+    Route::get('/bootcamp-items/create', [BootcampItemController::class, 'create'])->name('admin.bootcamp-items.create');
+    Route::post('/bootcamp-items', [BootcampItemController::class, 'store'])->name('admin.bootcamp-items.store');
+    Route::get('/bootcamp-items/{bootcampItem}/edit', [BootcampItemController::class, 'edit'])->name('admin.bootcamp-items.edit');
+    Route::put('/bootcamp-items/{bootcampItem}', [BootcampItemController::class, 'update'])->name('admin.bootcamp-items.update');
+    Route::delete('/bootcamp-items/{bootcampItem}', [BootcampItemController::class, 'destroy'])->name('admin.bootcamp-items.destroy');
 });

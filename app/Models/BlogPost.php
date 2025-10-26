@@ -17,6 +17,7 @@ class BlogPost extends Model implements HasMedia
     {
         return [
             'read_duration' => 'integer',
+            'is_popular' => 'boolean',
         ];
     }
 

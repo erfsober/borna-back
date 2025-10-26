@@ -27,5 +27,9 @@ class DatabaseSeeder extends Seeder
 
         // Seed users
         $this->call(UserSeeder::class);
+        $this->call(ContactUsSettingSeeder::class);
+        $this->call(BootcampSeeder::class);
+        $this->call(BootcampItemSeeder::class);
+        $this->call(BlogPostSeeder::class);
     }
 }

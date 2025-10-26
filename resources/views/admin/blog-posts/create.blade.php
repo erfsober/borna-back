@@ -85,6 +85,13 @@
           @enderror
         </div>
 
+        <div class="mb-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="is_popular" name="is_popular" value="1" {{ old('is_popular') ? 'checked' : '' }}>
+            <label class="form-check-label" for="is_popular">نوشته محبوب</label>
+          </div>
+        </div>
+
         <div class="mt-4">
           <button type="submit" class="btn btn-primary">
             <i class="bx bx-save"></i>

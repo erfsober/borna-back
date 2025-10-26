@@ -12,6 +12,13 @@ class BlogPostSeeder extends Seeder
      */
     public function run(): void
     {
-        BlogPost::factory()->count(50)->create();
+        BlogPost::truncate();
+        BlogPost::factory()
+            ->count(50)
+            ->state(fn () => [
+                // Ensure summary is present even if factory changes
+                'summary' => fake()->paragraphs(2, true),
+            ])
+            ->create();
     }
 }

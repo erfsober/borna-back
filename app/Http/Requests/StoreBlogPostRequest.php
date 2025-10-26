@@ -29,6 +29,7 @@ class StoreBlogPostRequest extends FormRequest
             'read_duration' => ['required', 'integer', 'min:1'],
             'category_id' => ['nullable', 'exists:blog_post_categories,id'],
             'image' => ['nullable', 'image', 'max:2048'],
+            'is_popular' => ['sometimes', 'boolean'],
         ];
     }
 
