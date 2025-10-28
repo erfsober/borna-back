@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('borna.layouts.auth')
 
 @section('title', 'روانشناسی برنا | اعتبارسنجی')
 
