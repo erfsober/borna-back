@@ -17,14 +17,14 @@ class BlogPostFactory extends Factory
      */
     public function definition(): array
     {
-        $title = fake()->sentence(6);
+        $title = fake('fa_IR')->sentence(6);
 
         return [
             'title' => $title,
             'slug' => fake()->unique()->slug(),
-            'description' => fake()->paragraphs(3, true),
-            'summary' => fake()->paragraphs(2, true),
-            'writer_name' => fake()->name(),
+            'description' => fake('fa_IR')->paragraphs(3, true),
+            'summary' => fake('fa_IR')->paragraphs(2, true),
+            'writer_name' => fake('fa_IR')->firstName().' '.fake('fa_IR')->lastName(),
             'category_id' => BlogPostCategory::inRandomOrder()->first() ?? BlogPostCategory::factory()->create(),
             'read_duration' => fake()->numberBetween(1, 15),
             'is_popular' => fake()->boolean(20),

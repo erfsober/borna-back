@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\BootcampController;
 use App\Http\Controllers\Admin\BootcampItemController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactUsSettingController;
+use App\Http\Controllers\Admin\FooterSettingController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,10 @@ Route::middleware(['auth:admin'])->group(function () {
     // Contact Us Setting
     Route::get('/contact-us-setting', [ContactUsSettingController::class, 'index'])->name('admin.contact-us-setting.index');
     Route::post('/contact-us-setting', [ContactUsSettingController::class, 'update'])->name('admin.contact-us-setting.update');
+
+    // Footer Setting
+    Route::get('/footer-setting', [FooterSettingController::class, 'index'])->name('admin.footer-setting.index');
+    Route::post('/footer-setting', [FooterSettingController::class, 'update'])->name('admin.footer-setting.update');
 
     // Contacts
     Route::get('/contacts', [ContactController::class, 'index'])->name('admin.contacts.index');

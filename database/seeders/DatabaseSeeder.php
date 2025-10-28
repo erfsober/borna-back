@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,8 +27,10 @@ class DatabaseSeeder extends Seeder
         // Seed users
         $this->call(UserSeeder::class);
         $this->call(ContactUsSettingSeeder::class);
+        $this->call(FooterSettingSeeder::class);
         $this->call(BootcampSeeder::class);
         $this->call(BootcampItemSeeder::class);
         $this->call(BlogPostSeeder::class);
+        $this->call(FooterSettingSeeder::class);
     }
 }

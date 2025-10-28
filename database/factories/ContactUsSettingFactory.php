@@ -17,10 +17,10 @@ class ContactUsSettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'address' => fake()->address(),
+            'address' => fake('fa_IR')->address(),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->companyEmail(),
-            'work_hours' => 'Mon-Fri: 9AM-5PM',
+            'work_hours' => 'شنبه تا پنج‌شنبه: 9صبح تا 5عصر',
             'lat' => fake()->latitude(),
             'lng' => fake()->longitude(),
             'telegram' => '@'.fake()->userName(),

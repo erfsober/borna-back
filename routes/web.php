@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Api\SubscriberController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BootcampController;
@@ -44,3 +45,6 @@ Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.s
 Route::get('/terms', function () {
     return view('borna.terms');
 })->name('terms');
+
+// Subscriber API Routes
+Route::post('subscribers', [SubscriberController::class, 'store']);

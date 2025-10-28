@@ -17,8 +17,8 @@ class BootcampFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
-            'description' => fake()->paragraphs(3, true),
+            'title' => fake('fa_IR')->sentence(),
+            'description' => fake('fa_IR')->paragraphs(3, true),
         ];
     }
 }

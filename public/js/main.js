@@ -141,30 +141,6 @@ forms.forEach((form) => {
   });
 });
 
-// Newsletter subscription
-const newsletterForm = document.getElementById("newsletter-form");
-if (newsletterForm) {
-  newsletterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const emailInput = newsletterForm.querySelector('input[type="email"]');
-
-    if (emailInput && emailInput.value.trim()) {
-      // Here you would typically send the email to your server
-      const successMessage = document.createElement("p");
-      successMessage.classList.add("text-green-500", "mt-2");
-      successMessage.textContent = "با تشکر! ایمیل شما با موفقیت ثبت شد.";
-
-      // Clear input and append success message
-      emailInput.value = "";
-      newsletterForm.appendChild(successMessage);
-
-      // Remove success message after 3 seconds
-      setTimeout(() => {
-        successMessage.remove();
-      }, 3000);
-    }
-  });
-}
 
 // Mobile Dropdown Toggle
 document.addEventListener("DOMContentLoaded", function () {

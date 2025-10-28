@@ -17,7 +17,7 @@ class BlogPostSeeder extends Seeder
             ->count(50)
             ->state(fn () => [
                 // Ensure summary is present even if factory changes
-                'summary' => fake()->paragraphs(2, true),
+                'summary' => fake('fa_IR')->paragraphs(2, true),
             ])
             ->create();
     }

@@ -209,24 +209,28 @@
                 <div class="flex flex-col gap-4 col-span-2 lg:col-span-1 order-1">
                     <img src="{{ asset('assets/images/borna-logo.svg') }}" alt="روانشناسی برنا" class="w-[162px] h-auto">
                     <p class="text-text-dark text-opacity-90 text-sm leading-relaxed text-justify">
-                        روانشناسی برنا با مفهوم ارتقاء ذهنی و روانی مراجعه‌کنندگان، به مراقبت و توسعه افراد و خانواده‌ها
-                        اختصاص دارد. با توجه به اهمیت بهبود روانی در زندگی روزمره، در راستای بهبود کیفیت زندگی افراد کمک
-                        می‌کنند.
+                        {{ $footerSetting->description ?? 'روانشناسی برنا با مفهوم ارتقاء ذهنی و روانی مراجعه‌کنندگان، به مراقبت و توسعه افراد و خانواده‌ها اختصاص دارد. با توجه به اهمیت بهبود روانی در زندگی روزمره، در راستای بهبود کیفیت زندگی افراد کمک می‌کنند.' }}
                     </p>
                     <!-- Social Media -->
                     <div class="hidden lg:flex items-center justify-center gap-6">
-                        <a href="#"
+                        @if($footerSetting->instagram)
+                        <a href="{{ $footerSetting->instagram }}" target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 hover:border-primary transition-colors">
-                            <img src="{{ asset('assets/images/linkedin-icon.svg') }}" alt="LinkedIn" class="w-5 h-5">
+                            <img src="{{ asset('assets/images/linkedin-icon.svg') }}" alt="Instagram" class="w-5 h-5">
                         </a>
-                        <a href="#"
+                        @endif
+                        @if($footerSetting->twitter)
+                        <a href="{{ $footerSetting->twitter }}" target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 hover:border-primary transition-colors">
                             <img src="{{ asset('assets/images/twitter-icon.svg') }}" alt="Twitter" class="w-5 h-5">
                         </a>
-                        <a href="#"
+                        @endif
+                        @if($footerSetting->facebook)
+                        <a href="{{ $footerSetting->facebook }}" target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 hover:border-primary transition-colors">
                             <img src="{{ asset('assets/images/facebook-icon.svg') }}" alt="Facebook" class="w-5 h-5">
                         </a>
+                        @endif
                     </div>
                 </div>
 
@@ -236,17 +240,17 @@
                     <ul class="space-y-4">
                         <li>
                             <a href="#" class="text-secondary text-sm hover:text-primary transition-colors">
-                                تست MBTI
+                                بزودی
                             </a>
                         </li>
                         <li>
                             <a href="#" class="text-secondary text-sm hover:text-primary transition-colors">
-                                تست هوش
+                                بزودی
                             </a>
                         </li>
                         <li>
                             <a href="#" class="text-secondary text-sm hover:text-primary transition-colors">
-                                تست MBTI
+                                بزودی
                             </a>
                         </li>
                     </ul>
@@ -260,11 +264,6 @@
                             <a href="{{ route('home') }}"
                                 class="text-secondary text-sm hover:text-primary transition-colors">صفحه
                                 اصلی
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-secondary text-sm hover:text-primary transition-colors">
-                                درخواست مشاوره
                             </a>
                         </li>
                         <li>
@@ -282,11 +281,13 @@
 
                 <!-- Column 4: Newsletter -->
                 <div class="flex flex-col justify-center col-span-2 lg:col-span-1 order-2 lg:order-4">
-                    <p class="text-text-dark text-opacity-80 text-sm mb-4">با ثبت ایمیل از آخرین تخفیف با خبر شوید.</p>
-                    <form id="newsletter-form" class="flex">
+                    <p id="subscriber-email" class="text-text-dark text-opacity-80 text-sm mb-4">با ثبت ایمیل از آخرین تخفیف با خبر شوید.</p>
+                    <form id="newsletter-form" class="flex" onsubmit="handleNewsletterSubmit(event)">
+                        @csrf
                         <div class="relative flex-grow">
-                            <input type="email" placeholder="ایمیل" required
-                                class="w-full pr-2 py-2 bg-transparent border-b border-gray-400 border-opacity-25 focus:border-primary focus:outline-none text-secondary">
+                            <input type="email" name="email" placeholder="ایمیل" required
+                                class="w-full pr-2 py-2 bg-transparent border-b border-gray-400 border-opacity-25 focus:border-primary focus:outline-none text-secondary"
+                                id="newsletter-email">
                             <button type="submit" class="absolute left-0 top-1/2 -translate-y-1/2">
                                 <svg width="25" height="18" viewBox="0 0 25 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="group">
@@ -303,26 +304,91 @@
                     </form>
                 </div>
 
+                <script>
+                    async function handleNewsletterSubmit(event) {
+                        event.preventDefault();
+                        const email = document.getElementById('newsletter-email').value;
+                        const token = document.querySelector('input[name="_token"]').value;
+                        const messageElement = document.getElementById('subscriber-email');
+
+                        try {
+                            const response = await fetch('/subscribers', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': token,
+                                },
+                                body: JSON.stringify({ email }),
+                            });
+
+                            if (response.ok) {
+                                messageElement.textContent = 'با تشکر! ایمیل شما ثبت شد.';
+                                messageElement.classList.remove('text-text-dark', 'text-opacity-80');
+                                messageElement.classList.add('text-green-600');
+                                document.getElementById('newsletter-form').reset();
+                                setTimeout(() => {
+                                    messageElement.textContent = 'با ثبت ایمیل از آخرین تخفیف با خبر شوید.';
+                                    messageElement.classList.remove('text-green-600');
+                                    messageElement.classList.add('text-text-dark', 'text-opacity-80');
+                                }, 3000);
+                            } else if (response.status === 422) {
+                                messageElement.textContent = 'این ایمیل قبلا ثبت شده است.';
+                                messageElement.classList.remove('text-text-dark', 'text-opacity-80');
+                                messageElement.classList.add('text-red-600');
+                                setTimeout(() => {
+                                    messageElement.textContent = 'با ثبت ایمیل از آخرین تخفیف با خبر شوید.';
+                                    messageElement.classList.remove('text-red-600');
+                                    messageElement.classList.add('text-text-dark', 'text-opacity-80');
+                                }, 3000);
+                            } else {
+                                messageElement.textContent = 'خطا در ثبت ایمیل. لطفا دوباره تلاش کنید.';
+                                messageElement.classList.remove('text-text-dark', 'text-opacity-80');
+                                messageElement.classList.add('text-red-600');
+                                setTimeout(() => {
+                                    messageElement.textContent = 'با ثبت ایمیل از آخرین تخفیف با خبر شوید.';
+                                    messageElement.classList.remove('text-red-600');
+                                    messageElement.classList.add('text-text-dark', 'text-opacity-80');
+                                }, 3000);
+                            }
+                        } catch (error) {
+                            messageElement.textContent = 'خطا در ارسال. لطفا دوباره تلاش کنید.';
+                            messageElement.classList.remove('text-text-dark', 'text-opacity-80');
+                            messageElement.classList.add('text-red-600');
+                            setTimeout(() => {
+                                messageElement.textContent = 'با ثبت ایمیل از آخرین تخفیف با خبر شوید.';
+                                messageElement.classList.remove('text-red-600');
+                                messageElement.classList.add('text-text-dark', 'text-opacity-80');
+                            }, 3000);
+                        }
+                    }
+                </script>
+
             </div>
 
             <!-- Social Media -->
             <div class="flex lg:hidden items-center gap-6 mt-6">
-                <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center">
-                    <img src="{{ asset('assets/images/linkedin-icon.svg') }}" alt="LinkedIn" class="w-5 h-5">
+                @if($footerSetting->instagram)
+                <a href="{{ $footerSetting->instagram }}" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-primary transition-colors">
+                    <img src="{{ asset('assets/images/linkedin-icon.svg') }}" alt="Instagram" class="w-5 h-5">
                 </a>
-                <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center">
+                @endif
+                @if($footerSetting->twitter)
+                <a href="{{ $footerSetting->twitter }}" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-primary transition-colors">
                     <img src="{{ asset('assets/images/twitter-icon.svg') }}" alt="Twitter" class="w-5 h-5">
                 </a>
-                <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center">
+                @endif
+                @if($footerSetting->facebook)
+                <a href="{{ $footerSetting->facebook }}" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-primary transition-colors">
                     <img src="{{ asset('assets/images/facebook-icon.svg') }}" alt="Facebook" class="w-5 h-5">
                 </a>
+                @endif
             </div>
 
             <!-- Separator -->
             <div class="border my-4 md:my-8"></div>
 
             <!-- Copyright -->
-            <div class="text-text-dark text-center" dir="ltr">© 2023 All rights reserved</div>
+            <div class="text-text-dark text-center" dir="ltr">© {{ now()->year }} All rights reserved</div>
         </div>
     </footer>
 

@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         User::query()->updateOrCreate(
             ['phone' => '+15550000001'],
             [
-                'name' => 'Test User',
+                'name' => 'کاربر تستی',
                 'email' => 'user@example.com',
                 'email_verified_at' => now(),
                 'phone_verified_at' => now(),
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         // Additional users with deterministic unique phone numbers
         for ($i = 2; $i <= 500; $i++) {
             User::factory()->create([
-                'phone' => '+1555000000' . $i + 900,
+                'phone' => '+1555000000'.$i + 900,
             ]);
         }
     }

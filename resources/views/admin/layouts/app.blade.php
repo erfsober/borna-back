@@ -182,6 +182,15 @@
                 </li>
               </ul>
             </li>
+
+            <!-- Footer Setting -->
+            <li class="menu-item {{ request()->routeIs('admin.footer-setting.*') ? 'active' : '' }}">
+              <a href="{{ route('admin.footer-setting.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="FooterSetting">تنظیمات فوتر</div>
+              </a>
+            </li>
+
             @yield('menu-items')
           </ul>
         </aside>

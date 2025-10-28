@@ -19,7 +19,7 @@ class BootcampItemFactory extends Factory
     {
         return [
             'bootcamp_id' => Bootcamp::factory(),
-            'description' => fake()->paragraph(),
+            'description' => fake('fa_IR')->paragraph(),
         ];
     }
 }
