@@ -30,7 +30,7 @@ class AboutUsItemController extends Controller
             'doctor_name' => ['required', 'string', 'max:255'],
             'star' => ['required', 'integer', 'min:1', 'max:5'],
             'description' => ['required', 'string'],
-            'doctor_image' => ['nullable', 'image', 'max:2048'],
+            'doctor_image' => ['nullable', 'max:2048'],
         ]);
 
         $aboutUsItem = AboutUsItem::query()->create([
