@@ -17,6 +17,7 @@ Route::get('/about-us', [AboutController::class, 'index'])->name('about.index');
 
 // Search Route
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+Route::get('/api/search/blogs', [SearchController::class, 'searchBlogs'])->name('search.blogs');
 
 // Bootcamp Route
 Route::get('/bootcamp', [BootcampController::class, 'index'])->name('bootcamp.index');

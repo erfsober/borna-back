@@ -12,6 +12,7 @@
             <!-- Search Box -->
             <div class="w-full md:w-10/12 mx-auto bg-white rounded-lg border border-gray-300 relative">
                 <input type="text"
+                    id="search-input"
                     class="w-full p-3 md:p-4 text-gray-700 text-sm md:text-base rounded-lg focus:outline-none border focus:border-primary search-input"
                     placeholder="عبارت خود را وارد کنید...">
                 <div class="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2">
@@ -19,273 +20,23 @@
                 </div>
             </div>
 
-            <div class="flex flex-col gap-10">
+            <!-- Search Results -->
+            <div id="search-results" class="hidden">
                 <div class="flex flex-col gap-6">
-                    <!-- Header -->
+                    <!-- Results Header -->
                     <div class="flex items-center gap-2 md:gap-3">
-                        <img src="{{ asset('assets/images/search/book-icon.svg') }}" alt="test" class="w-5 h-5 md:w-6 md:h-6">
-                        <h3 class="text-xl md:text-3xl">وبلاگ</h3>
+                        <img src="{{ asset('assets/images/search/book-icon.svg') }}" alt="results" class="w-5 h-5 md:w-6 md:h-6">
+                        <h3 class="text-xl md:text-3xl">نتایج جستجو</h3>
                     </div>
 
-                    <!-- Desktop Grid -->
-                    <div
-                        class="hidden md:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 border-b border-gray-300 pb-10">
-                        <!-- Category 1 -->
-                        <div class="bg-gradient-to-b from-white to-[#FFAFEE]/40 rounded-xl border border-gray-100 p-5 category-card"
-                            data-category="test">
-                            <div class="flex flex-col items-center h-full gap-6 py-6">
-                                <div
-                                    class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#C06EF3] bg-[#FFAFEE1A]">
-                                    <img src="{{ asset('assets/images/search/Breastfeeding.svg') }}" alt="" class="w-20 h-20">
-                                </div>
-                                <div class="flex items-center">
-                                    <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                </div>
-                                <h3 class="text-xl font-normal">تست‌های رشد و کودک</h3>
-                                <button
-                                    class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                    مشاهده
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Category 2 -->
-                        <div class="bg-gradient-to-b from-white to-[#F6FFA3]/40 rounded-xl border border-gray-100 p-5 category-card"
-                            data-category="test">
-                            <div class="flex flex-col items-center h-full gap-6 py-6">
-                                <div
-                                    class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#CED900] bg-[#F8FF6B26]">
-                                    <img src="{{ asset('assets/images/search/Brain.svg') }}" alt="" class="w-20 h-20">
-                                </div>
-                                <div class="flex items-center">
-                                    <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                </div>
-                                <h3 class="text-xl font-normal">تست های هوش و حافظه</h3>
-                                <button
-                                    class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                    مشاهده
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Category 3 -->
-                        <div class="bg-gradient-to-b from-white to-[#F6E2C8]/40 rounded-xl border border-gray-100 p-5 category-card"
-                            data-category="test">
-                            <div class="flex flex-col items-center h-full gap-6 py-6">
-                                <div
-                                    class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#997C70] bg-[#997C701A]">
-                                    <img src="{{ asset('assets/images/search/Job.svg') }}" alt="" class="w-20 h-20">
-                                </div>
-                                <div class="flex items-center">
-                                    <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                </div>
-                                <h3 class="text-xl font-normal">تست های شغلی و سازمانی</h3>
-                                <button
-                                    class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                    مشاهده
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Category 4 -->
-                        <div class="bg-gradient-to-b from-white to-[#BEF8FF]/40 rounded-xl border border-gray-100 p-5 category-card"
-                            data-category="test">
-                            <div class="flex flex-col items-center h-full gap-6 py-6">
-                                <div
-                                    class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#1B75E8] bg-[#1B75E826]">
-                                    <img src="{{ asset('assets/images/search/School.svg') }}" alt="" class="w-20 h-20">
-                                </div>
-                                <div class="flex items-center">
-                                    <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                    <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star" class="w-6 h-6">
-                                </div>
-                                <h3 class="text-xl font-normal">تست‌های تحصیلی</h3>
-                                <button
-                                    class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                    مشاهده
-                                </button>
-                            </div>
-                        </div>
+                    <!-- Results Container -->
+                    <div id="results-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Results will be inserted here -->
                     </div>
 
-                    <!-- Mobile Slider -->
-                    <div class="md:hidden relative px-20">
-                        <!-- Swiper Container -->
-                        <div class="swiper blogSwiper">
-                            <!-- Swiper Wrapper -->
-                            <div class="swiper-wrapper pb-3">
-                                <!-- Slide 1 -->
-                                <div class="swiper-slide">
-                                    <!-- Category 1 -->
-                                    <div class="bg-gradient-to-b from-white to-[#FFAFEE]/40 rounded-xl border border-[#FD74F4] p-5 category-card"
-                                        data-category="test">
-                                        <div class="flex flex-col items-center h-full gap-4 py-4">
-                                            <div
-                                                class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#C06EF3] bg-[#FFAFEE1A]">
-                                                <img src="{{ asset('assets/images/search/Breastfeeding.svg') }}" alt=""
-                                                    class="w-16 h-16">
-                                            </div>
-                                            <div class="flex items-center">
-                                                <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                            </div>
-                                            <h3 class="text-sm font-normal">تست‌های رشد و کودک</h3>
-                                            <button
-                                                class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                                مشاهده
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 2 -->
-                                <div class="swiper-slide">
-                                    <!-- Category 2 -->
-                                    <div class="bg-gradient-to-b from-white to-[#F6FFA3]/40 rounded-xl border border-[#CED900] p-5 category-card"
-                                        data-category="test">
-                                        <div class="flex flex-col items-center h-full gap-4 py-4">
-                                            <div
-                                                class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#CED900] bg-[#F8FF6B26]">
-                                                <img src="{{ asset('assets/images/search/Brain.svg') }}" alt=""
-                                                    class="w-16 h-16">
-                                            </div>
-                                            <div class="flex items-center">
-                                                <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                            </div>
-                                            <h3 class="text-sm font-normal">تست های هوش و حافظه</h3>
-                                            <button
-                                                class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                                مشاهده
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 3 -->
-                                <div class="swiper-slide">
-                                    <!-- Category 3 -->
-                                    <div class="bg-gradient-to-b from-white to-[#E8E8E8]/40 rounded-xl border border-[#997C70] p-5 category-card"
-                                        data-category="test">
-                                        <div class="flex flex-col items-center h-full gap-4 py-4">
-                                            <div
-                                                class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#997C70] bg-[#997C701A]">
-                                                <img src="{{ asset('assets/images/search/Job.svg') }}" alt="" class="w-16 h-16">
-                                            </div>
-                                            <div class="flex items-center">
-                                                <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                            </div>
-                                            <h3 class="text-sm font-normal">تست های شغلی و سازمانی</h3>
-                                            <button
-                                                class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                                مشاهده
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 4 -->
-                                <div class="swiper-slide">
-                                    <!-- Category 4 -->
-                                    <div class="bg-gradient-to-b from-white to-[#BEF8FF]/40 rounded-xl border border-[#8DFFFD] p-5 category-card"
-                                        data-category="test">
-                                        <div class="flex flex-col items-center h-full gap-4 py-4">
-                                            <div
-                                                class="flex items-center justify-center w-fit rounded-full p-2 border-2 border-dotted border-[#1B75E8] bg-[#1B75E826]">
-                                                <img src="{{ asset('assets/images/search/School.svg') }}" alt=""
-                                                    class="w-16 h-16">
-                                            </div>
-                                            <div class="flex items-center">
-                                                <img src="{{ asset('assets/images/star-empty.svg') }}" alt="Empty Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                                <img src="{{ asset('assets/images/star-fill.svg') }}" alt="Fill Star"
-                                                    class="w-4 h-4">
-                                            </div>
-                                            <h3 class="text-sm font-normal">تست‌های تحصیلی</h3>
-                                            <button
-                                                class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
-                                                مشاهده
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Pagination -->
-                            <div class="swiper-pagination !relative !bottom-0"></div>
-                        </div>
-
-                        <!-- Navigation Buttons -->
-                        <button id="blog-slider-prev"
-                            class="absolute right-4 top-1/2 -translate-y-1/2 transform z-10 group">
-                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M17.5 3.64583C9.84856 3.64583 3.64583 9.84856 3.64583 17.5C3.64583 25.1514 9.84856 31.3542 17.5 31.3542C25.1514 31.3542 31.3542 25.1514 31.3542 17.5C31.3542 9.84856 25.1514 3.64583 17.5 3.64583ZM2.1875 17.5C2.1875 9.04314 9.04314 2.1875 17.5 2.1875C25.9569 2.1875 32.8125 9.04314 32.8125 17.5C32.8125 25.9569 25.9569 32.8125 17.5 32.8125C9.04314 32.8125 2.1875 25.9569 2.1875 17.5Z"
-                                    fill="black" class="group-hover:fill-primary transition-colors" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.5208 18.2292H8.75V16.7709H25.5208V18.2292Z" fill="black"
-                                    class="group-hover:fill-primary transition-colors" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M24.489 17.5L19.9004 12.9114L20.9316 11.8802L26.0358 16.9844C26.3205 17.2692 26.3205 17.7309 26.0358 18.0156L20.9316 23.1198L19.9004 22.0886L24.489 17.5Z"
-                                    fill="black" class="group-hover:fill-primary transition-colors" />
-                            </svg>
-                        </button>
-                        <button id="blog-slider-next"
-                            class="rotate-180 absolute left-4 top-1/2 -translate-y-1/2 transform z-10 group">
-                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M17.5 3.64583C9.84856 3.64583 3.64583 9.84856 3.64583 17.5C3.64583 25.1514 9.84856 31.3542 17.5 31.3542C25.1514 31.3542 31.3542 25.1514 31.3542 17.5C31.3542 9.84856 25.1514 3.64583 17.5 3.64583ZM2.1875 17.5C2.1875 9.04314 9.04314 2.1875 17.5 2.1875C25.9569 2.1875 32.8125 9.04314 32.8125 17.5C32.8125 25.9569 25.9569 32.8125 17.5 32.8125C9.04314 32.8125 2.1875 25.9569 2.1875 17.5Z"
-                                    fill="black" class="group-hover:fill-primary transition-colors" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.5208 18.2292H8.75V16.7709H25.5208V18.2292Z" fill="black"
-                                    class="group-hover:fill-primary transition-colors" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M24.489 17.5L19.9004 12.9114L20.9316 11.8802L26.0358 16.9844C26.3205 17.2692 26.3205 17.7309 26.0358 18.0156L20.9316 23.1198L19.9004 22.0886L24.489 17.5Z"
-                                    fill="black" class="group-hover:fill-primary transition-colors" />
-                            </svg>
-                        </button>
+                    <!-- No Results Message -->
+                    <div id="no-results" class="hidden text-center py-12">
+                        <p class="text-gray-500 text-lg">نتیجه‌ای یافت نشد</p>
                     </div>
                 </div>
             </div>
@@ -294,6 +45,67 @@
 @endsection
 
 @push('scripts')
+    <!-- Blog Search Script -->
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const resultsContainer = document.getElementById('results-container');
+        const noResults = document.getElementById('no-results');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            const query = this.value.trim();
+
+            if (query.length < 2) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            searchTimeout = setTimeout(() => {
+                performSearch(query);
+            }, 300);
+        });
+
+        function performSearch(query) {
+            fetch(`/api/search/blogs?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        displayResults(data.data);
+                        searchResults.classList.remove('hidden');
+                        noResults.classList.add('hidden');
+                    } else {
+                        resultsContainer.innerHTML = '';
+                        noResults.classList.remove('hidden');
+                        searchResults.classList.remove('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error('Search error:', error);
+                    noResults.classList.remove('hidden');
+                    searchResults.classList.remove('hidden');
+                });
+        }
+
+        function displayResults(blogs) {
+            resultsContainer.innerHTML = blogs.map(blog => `
+                <a href="/blog/${blog.slug}" class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                    ${blog.image ? `<div class="relative h-40 overflow-hidden bg-gray-200">
+                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover">
+                    </div>` : '<div class="relative h-40 bg-gray-200"></div>'}
+                    <div class="p-4 flex flex-col gap-3">
+                        <h4 class="font-semibold text-base line-clamp-2 text-gray-800">${blog.title}</h4>
+                        <p class="text-sm text-gray-600 line-clamp-2">${blog.summary || blog.description}</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500 mt-auto">
+                            <span>${blog.writer_name}</span>
+                            <span>${blog.read_duration} دقیقه</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+    </script>
     <!-- Test Swiper -->
     <script>
         // Initialize Swiper
