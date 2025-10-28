@@ -35,7 +35,7 @@
                         <div class="flex items-center gap-2 text-text-gray text-sm">
                             <span>{{ $blogPost->writer_name }}</span>
                             <span>|</span>
-                            <span>{{ $blogPost->created_at }}</span>
+                            <span>{{ $blogPost->jalali_created_at }}</span>
                             <span>|</span>
                             <span>{{ $blogPost->read_duration }} دقیقه</span>
                         </div>
@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="flex items-center gap-1 text-xs text-text-gray">
                                         <img src="{{ asset('assets/images/article/clock-icon.svg') }}" alt="Clock" class="w-4 h-4">
-                                        <span>{{ $featuredPost->created_at->diffForHumans() }}</span>
+                                        <span>{{ $featuredPost->jalali_created_at }}</span>
                                     </div>
                                 </div>
                                 <h4 class="text-lg text-secondary">{{ $featuredPost->title }}</h4>
