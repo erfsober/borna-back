@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Contact;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $uncheckedContactsCount = Contact::query()->where('checked', false)->count();
             $view->with('uncheckedContactsCount', $uncheckedContactsCount);
         });
+
+        Schema::defaultStringLength(191);
     }
 }
