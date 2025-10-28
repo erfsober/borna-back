@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -147,8 +148,7 @@ class AuthController extends Controller
      */
     public function redirectToGoogle(): RedirectResponse
     {
-        // TODO: Implement Google OAuth
-        return back()->with('info', 'ورود با گوگل به زودی فعال خواهد شد');
+        return Socialite::driver('google')->redirect();
     }
 
     /**
@@ -156,8 +156,31 @@ class AuthController extends Controller
      */
     public function handleGoogleCallback(): RedirectResponse
     {
-        // TODO: Implement Google OAuth callback
-        return redirect('/');
+        try {
+            $googleUser = Socialite::driver('google')->user();
+
+            $user = User::updateOrCreate(
+                ['google_id' => $googleUser->id],
+                [
+                    'name' => $googleUser->name,
+                    'email' => $googleUser->email,
+                    'google_token' => $googleUser->token,
+                    'google_refresh_token' => $googleUser->refreshToken,
+                    'avatar' => $googleUser->avatar,
+                    'email_verified_at' => now(),
+                ]
+            );
+
+            Auth::login($user, true);
+
+            return redirect()->route('home')
+                ->with('success', 'با موفقیت وارد شدید');
+        } catch (\Exception $e) {
+            Log::error('Google OAuth error: '.$e->getMessage());
+
+            return redirect()->route('auth.login')
+                ->with('error', 'خطا در ورود با گوگل. لطفا دوباره تلاش کنید');
+        }
     }
 
     /**

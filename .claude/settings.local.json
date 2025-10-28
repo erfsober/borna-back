@@ -40,7 +40,11 @@
       "Bash(php artisan serve:*)",
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Read(//c/Development/Frest_Package_v4.1.0.1/1. Theme/frest/html/vertical-menu-template/**)"
+      "Read(//c/Development/Frest_Package_v4.1.0.1/1. Theme/frest/html/vertical-menu-template/**)",
+      "mcp__ide__getDiagnostics",
+      "WebSearch",
+      "WebFetch(domain:techsolutionstuff.com)",
+      "Bash(composer require:*)"
     ],
     "deny": [],
     "ask": [],
