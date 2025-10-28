@@ -26,7 +26,7 @@
                     <!-- Article Content -->
                     <div class="prose max-w-none space-y-4">
                         <div class="text-sm md:text-base text-secondary text-justify leading-loose">
-                            {!! nl2br(e($blogPost->description)) !!}
+                            {!! $blogPost->description !!}
                         </div>
                     </div>
 
