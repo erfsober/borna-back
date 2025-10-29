@@ -382,6 +382,7 @@
                     <img src="{{ asset('assets/images/facebook-icon.svg') }}" alt="Facebook" class="w-5 h-5">
                 </a>
                 @endif
+                    <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666221&Code=n5ULsbQ7t0ljhK8fG7JVxM4Yh5FbWfp7'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666221&Code=n5ULsbQ7t0ljhK8fG7JVxM4Yh5FbWfp7' alt='' style='cursor:pointer' code='n5ULsbQ7t0ljhK8fG7JVxM4Yh5FbWfp7'></a>
             </div>
 
             <!-- Separator -->
