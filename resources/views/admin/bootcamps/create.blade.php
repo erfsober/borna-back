@@ -78,18 +78,7 @@
           <div class="form-text">حداکثر حجم فایل: 50 مگابایت - فرمت‌های مجاز: mp4, mov, avi, wmv</div>
         </div>
 
-        <div class="mb-3">
-          <label for="video_thumbnail" class="form-label">تصویر پیش‌نمایش ویدیو</label>
-          <input type="file" class="form-control @error('video_thumbnail') is-invalid @enderror" id="video_thumbnail" name="video_thumbnail" accept="image/*">
-          @error('video_thumbnail')
-          <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
-          <div class="form-text">حداکثر حجم فایل: 2 مگابایت</div>
 
-          <div id="video-thumbnail-preview-container" class="mt-3">
-            <img id="video-thumbnail-preview" src="#" alt="Video Thumbnail Preview" class="img-thumbnail" style="max-width: 300px; display: none;">
-          </div>
-        </div>
 
         <div class="mt-4">
           <button type="submit" class="btn btn-primary">
