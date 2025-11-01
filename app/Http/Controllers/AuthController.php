@@ -42,7 +42,8 @@ class AuthController extends Controller
             session(['auth_phone' => $phone]);
 
             // TODO: Send OTP via SMS service
-            Sms::pattern($phone,'838677', ['code' => $otp])->send();
+
+            Sms::pattern((string)$phone,'838677', ['code' => (string)$otp->code])->send();
 
             // For development, log the OTP code
             Log::info("OTP code for {$phone}: {$otp->code}");
@@ -137,7 +138,7 @@ class AuthController extends Controller
             // Generate new OTP
             $otp = Otp::generate($phone);
 
-            Sms::pattern($phone,'838677', ['code' => $otp])->send();
+            Sms::pattern((string)$phone,'838677', ['code' => (string)$otp->code])->send();
 
             return back()
                 ->with('success', 'کد تایید مجددا ارسال شد');
