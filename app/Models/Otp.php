@@ -54,7 +54,7 @@ class Otp extends BaseModel
             ->update(['verified' => true]);
 
         // Generate 6-digit code
-        $code = 111111;
+        $code = rand(100000, 999999);
 
         return self::create([
             'phone' => $phone,
