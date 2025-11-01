@@ -4,8 +4,74 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f306f517b43f355a5f75653192ceb3c",
+    "content-hash": "209104b8224a8a7463bb21762cc9c4f0",
     "packages": [
+        {
+            "name": "amyavari/iran-sms-laravel",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amyavari/iran-sms-laravel.git",
+                "reference": "6d5a09c646b0c1610193e21ae3aebcefba29c358"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amyavari/iran-sms-laravel/zipball/6d5a09c646b0c1610193e21ae3aebcefba29c358",
+                "reference": "6d5a09c646b0c1610193e21ae3aebcefba29c358",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^11.35.1 || ^12.0.1",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.92"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.4",
+                "laravel/pint": "^1.22",
+                "mockery/mockery": "^1.6",
+                "nunomaduro/mock-final-classes": "^1.2",
+                "orchestra/testbench": "^10.4",
+                "phpunit/phpunit": "^11.5",
+                "rector/rector": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AliYavari\\IranSms\\IranSmsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AliYavari\\IranSms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ali Mohammad Yavari",
+                    "email": "ali.m.yavari70@gmail.com"
+                }
+            ],
+            "description": "A simple and convenient way to send SMS through Iranian SMS providers",
+            "homepage": "https://github.com/amyavari/iran-sms-laravel",
+            "keywords": [
+                "amyavari",
+                "iran",
+                "iran-sms-laravel",
+                "laravel",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/amyavari/iran-sms-laravel/issues",
+                "source": "https://github.com/amyavari/iran-sms-laravel/tree/v1.2.0"
+            },
+            "time": "2025-10-13T09:29:25+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.14.0",

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use AliYavari\IranSms\Facades\Sms;
 use App\Http\Requests\SendOtpRequest;
 use App\Http\Requests\VerifyOtpRequest;
 use App\Models\Otp;
@@ -41,6 +42,8 @@ class AuthController extends Controller
             session(['auth_phone' => $phone]);
 
             // TODO: Send OTP via SMS service
+            Sms::pattern($phone,'838677', ['code' => $otp])->send();
+
             // For development, log the OTP code
             Log::info("OTP code for {$phone}: {$otp->code}");
 
@@ -133,6 +136,8 @@ class AuthController extends Controller
         try {
             // Generate new OTP
             $otp = Otp::generate($phone);
+
+            Sms::pattern($phone,'838677', ['code' => $otp])->send();
 
             return back()
                 ->with('success', 'کد تایید مجددا ارسال شد');
