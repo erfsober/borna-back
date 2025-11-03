@@ -31,8 +31,8 @@
 
     {{-- Twitter Card Meta Tags --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('twitter_title', @yield('og_title', @yield('meta_title', @yield('title', 'روانشناسی برنا | صفحه اصلی'))))">
-    <meta name="twitter:description" content="@yield('twitter_description', @yield('og_description', @yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')))">
+    <meta name="twitter:title" content="@yield('twitter_title', 'روانشناسی برنا | صفحه اصلی')">
+    <meta name="twitter:description" content="@yield('twitter_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
     @hasSection('twitter_image')
     <meta name="twitter:image" content="@yield('twitter_image')">
     @else
