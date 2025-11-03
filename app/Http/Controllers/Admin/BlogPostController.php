@@ -41,6 +41,14 @@ class BlogPostController extends Controller
             'read_duration' => $validated['read_duration'],
             'category_id' => $validated['category_id'] ?? null,
             'is_popular' => $request->boolean('is_popular'),
+            'meta_title' => $validated['meta_title'] ?? null,
+            'meta_description' => $validated['meta_description'] ?? null,
+            'og_title' => $validated['og_title'] ?? null,
+            'og_description' => $validated['og_description'] ?? null,
+            'og_image' => $validated['og_image'] ?? null,
+            'twitter_title' => $validated['twitter_title'] ?? null,
+            'twitter_description' => $validated['twitter_description'] ?? null,
+            'twitter_image' => $validated['twitter_image'] ?? null,
         ]);
 
         if ($request->hasFile('image')) {
@@ -71,6 +79,14 @@ class BlogPostController extends Controller
             'read_duration' => $validated['read_duration'],
             'category_id' => $validated['category_id'] ?? null,
             'is_popular' => $request->boolean('is_popular'),
+            'meta_title' => $validated['meta_title'] ?? null,
+            'meta_description' => $validated['meta_description'] ?? null,
+            'og_title' => $validated['og_title'] ?? null,
+            'og_description' => $validated['og_description'] ?? null,
+            'og_image' => $validated['og_image'] ?? null,
+            'twitter_title' => $validated['twitter_title'] ?? null,
+            'twitter_description' => $validated['twitter_description'] ?? null,
+            'twitter_image' => $validated['twitter_image'] ?? null,
         ]);
 
         if ($request->hasFile('image')) {

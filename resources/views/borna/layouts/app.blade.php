@@ -4,13 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
-    <meta name="keywords" content="@yield('keywords', 'روانشناسی، برنا')">
-    <meta name="author" content="Erfan Heshmati">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {{-- SEO Meta Tags --}}
+    <title>@yield('meta_title', @yield('title', 'روانشناسی برنا | صفحه اصلی'))</title>
+    <meta name="description" content="@yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
+    <meta name="keywords" content="@yield('keywords', 'روانشناسی، برنا، مشاوره، سلامت روان')">
+    <meta name="author" content="Erfan Heshmati">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ url()->current() }}">
-    <title>@yield('title', 'روانشناسی برنا | صفحه اصلی')</title>
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+
+    {{-- Open Graph Meta Tags --}}
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('og_title', @yield('meta_title', @yield('title', 'روانشناسی برنا | صفحه اصلی')))">
+    <meta property="og:description" content="@yield('og_description', @yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره'))">
+    <meta property="og:url" content="@yield('og_url', url()->current())">
+    <meta property="og:site_name" content="روانشناسی برنا">
+    <meta property="og:locale" content="fa_IR">
+    @hasSection('og_image')
+    <meta property="og:image" content="@yield('og_image')">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    @else
+    <meta property="og:image" content="{{ asset('assets/images/borna-logo.svg') }}">
+    @endif
+
+    {{-- Twitter Card Meta Tags --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter_title', @yield('og_title', @yield('meta_title', @yield('title', 'روانشناسی برنا | صفحه اصلی'))))">
+    <meta name="twitter:description" content="@yield('twitter_description', @yield('og_description', @yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')))">
+    @hasSection('twitter_image')
+    <meta name="twitter:image" content="@yield('twitter_image')">
+    @else
+    <meta name="twitter:image" content="{{ asset('assets/images/borna-logo.svg') }}">
+    @endif
+
+    {{-- JSON-LD Structured Data --}}
+    @stack('structured_data')
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">

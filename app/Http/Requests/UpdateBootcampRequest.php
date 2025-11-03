@@ -29,6 +29,16 @@ class UpdateBootcampRequest extends FormRequest
             'gallery_images.*' => ['nullable', 'image', 'max:2048'],
             'video' => ['nullable', 'mimes:mp4,mov,avi,wmv', 'max:51200'],
             'video_thumbnail' => ['nullable', 'image', 'max:2048'],
+
+            // SEO Fields
+            'meta_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string'],
+            'og_title' => ['nullable', 'string', 'max:255'],
+            'og_description' => ['nullable', 'string'],
+            'og_image' => ['nullable', 'url', 'max:255'],
+            'twitter_title' => ['nullable', 'string', 'max:255'],
+            'twitter_description' => ['nullable', 'string'],
+            'twitter_image' => ['nullable', 'url', 'max:255'],
         ];
     }
 
