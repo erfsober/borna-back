@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     {{-- SEO Meta Tags --}}
-    <title>@yield('meta_title', @yield('title', 'روانشناسی برنا | صفحه اصلی'))</title>
+    <title>@yield('meta_title','روانشناسی برنا | صفحه اصلی')</title>
     <meta name="description" content="@yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
     <meta name="keywords" content="@yield('keywords', 'روانشناسی، برنا، مشاوره، سلامت روان')">
     <meta name="author" content="Erfan Heshmati">
@@ -16,8 +16,8 @@
 
     {{-- Open Graph Meta Tags --}}
     <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:title" content="@yield('og_title', @yield('meta_title', @yield('title', 'روانشناسی برنا | صفحه اصلی')))">
-    <meta property="og:description" content="@yield('og_description', @yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره'))">
+    <meta property="og:title" content="@yield('og_title', 'روانشناسی برنا | صفحه اصلی')">
+    <meta property="og:description" content="@yield('og_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
     <meta property="og:url" content="@yield('og_url', url()->current())">
     <meta property="og:site_name" content="روانشناسی برنا">
     <meta property="og:locale" content="fa_IR">
