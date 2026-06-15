@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('telegram')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('bale')->nullable();
             $table->timestamps();
         });
     }

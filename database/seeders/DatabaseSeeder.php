@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BootcampItemSeeder::class);
         $this->call(BlogPostSeeder::class);
         $this->call(FooterSettingSeeder::class);
+        $this->call(ServiceSeeder::class);
     }
 }

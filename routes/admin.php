@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BootcampItemController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactUsSettingController;
 use App\Http\Controllers\Admin\FooterSettingController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,4 +84,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/bootcamp-items/{bootcampItem}/edit', [BootcampItemController::class, 'edit'])->name('admin.bootcamp-items.edit');
     Route::put('/bootcamp-items/{bootcampItem}', [BootcampItemController::class, 'update'])->name('admin.bootcamp-items.update');
     Route::delete('/bootcamp-items/{bootcampItem}', [BootcampItemController::class, 'destroy'])->name('admin.bootcamp-items.destroy');
+
+    // Services
+    Route::resource('services', ServiceController::class)->except(['show'])->names('admin.services');
 });

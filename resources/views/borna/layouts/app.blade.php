@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     {{-- SEO Meta Tags --}}
-    <title>@yield('meta_title','روانشناسی برنا | صفحه اصلی')</title>
+    <title>@yield('title','روان برنا | برنا توسعه نیک‌اندیش')</title>
     <meta name="description" content="@yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
     <meta name="keywords" content="@yield('keywords', 'روانشناسی، برنا، مشاوره، سلامت روان')">
     <meta name="author" content="Erfan Heshmati">
@@ -78,34 +78,10 @@
                     <a href="{{ route('home') }}" class="text-secondary hover:text-primary transition-colors py-2 {{ request()->routeIs('home') ? 'text-primary font-medium border-b-2 border-primary' : '' }}">
                         صفحه اصلی
                     </a>
-                    <!-- Dropdown for آخرین تست‌ها -->
+                    <!-- Dropdown for آزمون های پیشنهادی -->
                     <div class="relative group">
                         <button class="text-secondary hover:text-primary transition-colors py-2 flex items-center">
-                            آخرین تست‌ها
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 mr-1 transition-transform duration-200 transform group-hover:rotate-180"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <div
-                            class="absolute hidden group-hover:block bg-gray-50 shadow-lg rounded-lg p-2 min-w-[150px] z-50">
-                            <a href="#"
-                                class="block px-4 py-2 text-secondary hover:text-primary hover:bg-gray-50 rounded">تست
-                                1</a>
-                            <a href="#"
-                                class="block px-4 py-2 text-secondary hover:text-primary hover:bg-gray-50 rounded">تست
-                                2</a>
-                            <a href="#"
-                                class="block px-4 py-2 text-secondary hover:text-primary hover:bg-gray-50 rounded">تست
-                                3</a>
-                        </div>
-                    </div>
-                    <!-- Dropdown for تست‌های برتر -->
-                    <div class="relative group">
-                        <button class="text-secondary hover:text-primary transition-colors py-2 flex items-center">
-                            تست‌های برتر
+                            آزمون های پیشنهادی
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-4 w-4 mr-1 transition-transform duration-200 transform group-hover:rotate-180"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -177,22 +153,6 @@
                     صفحه اصلی
                 </a>
                 <div class="border my-2"></div>
-                <!-- Dropdown for آخرین تست‌ها -->
-                <div class="mobile-dropdown">
-                    <button
-                        class="w-full py-2 text-secondary hover:text-primary text-center flex items-center justify-center mobile-dropdown-button">
-                        آخرین تست‌ها
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="mobile-dropdown-content hidden py-2">
-                        <a href="#" class="block py-2 text-secondary hover:text-primary text-center">تست 1</a>
-                        <a href="#" class="block py-2 text-secondary hover:text-primary text-center">تست 2</a>
-                        <a href="#" class="block py-2 text-secondary hover:text-primary text-center">تست 3</a>
-                    </div>
-                </div>
                 <div class="border my-2"></div>
                 <!-- Dropdown for تست‌های برتر -->
                 <div class="mobile-dropdown">
@@ -243,22 +203,22 @@
                     </p>
                     <!-- Social Media -->
                     <div class="hidden lg:flex items-center justify-center gap-6">
-                        @if($footerSetting->instagram)
-                        <a href="{{ $footerSetting->instagram }}" target="_blank" rel="noopener noreferrer"
+                        @if($footerSetting->aparat)
+                        <a href="{{ $footerSetting->aparat }}" target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 hover:border-primary transition-colors">
-                            <img src="{{ asset('assets/images/linkedin-icon.svg') }}" alt="Instagram" class="w-5 h-5">
+                            <img src="{{ asset('assets/images/aparat-icon.svg') }}" alt="aparat" class="w-5 h-5">
                         </a>
                         @endif
-                        @if($footerSetting->twitter)
-                        <a href="{{ $footerSetting->twitter }}" target="_blank" rel="noopener noreferrer"
+                        @if($footerSetting->telegram)
+                        <a href="{{ $footerSetting->telegram }}" target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 hover:border-primary transition-colors">
-                            <img src="{{ asset('assets/images/twitter-icon.svg') }}" alt="Twitter" class="w-5 h-5">
+                            <img src="{{ asset('assets/images/telegram-icon.svg') }}" alt="telegram" class="w-5 h-5">
                         </a>
                         @endif
-                        @if($footerSetting->facebook)
-                        <a href="{{ $footerSetting->facebook }}" target="_blank" rel="noopener noreferrer"
+                        @if($footerSetting->bale)
+                        <a href="{{ $footerSetting->bale }}" target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 hover:border-primary transition-colors">
-                            <img src="{{ asset('assets/images/facebook-icon.svg') }}" alt="Facebook" class="w-5 h-5">
+                            <img src="{{ asset('assets/images/bale-icon.svg') }}" alt="bale" class="w-5 h-5">
                         </a>
                         @endif
                             <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666221&Code=n5ULsbQ7t0ljhK8fG7JVxM4Yh5FbWfp7'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666221&Code=n5ULsbQ7t0ljhK8fG7JVxM4Yh5FbWfp7' alt='' style='cursor:pointer' code='n5ULsbQ7t0ljhK8fG7JVxM4Yh5FbWfp7'></a>

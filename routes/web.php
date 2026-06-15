@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Api\SubscriberController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
@@ -53,3 +54,6 @@ Route::get('/terms', function () {
 
 // Subscriber API Routes
 Route::post('subscribers', [SubscriberController::class, 'store']);
+
+// Services
+Route::get('services' , [ServiceController::class, 'show'])->name('services.show');

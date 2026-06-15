@@ -21,7 +21,7 @@ class BlogController extends Controller
 
         $categories = \App\Models\BlogPostCategory::query()
             ->withCount('blogPosts')
-            ->orderBy('title')
+            ->orderByDesc('id')
             ->get();
 
         $popularPosts = BlogPost::query()

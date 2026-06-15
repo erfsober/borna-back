@@ -121,6 +121,14 @@
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
           </div>
+
+          <div class="col-md-4 mb-3">
+              <label for="bale" class="form-label">بله</label>
+              <input type="text" class="form-control @error('bale') is-invalid @enderror" id="bale" name="bale" value="{{ old('bale', $setting->bale ?? '') }}" placeholder="@username">
+              @error('bale')
+              <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+          </div>
         </div>
 
         <div class="mt-4">

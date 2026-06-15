@@ -15,11 +15,18 @@
         <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-8">
             <h1 class="text-4xl md:text-5xl lg:text-7xl font-medium text-black">روانشناسی برنا</h1>
             <div class="flex items-center">
-                <div class="w-1/2 flex flex-col items-center md:items-start gap-4">
-                    <p class="text-xl lg:text-4xl text-gray-700">خودت رو بشناس!</p>
-                    <div class="flex items-center gap-2 md:gap-4">
-                        <img src="{{ asset('assets/images/home/check-icon.svg') }}" alt="" class="w-5 lg:w-7 h-5 lg:h-7">
-                        <span class="text-xl lg:text-4xl text-gray-700">بزن بریم</span>
+                <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-3 md:gap-5">
+                    <div class="relative">
+                        <p class="text-2xl md:text-4xl lg:text-5xl text-gray-800 font-light leading-tight">
+                            توانا بود هرکه دانا بود،
+                        </p>
+                        <div class="absolute -bottom-2 right-0 w-16 h-0.5 bg-amber-400 rounded-full"></div>
+                    </div>
+                    <div class="flex items-center gap-3 md:gap-5 mt-2">
+                        <div class="w-8 h-0.5 bg-gray-300"></div>
+                        <span class="text-xl md:text-2xl lg:text-4xl text-black italic font-light">
+                            ز دانش دل پیر برنا بود
+                        </span>
                     </div>
                 </div>
                 <div class="w-1/2 flex items-center justify-center">
@@ -38,8 +45,8 @@
             <div class="flex items-center gap-2 md:gap-3">
                 <img src="{{ asset('assets/images/home/grid-icon.svg') }}" alt="" class="w-6 h-6 md:w-8 md:h-8">
                 <h2 class="text-xl md:text-3xl font-medium text-black">
-                    دسته‌بندی‌
-                    <span class="text-primary">تست‌ها</span>
+                    خدمات
+                    <span class="text-primary">برنا</span>
                 </h2>
             </div>
             <a href="#" class="flex items-center gap-2 text-[#3C3D45] group">
@@ -62,94 +69,34 @@
             <div class="swiper categorySwiper">
                 <!-- Swiper Wrapper -->
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <!-- Education Card -->
-                        <a href="#"
-                            class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] hover:border-primary-dark transition-colors">
-                            <div class="w-full h-56">
-                                <img src="{{ asset('assets/images/home/education.png') }}" alt="تحصیلی"
-                                    class="w-full h-full object-cover">
+                    @forelse($services as $service)
+                        <!-- Slide {{ $loop->iteration }} -->
+                        <div class="swiper-slide">
+                            <!-- Service Card -->
+                            <a href="{{ route('services.show', $service->id) }}"
+                               class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] hover:border-primary-dark transition-colors h-full">
+                                <div class="w-full h-56">
+                                    <img src="{{ $service->getFirstMediaUrl('service_image') ?: asset('assets/images/home/default-service.png') }}"
+                                         alt="{{ $service->title }}"
+                                         class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col items-center gap-4 p-6 flex-grow">
+                                    <p class="text-gray-600 text-sm leading-7 text-center">
+                                        {{ Str::limit($service->description, 100) }}
+                                    </p>
+                                    <span class="flex items-center justify-center bg-[#F1FFED] text-[#404040] px-8 py-3 rounded-lg">
+                                {{ $service->title }}
+                            </span>
+                                </div>
+                            </a>
+                        </div>
+                    @empty
+                        <div class="swiper-slide">
+                            <div class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] p-6 text-center">
+                                <p class="text-gray-500">هیچ سرویسی یافت نشد</p>
                             </div>
-                            <div class="flex flex-col items-center gap-4 p-6">
-                                <p class="text-gray-600 text-sm leading-7">
-                                    با توصیه و راهکارهایی که در اختیارت می‌ذاریم فضای خونه رو برای اعضای خونوادت
-                                    گرم‌تر
-                                    کن!
-                                </p>
-                                <span
-                                    class="flex items-center justify-center bg-[#F1FFED] text-[#404040] px-8 py-3 rounded-lg">
-                                    تحصیلی
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <!-- Family Card -->
-                        <a href="#"
-                            class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] hover:border-primary-dark transition-colors">
-                            <div class="w-full h-56">
-                                <img src="{{ asset('assets/images/home/family.png') }}" alt="خانواده"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex flex-col items-center gap-4 p-6">
-                                <p class="text-gray-600 text-sm leading-7">
-                                    با توصیه و راهکارهایی که در اختیارت می‌ذاریم فضای خونه رو برای اعضای خونوادت
-                                    گرم‌تر
-                                    کن!
-                                </p>
-                                <span
-                                    class="flex items-center justify-center bg-[#FFE8FA] text-[#404040] px-8 py-3 rounded-lg">
-                                    خانواده
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <!-- Job Card -->
-                        <a href="#"
-                            class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] hover:border-primary-dark transition-colors">
-                            <div class="w-full h-56">
-                                <img src="{{ asset('assets/images/home/job.png') }}" alt="شغل"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex flex-col items-center gap-4 p-6">
-                                <p class="text-gray-600 text-sm leading-7">
-                                    با توصیه و راهکارهایی که در اختیارت می‌ذاریم فضای خونه رو برای اعضای خونوادت
-                                    گرم‌تر
-                                    کن!
-                                </p>
-                                <span
-                                    class="flex items-center justify-center bg-[#EAD6B799] text-[#404040] px-8 py-3 rounded-lg">
-                                    شغل
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide">
-                        <!-- Family Card -->
-                        <a href="#"
-                            class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] hover:border-primary-dark transition-colors">
-                            <div class="w-full h-56">
-                                <img src="{{ asset('assets/images/home/family.png') }}" alt="خانواده"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex flex-col items-center gap-4 p-6">
-                                <p class="text-gray-600 text-sm leading-7">
-                                    با توصیه و راهکارهایی که در اختیارت می‌ذاریم فضای خونه رو برای اعضای خونوادت
-                                    گرم‌تر
-                                    کن!
-                                </p>
-                                <span
-                                    class="flex items-center justify-center bg-[#FFE8FA] text-[#404040] px-8 py-3 rounded-lg">
-                                    خانواده
-                                </span>
-                            </div>
-                        </a>
-                    </div>
+                        </div>
+                    @endforelse
                 </div>
             </div>
 
@@ -157,10 +104,10 @@
             <div class="hidden md:flex items-center gap-2 absolute top-1 left-36">
                 <button id="category-slider-prev" class="rotate-180 group">
                     <svg width="30" height="29" viewBox="0 0 30 29" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.462476" y="0.3625" width="28.275" height="28.275" rx="5.4375"
-                            stroke="#85858B" stroke-width="0.725"
-                            class="group-hover:stroke-primary transition-colors" />
+                              stroke="#85858B" stroke-width="0.725"
+                              class="group-hover:stroke-primary transition-colors" />
                         <path
                             d="M13.4255 17.7963C13.3337 17.7963 13.2418 17.7625 13.1693 17.69L10.2355 14.7562C10.0953 14.616 10.0953 14.384 10.2355 14.2438L13.1693 11.31C13.3095 11.1698 13.5415 11.1698 13.6817 11.31C13.8218 11.4502 13.8218 11.6822 13.6817 11.8223L11.004 14.5L13.6817 17.1777C13.8218 17.3178 13.8218 17.5498 13.6817 17.69C13.614 17.7625 13.5173 17.7963 13.4255 17.7963Z"
                             fill="#3C3D45" class="group-hover:fill-primary transition-colors" />
@@ -171,10 +118,10 @@
                 </button>
                 <button id="category-slider-next" class="group">
                     <svg width="30" height="29" viewBox="0 0 30 29" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.462476" y="0.3625" width="28.275" height="28.275" rx="5.4375"
-                            stroke="#85858B" stroke-width="0.725"
-                            class="group-hover:stroke-primary transition-colors" />
+                              stroke="#85858B" stroke-width="0.725"
+                              class="group-hover:stroke-primary transition-colors" />
                         <path
                             d="M13.4255 17.7963C13.3337 17.7963 13.2418 17.7625 13.1693 17.69L10.2355 14.7562C10.0953 14.616 10.0953 14.384 10.2355 14.2438L13.1693 11.31C13.3095 11.1698 13.5415 11.1698 13.6817 11.31C13.8218 11.4502 13.8218 11.6822 13.6817 11.8223L11.004 14.5L13.6817 17.1777C13.8218 17.3178 13.8218 17.5498 13.6817 17.69C13.614 17.7625 13.5173 17.7963 13.4255 17.7963Z"
                             fill="#3C3D45" class="group-hover:fill-primary transition-colors" />
@@ -195,7 +142,7 @@
         <div class="flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
                 <img src="{{ asset('assets/images/home/paste-icon.svg') }}" alt="" class="w-6 h-6 md:w-8 md:h-8">
-                <h2 class="text-xl md:text-3xl font-medium text-black">آزمون‌های اخیر</h2>
+                <h2 class="text-xl md:text-3xl font-medium text-black">آزمون‌های پرکاربرد</h2>
             </div>
             <a href="#" class="flex items-center gap-2 text-[#3C3D45] group">
                 <span class="text-base md:text-lg group-hover:text-primary transition">مشاهده همه</span>
@@ -374,7 +321,7 @@
         <div class="flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
                 <img src="{{ asset('assets/images/home/copy-icon.svg') }}" alt="" class="w-6 h-6 md:w-8 md:h-8">
-                <h2 class="text-xl md:text-3xl font-medium text-black">مقالات</h2>
+                <h2 class="text-xl md:text-3xl font-medium text-black">بلاگ</h2>
             </div>
             <a href="{{ route('blog.index') }}" class="flex items-center gap-2 text-[#3C3D45] group">
                 <span class="text-base md:text-lg group-hover:text-primary transition">مشاهده همه</span>
@@ -404,7 +351,7 @@
                         <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">{{ $blogPost->summary }}</p>
                         <div class="flex flex-col gap-4">
                             <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
-                                <span>۱۴ شهریور</span>
+                                <span>{{ verta($blogPost->created_at)->format('j %B') }}</span>
                                 <div class="w-px h-4 bg-[#9D9EA2]"></div>
                                 <span>{{ $blogPost->read_duration }} دقیقه</span>
                             </div>

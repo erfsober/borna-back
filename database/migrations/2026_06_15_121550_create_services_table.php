@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('footer_settings', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->text('description')->nullable();
-            $table->string('aparat')->nullable();
-            $table->string('telegram')->nullable();
-            $table->string('bale')->nullable();
+            $table->string('title')->unique();
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('footer_settings');
+        Schema::dropIfExists('services');
     }
 };
