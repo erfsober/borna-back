@@ -21,9 +21,9 @@ class FooterSettingController extends Controller
     {
         $validated = $request->validate([
             'description' => 'required|string',
-            'instagram' => 'nullable|url',
-            'twitter' => 'nullable|url',
-            'facebook' => 'nullable|url',
+            'aparat' => 'nullable|url',
+            'telegram' => 'nullable|url',
+            'bale' => 'nullable|url',
         ]);
 
         FooterSetting::firstOrCreate([])->update($validated);

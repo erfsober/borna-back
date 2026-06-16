@@ -108,7 +108,105 @@
           @endif
         </div>
 
+        {{-- SEO Settings Section --}}
+        <div class="mb-4">
+          <div class="accordion" id="seoAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="seoHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#seoCollapse" aria-expanded="false" aria-controls="seoCollapse">
+                  <i class="bx bx-search-alt me-2"></i> تنظیمات SEO (بهینه‌سازی موتورهای جستجو)
+                </button>
+              </h2>
+              <div id="seoCollapse" class="accordion-collapse collapse" aria-labelledby="seoHeading" data-bs-parent="#seoAccordion">
+                <div class="accordion-body">
+                  <p class="text-muted small mb-3">این فیلدها اختیاری هستند. در صورت خالی بودن، از اطلاعات اصلی بوت‌کمپ استفاده می‌شود.</p>
 
+                  {{-- Basic SEO --}}
+                  <h6 class="mb-3">تنظیمات پایه</h6>
+                  <div class="mb-3">
+                    <label for="meta_title" class="form-label">عنوان متا (Meta Title)</label>
+                    <input type="text" class="form-control @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" value="{{ old('meta_title', $bootcamp->meta_title) }}" maxlength="60">
+                    @error('meta_title')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">حداکثر 60 کاراکتر - عنوانی که در نتایج جستجو نمایش داده می‌شود</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="meta_description" class="form-label">توضیحات متا (Meta Description)</label>
+                    <textarea class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" rows="3" maxlength="160">{{ old('meta_description', $bootcamp->meta_description) }}</textarea>
+                    @error('meta_description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">حداکثر 160 کاراکتر - توضیحی که در نتایج جستجو نمایش داده می‌شود</div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  {{-- Open Graph (Facebook, LinkedIn) --}}
+                  <h6 class="mb-3">تنظیمات Open Graph (فیسبوک، لینکدین)</h6>
+                  <div class="mb-3">
+                    <label for="og_title" class="form-label">عنوان OG</label>
+                    <input type="text" class="form-control @error('og_title') is-invalid @enderror" id="og_title" name="og_title" value="{{ old('og_title', $bootcamp->og_title) }}" maxlength="255">
+                    @error('og_title')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">عنوان برای اشتراک‌گذاری در شبکه‌های اجتماعی</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="og_description" class="form-label">توضیحات OG</label>
+                    <textarea class="form-control @error('og_description') is-invalid @enderror" id="og_description" name="og_description" rows="3">{{ old('og_description', $bootcamp->og_description) }}</textarea>
+                    @error('og_description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">توضیحات برای اشتراک‌گذاری در شبکه‌های اجتماعی</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="og_image" class="form-label">تصویر OG (URL)</label>
+                    <input type="url" class="form-control @error('og_image') is-invalid @enderror" id="og_image" name="og_image" value="{{ old('og_image', $bootcamp->og_image) }}" placeholder="https://example.com/image.jpg">
+                    @error('og_image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">URL تصویر برای نمایش در شبکه‌های اجتماعی (توصیه: 1200x630 پیکسل)</div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  {{-- Twitter Card --}}
+                  <h6 class="mb-3">تنظیمات Twitter Card</h6>
+                  <div class="mb-3">
+                    <label for="twitter_title" class="form-label">عنوان توییتر</label>
+                    <input type="text" class="form-control @error('twitter_title') is-invalid @enderror" id="twitter_title" name="twitter_title" value="{{ old('twitter_title', $bootcamp->twitter_title) }}" maxlength="255">
+                    @error('twitter_title')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">عنوان برای اشتراک‌گذاری در توییتر</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="twitter_description" class="form-label">توضیحات توییتر</label>
+                    <textarea class="form-control @error('twitter_description') is-invalid @enderror" id="twitter_description" name="twitter_description" rows="3">{{ old('twitter_description', $bootcamp->twitter_description) }}</textarea>
+                    @error('twitter_description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">توضیحات برای اشتراک‌گذاری در توییتر</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="twitter_image" class="form-label">تصویر توییتر (URL)</label>
+                    <input type="url" class="form-control @error('twitter_image') is-invalid @enderror" id="twitter_image" name="twitter_image" value="{{ old('twitter_image', $bootcamp->twitter_image) }}" placeholder="https://example.com/image.jpg">
+                    @error('twitter_image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <div class="form-text">URL تصویر برای نمایش در توییتر</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="mt-4">
           <button type="submit" class="btn btn-primary">

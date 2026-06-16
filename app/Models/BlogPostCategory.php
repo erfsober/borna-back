@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -9,6 +10,13 @@ class BlogPostCategory extends BaseModel
 {
     /** @use HasFactory<\Database\Factories\BlogPostCategoryFactory> */
     use HasFactory;
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('ordered', function (Builder $builder) {
+            $builder->orderBy('sort_order');
+        });
+    }
 
     public function blogPosts(): HasMany
     {

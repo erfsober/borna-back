@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BootcampItemController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactUsSettingController;
 use App\Http\Controllers\Admin\FooterSettingController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/blog-post-categories', [BlogPostCategoryController::class, 'index'])->name('admin.blog-post-categories.index');
     Route::get('/blog-post-categories/create', [BlogPostCategoryController::class, 'create'])->name('admin.blog-post-categories.create');
     Route::post('/blog-post-categories', [BlogPostCategoryController::class, 'store'])->name('admin.blog-post-categories.store');
+    Route::post('/blog-post-categories/reorder', [BlogPostCategoryController::class, 'reorder'])->name('admin.blog-post-categories.reorder');
     Route::get('/blog-post-categories/{blogPostCategory}/edit', [BlogPostCategoryController::class, 'edit'])->name('admin.blog-post-categories.edit');
     Route::put('/blog-post-categories/{blogPostCategory}', [BlogPostCategoryController::class, 'update'])->name('admin.blog-post-categories.update');
     Route::delete('/blog-post-categories/{blogPostCategory}', [BlogPostCategoryController::class, 'destroy'])->name('admin.blog-post-categories.destroy');
@@ -83,4 +85,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/bootcamp-items/{bootcampItem}/edit', [BootcampItemController::class, 'edit'])->name('admin.bootcamp-items.edit');
     Route::put('/bootcamp-items/{bootcampItem}', [BootcampItemController::class, 'update'])->name('admin.bootcamp-items.update');
     Route::delete('/bootcamp-items/{bootcampItem}', [BootcampItemController::class, 'destroy'])->name('admin.bootcamp-items.destroy');
+
+    // Services
+    Route::resource('services', ServiceController::class)->except(['show'])->names('admin.services');
 });

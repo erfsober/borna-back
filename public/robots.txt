@@ -1,2 +1,9 @@
+# robots.txt for روانشناسی برنا
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /auth/
+
+# Sitemap location
+Sitemap: /sitemap.xml

@@ -26,6 +26,7 @@ class ContactUsSettingFactory extends Factory
             'telegram' => '@'.fake()->userName(),
             'whatsapp' => fake()->phoneNumber(),
             'instagram' => '@'.fake()->userName(),
+            'bale' => 'web.bale.ai',
         ];
     }
 }

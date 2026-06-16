@@ -33,6 +33,7 @@ class ContactUsSettingController extends Controller
             'telegram' => $validated['telegram'] ?? null,
             'whatsapp' => $validated['whatsapp'] ?? null,
             'instagram' => $validated['instagram'] ?? null,
+            'bale' => $validated['bale'] ?? null,
         ]);
 
         if ($request->hasFile('map_image')) {

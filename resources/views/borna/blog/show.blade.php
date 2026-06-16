@@ -2,10 +2,62 @@
 
 @section('title', $blogPost->title . ' | روانشناسی برنا')
 
-@section('description', \Illuminate\Support\Str::limit(strip_tags($blogPost->description), 160))
-
+{{-- SEO Meta Tags --}}
+@section('meta_title', $blogPost->meta_title ?? $blogPost->title . ' | روانشناسی برنا')
+@section('meta_description', $blogPost->meta_description ?? \Illuminate\Support\Str::limit(strip_tags($blogPost->description), 160))
 @section('keywords', 'روانشناسی، برنا، مقاله، ' . $blogPost->title)
+@section('canonical', route('blog.show', $blogPost->slug))
 
+{{-- Open Graph Tags --}}
+@section('og_type', 'article')
+@section('og_title', $blogPost->og_title ?? $blogPost->meta_title ?? $blogPost->title)
+@section('og_description', $blogPost->og_description ?? $blogPost->meta_description ?? \Illuminate\Support\Str::limit(strip_tags($blogPost->description), 200))
+@section('og_url', route('blog.show', $blogPost->slug))
+@section('twitter_image',
+    $blogPost->twitter_image ?? $blogPost->getFirstMediaUrl('image') ?? null
+)
+
+{{-- Twitter Card Tags --}}
+@section('twitter_title', $blogPost->twitter_title ?? $blogPost->og_title ?? $blogPost->meta_title ?? $blogPost->title)
+@section('twitter_description', $blogPost->twitter_description ?? $blogPost->og_description ?? $blogPost->meta_description ?? \Illuminate\Support\Str::limit(strip_tags($blogPost->description), 200))
+@section('twitter_image',
+    $blogPost->twitter_image ?? $blogPost->getFirstMediaUrl('image') ?? null
+)
+
+@php
+    $schema = [
+        "@context" => "https://schema.org",
+        "@type" => "Article",
+        "headline" => $blogPost->title,
+        "description" => \Illuminate\Support\Str::limit(strip_tags($blogPost->description), 200),
+        "author" => [
+            "@type" => "Person",
+            "name" => $blogPost->writer_name
+        ],
+        "datePublished" => $blogPost->created_at->toIso8601String(),
+        "dateModified" => $blogPost->updated_at->toIso8601String(),
+        "publisher" => [
+            "@type" => "Organization",
+            "name" => "روانشناسی برنا",
+            "logo" => [
+                "@type" => "ImageObject",
+                "url" => asset('assets/images/borna-logo.svg')
+            ]
+        ],
+        "mainEntityOfPage" => [
+            "@type" => "WebPage",
+            "@id" => route('blog.show', $blogPost->slug)
+        ]
+    ];
+
+    if ($blogPost->getFirstMediaUrl('image')) {
+        $schema["image"] = $blogPost->getFirstMediaUrl('image');
+    }
+@endphp
+
+<script type="application/ld+json">
+    {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+</script>
 @section('content')
     <div class="py-8 md:py-12">
         <div class="container">
@@ -121,5 +173,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/article.js') }}" defer></script>
+    <script src="{{ asset('js/article.js') }}"></script>
 @endpush

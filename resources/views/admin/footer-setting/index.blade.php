@@ -32,25 +32,25 @@
         </div>
 
         <div class="mb-3">
-          <label for="instagram" class="form-label">لینک اینستاگرام</label>
-          <input type="url" class="form-control @error('instagram') is-invalid @enderror" id="instagram" name="instagram" placeholder="https://instagram.com/..." value="{{ old('instagram', $footerSetting->instagram ?? '') }}">
-          @error('instagram')
+          <label for="aparat" class="form-label">لینک آپارات</label>
+          <input type="url" class="form-control @error('aparat') is-invalid @enderror" id="aparat" name="aparat" placeholder="https://aparat.com/..." value="{{ old('aparat', $footerSetting->aparat ?? '') }}">
+          @error('aparat')
           <div class="invalid-feedback">{{ $message }}</div>
           @enderror
         </div>
 
         <div class="mb-3">
-          <label for="twitter" class="form-label">لینک توییتر</label>
-          <input type="url" class="form-control @error('twitter') is-invalid @enderror" id="twitter" name="twitter" placeholder="https://twitter.com/..." value="{{ old('twitter', $footerSetting->twitter ?? '') }}">
-          @error('twitter')
+          <label for="telegram" class="form-label">لینک تلگرام</label>
+          <input type="url" class="form-control @error('telegram') is-invalid @enderror" id="telegram" name="telegram" placeholder="https://telegram.org/..." value="{{ old('telegram', $footerSetting->telegram ?? '') }}">
+          @error('telegram')
           <div class="invalid-feedback">{{ $message }}</div>
           @enderror
         </div>
 
         <div class="mb-3">
-          <label for="facebook" class="form-label">لینک فیس‌بوک</label>
-          <input type="url" class="form-control @error('facebook') is-invalid @enderror" id="facebook" name="facebook" placeholder="https://facebook.com/..." value="{{ old('facebook', $footerSetting->facebook ?? '') }}">
-          @error('facebook')
+          <label for="bale" class="form-label">لینک بله</label>
+          <input type="url" class="form-control @error('bale') is-invalid @enderror" id="bale" name="bale" placeholder="https://web.bale.ai/..." value="{{ old('bale', $footerSetting->bale ?? '') }}">
+          @error('bale')
           <div class="invalid-feedback">{{ $message }}</div>
           @enderror
         </div>

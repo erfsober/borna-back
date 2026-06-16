@@ -32,6 +32,7 @@ class ContactUsSettingRequest extends FormRequest
             'telegram' => ['nullable', 'string', 'max:255'],
             'whatsapp' => ['nullable', 'string', 'max:50'],
             'instagram' => ['nullable', 'string', 'max:255'],
+            'bale' => ['nullable', 'string', 'max:255'],
         ];
     }
 

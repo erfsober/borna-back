@@ -32,6 +32,16 @@ class UpdateBlogPostRequest extends FormRequest
             'category_id' => ['nullable', 'exists:blog_post_categories,id'],
             'image' => ['nullable', 'image', 'max:2048'],
             'is_popular' => ['sometimes', 'boolean'],
+
+            // SEO Fields
+            'meta_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string'],
+            'og_title' => ['nullable', 'string', 'max:255'],
+            'og_description' => ['nullable', 'string'],
+            'og_image' => ['nullable', 'url', 'max:255'],
+            'twitter_title' => ['nullable', 'string', 'max:255'],
+            'twitter_description' => ['nullable', 'string'],
+            'twitter_image' => ['nullable', 'url', 'max:255'],
         ];
     }
 

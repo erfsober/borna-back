@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Api\SubscriberController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
@@ -8,7 +9,11 @@ use App\Http\Controllers\BootcampController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
+
+// Sitemap Route
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -49,3 +54,6 @@ Route::get('/terms', function () {
 
 // Subscriber API Routes
 Route::post('subscribers', [SubscriberController::class, 'store']);
+
+// Services
+Route::get('services' , [ServiceController::class, 'show'])->name('services.show');

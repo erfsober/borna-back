@@ -30,6 +30,7 @@
       <table class="table">
         <thead class="table-dark">
           <tr>
+            <th style="width: 40px;"></th>
             <th>شناسه</th>
             <th>عنوان</th>
             <th>تعداد پست‌ها</th>
@@ -37,9 +38,12 @@
             <th>عملیات</th>
           </tr>
         </thead>
-        <tbody class="table-border-bottom-0">
+        <tbody id="sortable-categories" class="table-border-bottom-0">
           @forelse($categories as $category)
-          <tr>
+          <tr data-id="{{ $category->id }}" style="cursor: grab;">
+            <td class="text-center">
+              <i class="bx bx-menu text-muted" style="cursor: grab; font-size: 1.2rem;"></i>
+            </td>
             <td><strong>{{ $category->id }}</strong></td>
             <td>{{ $category->title }}</td>
             <td><span class="badge bg-label-primary">{{ $category->blog_posts_count }} پست</span></td>
@@ -68,7 +72,7 @@
           </tr>
           @empty
           <tr>
-            <td colspan="5" class="text-center py-4">
+            <td colspan="6" class="text-center py-4">
               <i class="bx bx-info-circle bx-md text-muted mb-2"></i>
               <p class="text-muted mb-0">هیچ دسته‌بندی یافت نشد</p>
             </td>
@@ -77,14 +81,33 @@
         </tbody>
       </table>
     </div>
-
-    @if($categories->hasPages())
-    <div class="card-footer">
-      <div class="d-flex justify-content-center">
-        {{ $categories->links('vendor.pagination.custom-admin') }}
-      </div>
-    </div>
-    @endif
   </div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('admin/vendor/libs/sortablejs/sortable.js') }}"></script>
+<script>
+  const reorderUrl = '{{ route('admin.blog-post-categories.reorder') }}';
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+  new Sortable(document.getElementById('sortable-categories'), {
+    animation: 150,
+    handle: '.bx-menu',
+    ghostClass: 'table-active',
+    onEnd: function () {
+      const ids = [...document.querySelectorAll('#sortable-categories tr[data-id]')]
+        .map(row => row.dataset.id);
+
+      fetch(reorderUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrfToken,
+        },
+        body: JSON.stringify({ ids }),
+      });
+    },
+  });
+</script>
+@endpush

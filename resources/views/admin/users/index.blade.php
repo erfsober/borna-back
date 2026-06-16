@@ -84,7 +84,7 @@
               @endif
             </td>
             <td>
-              <span dir="ltr">{{ $user->created_at }}</span>
+              <span dir="ltr">{{ $user->jalali_created_at }}</span>
             </td>
             <td>
               <span dir="ltr">{{ $user->updated_at }}</span>

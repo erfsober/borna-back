@@ -123,7 +123,7 @@
         <!-- Social Media -->
         @if($contactSetting && ($contactSetting->telegram || $contactSetting->whatsapp || $contactSetting->instagram))
         <div class="flex flex-col gap-4 mt-5 lg:mt-auto">
-            <h2 class="text-2xl">شبکه های اجتماعی</h2>
+            <h2 class="text-2xl">راه‌های ارتباطی</h2>
             <div class="flex items-center gap-4">
                 <!-- Telegram -->
                 @if($contactSetting->telegram)
@@ -169,6 +169,27 @@
                             fill="#8AFFAD" class="group-hover:fill-primary-dark transition-colors" />
                     </svg>
                 </a>
+                @endif
+                <!-- Bale -->
+                @if($contactSetting->bale)
+                    <a href="https://ble.ir/{{ ltrim($contactSetting->bale, '@') }}" target="_blank" rel="noopener noreferrer"
+                       class="rounded-lg p-3 border-2 border-primary-light hover:border-primary-dark transition-colors group">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.5 2.5C6.35786 2.5 3 5.85786 3 10C3 14.1421 6.35786 17.5 10.5 17.5C14.6421 17.5 18 14.1421 18 10C18 5.85786 14.6421 2.5 10.5 2.5Z"
+                                  stroke="#8AFFAD"
+                                  stroke-width="1.5"
+                                  fill="none"
+                                  class="group-hover:stroke-primary-dark transition-colors"/>
+                            <path d="M13.5 8L9.5 12L7.5 10"
+                                  stroke="#8AFFAD"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  fill="none"
+                                  class="group-hover:stroke-primary-dark transition-colors"/>
+                        </svg>
+                    </a>
                 @endif
             </div>
         </div>

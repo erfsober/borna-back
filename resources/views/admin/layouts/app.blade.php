@@ -182,7 +182,13 @@
                 </li>
               </ul>
             </li>
-
+            <!-- Service -->
+              <li class="menu-item {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.services.index') }}" class="menu-link">
+                      <i class="menu-icon tf-icons bx bxs-briefcase"></i>
+                      <div data-i18n="FooterSetting">خدمات برنا</div>
+                  </a>
+              </li>
             <!-- Footer Setting -->
             <li class="menu-item {{ request()->routeIs('admin.footer-setting.*') ? 'active' : '' }}">
               <a href="{{ route('admin.footer-setting.index') }}" class="menu-link">

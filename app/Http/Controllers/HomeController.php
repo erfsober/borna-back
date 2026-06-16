@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
+use App\Models\Service;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -13,6 +14,11 @@ class HomeController extends Controller
             ->latest()
             ->take(3)
             ->get();
-        return view('borna.home', compact('blogPosts'));
+        $services = Service::query()
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('borna.home', compact('blogPosts', 'services'));
     }
 }

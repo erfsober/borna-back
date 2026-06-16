@@ -14,9 +14,9 @@ class FooterSettingSeeder extends Seeder
     {
         FooterSetting::firstOrCreate([], [
             'description' => 'روانشناسی برنا با مفهوم ارتقاء ذهنی و روانی مراجعه‌کنندگان، به مراقبت و توسعه افراد و خانواده‌ها اختصاص دارد. با توجه به اهمیت بهبود روانی در زندگی روزمره، در راستای بهبود کیفیت زندگی افراد کمک می‌کنند.',
-            'instagram' => 'https://instagram.com',
-            'twitter' => 'https://twitter.com',
-            'facebook' => 'https://facebook.com',
+            'aparat' => 'https://aparat.com',
+            'telegram' => 'https://telegram.org',
+            'bale' => 'https://web.bale.ai/',
         ]);
     }
 }
