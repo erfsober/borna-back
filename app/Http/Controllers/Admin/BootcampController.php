@@ -134,6 +134,7 @@ class BootcampController extends Controller
 
     public function destroy(Bootcamp $bootcamp): RedirectResponse
     {
+        abort(401);
         $bootcamp->delete();
 
         return redirect()->route('admin.bootcamps.index')

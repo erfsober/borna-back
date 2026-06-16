@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('footer_settings', function (Blueprint $table) {
             $table->id();
             $table->text('description')->nullable();
-            $table->string('aparat')->nullable();
-            $table->string('telegram')->nullable();
-            $table->string('bale')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
             $table->timestamps();
         });
     }
