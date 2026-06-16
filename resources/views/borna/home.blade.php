@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="flex flex-col items-center gap-4 p-6 flex-grow">
                                     <p class="text-gray-600 text-sm leading-7 text-center">
-                                        {{ Str::limit($service->description, 100) }}
+                                        {!! Str::limit($service->description, 100) !!}
                                     </p>
                                     <span class="flex items-center justify-center bg-[#F1FFED] text-[#404040] px-8 py-3 rounded-lg">
                                 {{ $service->title }}
