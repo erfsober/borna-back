@@ -40,8 +40,8 @@
                 @foreach($aboutUsItems as $aboutUsItem)
                     <div class="swiper-slide">
                         <!-- Doctor Card 1 -->
-                        <a href="#" class="flex items-center card w-full max-w-sm">
-                            <div class="hidden sm:block sm:w-1/3">
+                        <a href="#" class="flex items-center card w-full max-w-sm h-80">
+                            <div class="hidden sm:block sm:w-1/3 h-full">
                                 @if($aboutUsItem->getFirstMediaUrl('doctor_image'))
                                     <img src="{{ $aboutUsItem->getFirstMediaUrl('doctor_image') }}" alt="{{ $aboutUsItem->doctor_name }}"
                                          class="w-full h-full object-cover">
@@ -50,7 +50,7 @@
                                          class="w-full h-full">
                                 @endif
                             </div>
-                            <div class="w-full sm:w-2/3 flex flex-col items-center gap-3 p-4">
+                            <div class="w-full sm:w-2/3 h-full flex flex-col items-center gap-3 p-4 overflow-hidden">
                                 <h3 class="font-medium text-text-gray bg-gray-100 rounded-2xl max-w-fit px-4 py-2">
                                     {{ $aboutUsItem->doctor_name }}
                                 </h3>
@@ -63,7 +63,7 @@
                                         @endif
                                     @endfor
                                 </div>
-                                <p class="text-sm text-text-light-gray text-justify leading-relaxed flex-grow">{{ $aboutUsItem->description }}</p>
+                                <p class="text-sm text-text-light-gray text-justify leading-relaxed flex-grow overflow-y-auto">{{ $aboutUsItem->description }}</p>
                             </div>
                         </a>
                     </div>
