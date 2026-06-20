@@ -43,8 +43,12 @@
                         <a href="#" class="flex items-center card w-full max-w-sm">
                             <div class="hidden sm:block sm:w-1/3">
                                 @if($aboutUsItem->getFirstMediaUrl('doctor_image'))
-                                    <img src="{{ $aboutUsItem->getFirstMediaUrl('doctor_image') }}" alt="{{ $aboutUsItem->doctor_name }}"
-                                         class="w-full h-full object-cover">
+                                    <img
+                                        src="{{ $aboutUsItem->getFirstMediaUrl('doctor_image', 'thumb') }}"
+                                        alt="{{ $aboutUsItem->doctor_name }}"
+
+                                        class="w-full h-full object-cover"
+                                    >
                                 @else
                                     <img src="{{ asset('assets/images/doctor-card-img.svg') }}" alt="Doctor Image"
                                          class="w-full h-full">

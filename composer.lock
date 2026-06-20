@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5b23a7c0a88bc078aa36e1b67133d8b",
+    "content-hash": "008ec557c3fbf2fe4b50066aea0d9cf4",
     "packages": [
         {
             "name": "amyavari/iran-sms-laravel",
