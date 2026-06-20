@@ -52,9 +52,9 @@
             </div>
 
             <!-- Gallery Cards -->
-            <div class="relative px-12">
+            <div class="relative px-12 gallery-slider">
                 <!-- Swiper Container -->
-                <div class="swiper gallerySwiper">
+                <div class="swiper gallerySwiper" dir="ltr">
                     <!-- Swiper Wrapper -->
                     <div class="swiper-wrapper">
                         @foreach($bootcamp->getMedia('gallery_images') as $image)
@@ -69,7 +69,7 @@
                 </div>
 
                 <!-- Navigation Buttons -->
-                <button id="gallery-slider-prev"
+                <button type="button" id="gallery-slider-next" aria-label="Next gallery image"
                     class="absolute right-0 top-1/2 -translate-y-1/2 transform z-10 group">
                     <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -83,7 +83,7 @@
                             fill="black" class="group-hover:fill-primary transition-colors" />
                     </svg>
                 </button>
-                <button id="gallery-slider-next"
+                <button type="button" id="gallery-slider-prev" aria-label="Previous gallery image"
                     class="rotate-180 absolute left-0 top-1/2 -translate-y-1/2 transform z-10 group">
                     <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -159,8 +159,10 @@
 @push('scripts')
     <!-- Gallery Swiper -->
     <script>
+        const gallerySlider = document.querySelector('.gallery-slider');
+
         // Initialize Swiper
-        const gallerySwiper = new Swiper('.gallerySwiper', {
+        const gallerySwiper = new Swiper(gallerySlider.querySelector('.gallerySwiper'), {
             slidesPerView: 1,
             spaceBetween: 0,
             centeredSlides: true,
@@ -171,8 +173,8 @@
                 disableOnInteraction: false,
             },
             navigation: {
-                nextEl: '#gallery-slider-next',
-                prevEl: '#gallery-slider-prev',
+                nextEl: gallerySlider.querySelector('#gallery-slider-next'),
+                prevEl: gallerySlider.querySelector('#gallery-slider-prev'),
             },
             breakpoints: {
                 // when window width is >= 640px
