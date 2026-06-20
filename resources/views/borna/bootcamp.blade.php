@@ -167,10 +167,16 @@
             spaceBetween: 0,
             centeredSlides: true,
             loop: true,
+            loopAdditionalSlides: 2,
             grabCursor: true,
+            watchSlidesProgress: true,
+            observer: true,
+            observeParents: true,
+            updateOnImagesReady: true,
             autoplay: {
                 delay: 3000,
-                disableOnInteraction: false,
+                disableOnInteraction: true,
+                pauseOnMouseEnter: true,
             },
             navigation: {
                 nextEl: gallerySlider.querySelector('#gallery-slider-next'),
