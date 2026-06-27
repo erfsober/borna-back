@@ -38,22 +38,30 @@
             <!-- Swiper Wrapper -->
             <div class="swiper-wrapper px-0.5 xl:px-4 py-10">
                 @foreach($aboutUsItems as $aboutUsItem)
-                    <div class="swiper-slide">
-                        <!-- Doctor Card 1 -->
-                        <a href="#" class="flex items-center card w-full max-w-sm" style="height: 20rem;">
-                            <div class="hidden sm:block sm:w-1/3" style="height: 100%;">
-                                @if($aboutUsItem->getFirstMediaUrl('doctor_image'))
-                                    <img src="{{ $aboutUsItem->getFirstMediaUrl('doctor_image') }}" alt="{{ $aboutUsItem->doctor_name }}"
-                                         class="w-full h-full object-cover">
-                                @else
-                                    <img src="{{ asset('assets/images/doctor-card-img.svg') }}" alt="Doctor Image"
-                                         class="w-full h-full">
-                                @endif
+                    <div class="swiper-slide flex">
+                    <!-- Doctor Card 1 -->
+                        <a href="#" class="flex card doctor-card w-full max-w-sm" style="height: 190px;">
+                            <div class="sm:flex sm:w-1/3 items-center justify-center h-full p-3">
+                                <div class="w-full aspect-[4/5] overflow-hidden rounded-lg">
+                                    @if($aboutUsItem->getFirstMediaUrl('doctor_image'))
+                                        <img
+                                            src="{{ $aboutUsItem->getFirstMediaUrl('doctor_image', 'thumb') }}"
+                                            alt="{{ $aboutUsItem->doctor_name }}"
+                                            class="w-full h-full object-cover">
+                                    @else
+                                        <img
+                                            src="{{ asset('assets/images/doctor-card-img.svg') }}"
+                                            alt="Doctor Image"
+                                            class="w-full h-full object-cover">
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="w-full sm:w-2/3 flex flex-col items-center gap-3 p-4" style="height: 100%; overflow: hidden;">
                                 <h3 class="font-medium text-text-gray bg-gray-100 rounded-2xl max-w-fit px-4 py-2">
                                     {{ $aboutUsItem->doctor_name }}
                                 </h3>
+
                                 <div class="flex items-center">
                                     @for($i = 1; $i <= 5; $i++)
                                         @if($i <= $aboutUsItem->star)
@@ -63,7 +71,10 @@
                                         @endif
                                     @endfor
                                 </div>
-                                <p class="text-sm text-text-light-gray text-justify leading-relaxed flex-grow" style="overflow-y: auto;">{{ $aboutUsItem->description }}</p>
+
+                                <p class="text-sm text-text-light-gray text-justify leading-relaxed flex-grow" style="overflow-y: auto;">
+                                    {{ $aboutUsItem->description }}
+                                </p>
                             </div>
                         </a>
                     </div>
