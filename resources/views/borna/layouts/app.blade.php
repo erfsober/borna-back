@@ -50,7 +50,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}">
 
     @stack('styles')
 </head>
@@ -390,7 +390,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
 
     <!-- Swiper JS-->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
 
     @stack('scripts')
 </body>

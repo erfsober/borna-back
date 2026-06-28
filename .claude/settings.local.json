@@ -44,7 +44,9 @@
       "mcp__ide__getDiagnostics",
       "WebSearch",
       "WebFetch(domain:techsolutionstuff.com)",
-      "Bash(composer require:*)"
+      "Bash(composer require:*)",
+      "Bash(curl -sSL https://unpkg.com/swiper/swiper-bundle.min.js -o public/vendor/swiper/swiper-bundle.min.js)",
+      "Bash(curl -sSL https://unpkg.com/swiper/swiper-bundle.min.css -o public/vendor/swiper/swiper-bundle.min.css)"
     ],
     "deny": [],
     "ask": [],
