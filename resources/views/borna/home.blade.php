@@ -1,6 +1,6 @@
 @extends('borna.layouts.app')
 
-@section('title', 'روان برنا | برنا توسعه نیک‌اندیش')
+@section('title', 'روانِ برنا | برنا توسعه نیک‌اندیش')
 @section('description', 'مرکز روانشناسی برنا - خودت رو بشناس! بزن بریم')
 
 @section('content')
@@ -13,7 +13,7 @@
         </div>
         <!-- Text Content -->
         <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-8">
-            <h1 class="text-4xl md:text-5xl lg:text-7xl font-medium text-black">روانشناسی برنا</h1>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-medium text-black">روانشناسی، آموزش و توسعه</h1>
             <div class="flex items-center">
                 <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-3 md:gap-5">
                     <div class="relative">
@@ -73,7 +73,7 @@
                         <!-- Slide {{ $loop->iteration }} -->
                         <div class="swiper-slide">
                             <!-- Service Card -->
-                            <a href="#"
+                            <a href="{{ route('services.show', $service) }}"
                                class="flex flex-col bg-white rounded-lg border border-[#E6E6E6] hover:border-primary-dark transition-colors h-full">
                                 <div class="w-full h-56">
                                     <img src="{{ $service->getFirstMediaUrl('service_image') ?: asset('assets/images/home/default-service.png') }}"
@@ -374,7 +374,7 @@
                     @foreach($blogPosts as $blogPost)
                         <div class="swiper-slide">
                             <!-- Article -->
-                            <a href="#"
+                            <a href="{{ route('blog.show', $blogPost->slug) }}"
                                class="flex flex-col bg-white rounded-xl border-r-2 border-b-2 border-primary-light hover:border-primary-dark transition-colors">
                                 <div class="relative">
                                     <img src="{{ $blogPost->getFirstMediaUrl('image') }}" alt="{{ $blogPost->title }}"
@@ -385,7 +385,7 @@
                                     <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">{{ $blogPost->summary }}</p>
                                     <div class="flex flex-col gap-4">
                                         <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
-                                            <span>۱۴ شهریور</span>
+                                            <span>{{ verta($blogPost->created_at)->format('j %B') }}</span>
                                             <div class="w-px h-4 bg-[#9D9EA2]"></div>
                                             <span>{{ $blogPost->read_duration }} دقیقه</span>
                                         </div>

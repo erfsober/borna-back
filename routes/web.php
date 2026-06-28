@@ -56,4 +56,4 @@ Route::get('/terms', function () {
 Route::post('subscribers', [SubscriberController::class, 'store']);
 
 // Services
-Route::get('services' , [ServiceController::class, 'show'])->name('services.show');
+Route::get('services/{service}' , [ServiceController::class, 'show'])->name('services.show');

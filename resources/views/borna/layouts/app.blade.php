@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     {{-- SEO Meta Tags --}}
-    <title>@yield('title','روان برنا | برنا توسعه نیک‌اندیش')</title>
+    <title>@yield('title','روانِ برنا | برنا توسعه نیک‌اندیش')</title>
     <meta name="description" content="@yield('meta_description', 'مرکز روانشناسی برنا - خدمات روانشناسی و مشاوره')">
     <meta name="keywords" content="@yield('keywords', 'روانشناسی، برنا، مشاوره، سلامت روان')">
     <meta name="robots" content="index, follow">
@@ -42,8 +42,7 @@
     @stack('structured_data')
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
-
+    <link rel="icon" type="image/png" href="{{ asset('assets/favicon2.png') }}">
     <!-- Tailwind CSS -->
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
 
@@ -380,7 +379,10 @@
             <div class="border my-4 md:my-8"></div>
 
             <!-- Copyright -->
-            <div class="text-text-dark text-center" dir="ltr">© {{ now()->year }} All rights reserved</div>
+            <div class="text-text-dark text-center rtl">
+                <span dir="ltr">&copy; {{ now()->year }}</span>
+                تمام حقوق مادی و معنوی این سایت متعلق به شرکت برنا توسعه نیک‌اندیش می‌باشد.
+            </div>
         </div>
     </footer>
 
