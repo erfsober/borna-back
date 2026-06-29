@@ -114,7 +114,7 @@
 
             <!-- Video File -->
             <div>
-                <video style="width: 300px" class="w-full md:w-10/12 mx-auto h-auto rounded-2xl cursor-pointer" controls>
+                <video class="w-full md:w-10/12 mx-auto h-auto rounded-2xl cursor-pointer" controls>
                     <source src="{{ $bootcamp->getFirstMediaUrl('video') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
