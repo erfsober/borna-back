@@ -28,6 +28,7 @@ class SearchController extends Controller
         }
 
         $blogs = BlogPost::query()
+            ->with('category')
             ->where('title', 'like', "%{$query}%")
             ->orWhere('description', 'like', "%{$query}%")
             ->orWhere('summary', 'like', "%{$query}%")
@@ -42,7 +43,9 @@ class SearchController extends Controller
                 'summary' => $blog->summary,
                 'writer_name' => $blog->writer_name,
                 'read_duration' => $blog->read_duration,
-                'image' => $blog->getFirstMediaUrl('images') ?: null,
+                'date' => verta($blog->created_at)->format('j %B'),
+                'category' => $blog->category?->title,
+                'image' => $blog->getFirstMediaUrl('image') ?: null,
             ]);
 
         return response()->json([

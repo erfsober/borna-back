@@ -90,16 +90,25 @@
 
         function displayResults(blogs) {
             resultsContainer.innerHTML = blogs.map(blog => `
-                <a href="/blog/${blog.slug}" class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-                    ${blog.image ? `<div class="relative h-40 overflow-hidden bg-gray-200">
-                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover">
-                    </div>` : '<div class="relative h-40 bg-gray-200"></div>'}
-                    <div class="p-4 flex flex-col gap-3">
-                        <h4 class="font-semibold text-base line-clamp-2 text-gray-800">${blog.title}</h4>
-                        <p class="text-sm text-gray-600 line-clamp-2">${blog.summary || blog.description}</p>
-                        <div class="flex items-center justify-between text-xs text-gray-500 mt-auto">
-                            <span>${blog.writer_name}</span>
-                            <span>${blog.read_duration} دقیقه</span>
+                <a href="/blog/${blog.slug}"
+                   class="flex flex-col bg-white rounded-xl border-r-2 border-b-2 border-primary-light hover:border-primary-dark transition-colors">
+                    <div class="relative">
+                        <img src="${blog.image}" alt="${blog.title}"
+                             class="w-full h-auto rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-3">${blog.title}</h3>
+                        <p class="text-gray-600 text-sm leading-7 mb-4 line-clamp-4">${blog.summary ?? ''}</p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-2 text-[#9D9EA2] text-sm">
+                                <span>${blog.date}</span>
+                                <div class="w-px h-4 bg-[#9D9EA2]"></div>
+                                <span>${blog.read_duration} دقیقه</span>
+                            </div>
+                            <div class="flex gap-2">
+                            <span
+                                class="bg-[#EDFFF2] text-[#9D9EA2] text-xs rounded-full px-3 py-1">${blog.category ?? ''}</span>
+                            </div>
                         </div>
                     </div>
                 </a>
