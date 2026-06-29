@@ -88,7 +88,7 @@
                     <div class="flex flex-wrap items-center justify-between">
 
                         <div class="flex items-center gap-2 text-text-gray text-sm">
-                            <span>{{ verta($service->created_at) }}</span>
+                            <span>{{ verta($service->created_at)->format('j %B')  }}</span>
                         </div>
 
                         <div class="flex items-center gap-4 mt-4 md:mt-0">
