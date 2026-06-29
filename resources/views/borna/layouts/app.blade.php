@@ -380,7 +380,7 @@
 
             <!-- Copyright -->
             <div class="text-text-dark text-center rtl">
-                <span dir="ltr">&copy; {{ now()->year }}</span>
+                <span dir="ltr">&copy; 2025</span>
                 تمام حقوق مادی و معنوی این سایت متعلق به شرکت برنا توسعه نیک‌اندیش می‌باشد.
             </div>
         </div>
