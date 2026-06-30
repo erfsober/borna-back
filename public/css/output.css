@@ -734,6 +734,10 @@ video {
   top: 50%;
 }
 
+.top-20 {
+  top: 5rem;
+}
+
 .top-4 {
   top: 1rem;
 }
@@ -858,6 +862,10 @@ video {
 
 .mr-4 {
   margin-right: 1rem;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .mt-1 {
@@ -1101,6 +1109,10 @@ video {
   width: 1.25rem;
 }
 
+.w-5\/12 {
+  width: 41.666667%;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -1306,10 +1318,6 @@ video {
   gap: 0.5rem;
 }
 
-.gap-20 {
-  gap: 5rem;
-}
-
 .gap-3 {
   gap: 0.75rem;
 }
@@ -1392,6 +1400,10 @@ video {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .rounded-xl {
@@ -2167,6 +2179,11 @@ video {
   line-height: 2.5rem;
 }
 
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -2440,6 +2457,10 @@ video {
   --tw-text-opacity: 0.9;
 }
 
+.opacity-10 {
+  opacity: 0.1;
+}
+
 .opacity-60 {
   opacity: 0.6;
 }
@@ -2545,14 +2566,18 @@ video {
   font-weight: 800;
 }
 
+.font-nastaliq {
+  font-family: 'IranNastaliq', serif;
+}
+
 /* Font imports */
 
 /* Custom IRANSansX font with all available weights */
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-UltraLight.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-UltraLight.woff2') format('woff2');
 
   font-weight: 100;
 
@@ -2562,9 +2587,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Thin.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Thin.woff2') format('woff2');
 
   font-weight: 200;
 
@@ -2574,9 +2599,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Light.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Light.woff2') format('woff2');
 
   font-weight: 300;
 
@@ -2586,9 +2611,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Regular.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Regular.woff2') format('woff2');
 
   font-weight: 400;
 
@@ -2598,9 +2623,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Medium.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Medium.woff2') format('woff2');
 
   font-weight: 500;
 
@@ -2610,9 +2635,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-SemiBold.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-SemiBold.woff2') format('woff2');
 
   font-weight: 600;
 
@@ -2622,9 +2647,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Bold.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Bold.woff2') format('woff2');
 
   font-weight: 700;
 
@@ -2634,9 +2659,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-ExtraBold.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-ExtraBold.woff2') format('woff2');
 
   font-weight: 800;
 
@@ -2646,9 +2671,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Black.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Black.woff2') format('woff2');
 
   font-weight: 900;
 
@@ -2658,9 +2683,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-ExtraBlack.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-ExtraBlack.woff2') format('woff2');
 
   font-weight: 950;
 
@@ -2670,9 +2695,9 @@ video {
 }
 
 @font-face {
-  font-family: "IRANSansX";
+  font-family: 'IRANSansX';
 
-  src: url("../assets/fonts/IRANSansX-Heavy.woff2") format("woff2");
+  src: url('../assets/fonts/IRANSansX-Heavy.woff2') format('woff2');
 
   font-weight: 1000;
 
@@ -2681,10 +2706,22 @@ video {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'IranNastaliq';
+
+  src: url('../assets/fonts/IranNastaliq.ttf') format('truetype');
+
+  font-weight: normal;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
 /* RTL and language support */
 
-html[dir="rtl"] body {
-  font-family: "IRANSansX", sans-serif;
+html[dir='rtl'] body {
+  font-family: 'IRANSansX', sans-serif;
   text-align: right;
 }
 
@@ -2930,6 +2967,10 @@ html[dir="rtl"] body {
     display: block;
   }
 
+  .sm\:flex {
+    display: flex;
+  }
+
   .sm\:w-1\/2 {
     width: 50%;
   }
@@ -2948,6 +2989,10 @@ html[dir="rtl"] body {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:items-start {
+    align-items: flex-start;
   }
 
   .sm\:gap-8 {
@@ -3125,6 +3170,10 @@ html[dir="rtl"] body {
     width: fit-content;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:max-w-\[70\%\] {
     max-width: 70%;
   }
@@ -3277,6 +3326,11 @@ html[dir="rtl"] body {
     line-height: 1;
   }
 
+  .md\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
   .md\:text-\[43px\] {
     font-size: 43px;
   }
@@ -3321,6 +3375,10 @@ html[dir="rtl"] body {
 
   .lg\:left-8 {
     left: 2rem;
+  }
+
+  .lg\:top-24 {
+    top: 6rem;
   }
 
   .lg\:order-2 {
@@ -3375,8 +3433,8 @@ html[dir="rtl"] body {
     height: 3.5rem;
   }
 
-  .lg\:h-7 {
-    height: 1.75rem;
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:w-14 {
@@ -3385,10 +3443,6 @@ html[dir="rtl"] body {
 
   .lg\:w-4\/12 {
     width: 33.333333%;
-  }
-
-  .lg\:w-7 {
-    width: 1.75rem;
   }
 
   .lg\:w-8\/12 {
@@ -3441,19 +3495,18 @@ html[dir="rtl"] body {
     padding-bottom: 5rem;
   }
 
-  .lg\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
-  .lg\:text-7xl {
-    font-size: 4.5rem;
+  .lg\:text-6xl {
+    font-size: 3.75rem;
     line-height: 1;
   }
 
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:opacity-20 {
+    opacity: 0.2;
   }
 }
 
@@ -3470,6 +3523,10 @@ html[dir="rtl"] body {
     right: -1rem;
   }
 
+  .xl\:top-20 {
+    top: 5rem;
+  }
+
   .xl\:w-3\/12 {
     width: 25%;
   }
@@ -3484,6 +3541,10 @@ html[dir="rtl"] body {
 
   .xl\:gap-16 {
     gap: 4rem;
+  }
+
+  .xl\:gap-20 {
+    gap: 5rem;
   }
 
   .xl\:gap-36 {

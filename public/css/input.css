@@ -3,100 +3,108 @@
 @tailwind utilities;
 
 /* Font imports */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Poppins:wght@400;500;600&display=swap');
 
 /* Custom IRANSansX font with all available weights */
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-UltraLight.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-UltraLight.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Thin.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Thin.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Light.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Regular.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Medium.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-SemiBold.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Bold.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-ExtraBold.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Black.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-ExtraBlack.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-ExtraBlack.woff2') format('woff2');
   font-weight: 950;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IRANSansX";
-  src: url("../assets/fonts/IRANSansX-Heavy.woff2") format("woff2");
+  font-family: 'IRANSansX';
+  src: url('../assets/fonts/IRANSansX-Heavy.woff2') format('woff2');
   font-weight: 1000;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'IranNastaliq';
+  src: url('../assets/fonts/IranNastaliq.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* RTL and language support */
-html[dir="rtl"] body {
-  font-family: "IRANSansX", sans-serif;
+html[dir='rtl'] body {
+  font-family: 'IRANSansX', sans-serif;
   text-align: right;
 }
 
@@ -180,5 +188,8 @@ html[dir="rtl"] body {
   }
   .font-heavy {
     font-weight: 1000;
+  }
+  .font-nastaliq {
+    font-family: 'IranNastaliq', serif;
   }
 }

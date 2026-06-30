@@ -194,9 +194,11 @@
         <div class="container">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Column 1: About -->
-                <div class="flex flex-col gap-4 col-span-2 lg:col-span-1 order-1">
+                <div class="flex flex-col gap-4 col-span-2 lg:col-span-1 order-1 relative">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt=""
+                        class="absolute top-20 lg:top-24 xl:top-20 left-1/2 -translate-x-1/2 w-5/12 opacity-10 lg:opacity-20">
                     <img src="{{ asset('assets/images/borna-logo.svg') }}" alt="روانشناسی برنا" class="w-[162px] h-auto">
-                    <p class="text-text-dark text-opacity-90 text-sm leading-relaxed text-justify">
+                    <p class="text-text-dark text-opacity-90 text-sm leading-relaxed text-justify z-10">
                         {{ $footerSetting->description ?? 'روانشناسی برنا با مفهوم ارتقاء ذهنی و روانی مراجعه‌کنندگان، به مراقبت و توسعه افراد و خانواده‌ها اختصاص دارد. با توجه به اهمیت بهبود روانی در زندگی روزمره، در راستای بهبود کیفیت زندگی افراد کمک می‌کنند.' }}
                     </p>
                     <!-- Social Media -->

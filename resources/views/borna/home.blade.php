@@ -6,30 +6,21 @@
 @section('content')
 <!-- Hero Section -->
 <section class="container py-8 md:py-16">
-    <div class="flex flex-col md:flex-row items-center gap-20">
+    <div class="flex flex-col md:flex-row items-center gap-10 xl:gap-20">
         <!-- Image -->
         <div class="w-full md:w-1/2 hidden md:flex items-center justify-center">
-            <img src="{{ asset('assets/images/home/main-image.png') }}" alt="" class="w-full h-auto">
+            <img src="{{ asset('assets/images/home/hero-1.jpg') }}" alt="" class="w-full h-auto rounded-sm">
         </div>
         <!-- Text Content -->
-        <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-8">
-            <h1 class="text-4xl md:text-5xl lg:text-7xl font-medium text-black">روانشناسی، آموزش و توسعه</h1>
-            <div class="flex items-center">
-                <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-3 md:gap-5">
-                    <div class="relative">
-                        <p class="text-2xl md:text-4xl lg:text-5xl text-gray-800 font-light leading-tight">
-                            توانا بود هرکه دانا بود،
-                        </p>
-                        <div class="absolute -bottom-2 right-0 w-16 h-0.5 bg-amber-400 rounded-full"></div>
-                    </div>
-                    <div class="flex items-center gap-3 md:gap-5 mt-2">
-                        <div class="w-8 h-0.5 bg-gray-300"></div>
-                        <span class="text-xl md:text-2xl lg:text-4xl text-black italic font-light">
-                            ز دانش دل پیر برنا بود
-                        </span>
-                    </div>
+        <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-10">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-black">روانشناسی، آموزش و توسعه</h1>
+            <div class="flex items-center md:w-full">
+                <div
+                    class="w-full sm:w-1/2 md:w-full lg:w-1/2 flex flex-col items-center sm:items-start gap-4 font-nastaliq text-6xl md:text-7xl">
+                    <p>توانا بود هر که دانا بود</p>
+                    <p class="mr-auto">ز دانش دل پیر برنا بود</p>
                 </div>
-                <div class="w-1/2 flex items-center justify-center">
+                <div class="w-1/2 hidden sm:flex md:hidden lg:flex items-center justify-center">
                     <img src="{{ asset('assets/images/home/banner-book.svg') }}" alt="">
                 </div>
             </div>
