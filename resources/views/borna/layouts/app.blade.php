@@ -44,10 +44,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/favicon2.png') }}">
     <!-- Tailwind CSS -->
-    <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/output.css') }}?v={{ now()->format('YmdH') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}?v={{ now()->format('YmdH') }}" rel="stylesheet">
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}">
@@ -389,7 +389,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}?v={{ now()->format('YmdH') }}"></script>
 
     <!-- Swiper JS-->
     <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
