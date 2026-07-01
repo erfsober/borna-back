@@ -9,7 +9,7 @@
     <div class="flex flex-col md:flex-row items-center gap-10 xl:gap-20">
         <!-- Image -->
         <div class="w-full md:w-1/2 hidden md:flex items-center justify-center">
-            <img src="{{ asset('assets/images/home/hero-1.jpg') }}" alt="" class="w-full h-auto rounded-sm">
+            <img src="{{ asset('assets/images/home/main-image.png') }}" alt="" class="w-full h-auto rounded-sm">
         </div>
         <!-- Text Content -->
         <div class="w-full md:w-1/2 flex flex-col items-center md:items-start gap-10">
